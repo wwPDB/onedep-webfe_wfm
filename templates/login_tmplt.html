@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Login Page</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta http-equiv="Content-Language" content="English" />
+
+    <link rel="stylesheet" href="/wfm/styles/style.css" type="text/css" media="all">
+
+    <script type="text/javascript" src="/js/jquery-10.2/core/jquery-1.10.2.min.js"></script>
+    <script type='text/javascript' src='/wfm/js/skinnytip.js'></script>
+
+    <script type="text/javascript">
+       $(function(){
+            $("#anchorfocus").focus();
+         });
+    </script>
+</head>
+<body>
+    <div id="tiplayer" style="position:absolute; visibility:hidden; z-index:10000;"></div>
+    <div id="header">
+        <div id="logo">
+            <h1> <a name="anchorfocus" id="anchorfocus" href="/wfm/"><img src="/wfm/images/wwpdb_logo.gif" border="0" alt="wwPDB" width="187" height="58"
+                  onmouseover="return tooltip('Workflow Manager - Annotation tool for the wwPDB');" onmouseout="return hideTip();" onClick="return false;"></a><span>workflow</span> manager
+            </h1><br/>
+        </div><br/>
+        <div id="subheader">
+            <table>
+                <tr><td colspan="2" bgcolor="#006633">&nbsp;</td></tr>        
+                <tr><td class="breadCrumbs"></td>
+                    <td class="logged"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="pageTitle">Workflow Manager: Login Page </div>
+
+    <div id="content">
+        <form method="POST" action="/service/workmanager/login">
+            <input type="hidden" name="sessionid" id="sessionid_citation" value="%(sessionid)s" />
+            <table width="250" align="center">
+                <tr>
+                    <th class="wfmTh"><label for="id_username">Username:</label></th>
+                    <td ><input id="id_username" type="text" name="username" maxlength="200" /></td>
+                </tr>
+                <tr >
+                    <th class="wfmTh"><label for="id_psw">Password :</label></th>
+                    <td ><input id="id_psw" type="password" name="password" maxlength="50" /></td>
+                </tr>
+                <tr>
+                    <td class="actionTd" colspan="2" align="center"><input type="submit" value="Submit"></td>
+                </tr>
+            </table>
+        </form>
+
+        <p class="errorText">%(message)s</p>
+
+        <center><a href="/wfm/forgotPass.html">Forgot your password?</a></center>
+    </div>
+</body>
+</html>
+

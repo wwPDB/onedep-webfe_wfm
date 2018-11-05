@@ -1,0 +1,248 @@
+data_template
+#
+loop_
+_page_template.id
+_page_template.type
+_page_template.repeat
+_page_template.dependence
+_page_template.page
+#level2_tmplt
+level2_tmplt                string    no    ?  
+;
+%(page_head)s
+
+    <div id="pageTitle">
+        <br/>
+        <center><table border="0" cellspacing=0 cellpadding=0><tr><td> Annotator Screen: Business Flow [Level 2] </td></tr></table></center>
+    </div>
+
+    <div id="content">
+        <br/><br/>
+        %(entry_info)s
+        <br/><br/>
+        %(workflow_info)s
+    </div>
+
+<script type="text/javascript">
+var session_ID = '%(sessionid)s';
+var annotator  = '%(annotator)s';
+</script>
+<br/>
+<p class="version">Version: %(DAVersion)s</p>
+</body>
+</html>
+;
+#level3_tmplt
+level3_tmplt                file      no    ?    "level3_tmplt.html"
+#common_page_header_tmpl
+common_page_header_tmplt    file      no    ?    "common_page_no_table_tmplt.html"   
+#
+#entry_tmplt
+entry_tmplt                 string    no    ? 
+;<table class="wfmTable" cellpadding="5px">
+    <tr>
+        <th class="wfmTh">Status</th>
+        <th class="wfmTh">Dep IP</th>
+        <th class="wfmTh">Exp method</th>
+        <th class="wfmTh">Accession Code</th>
+        <th class="wfmTh">Coordinate Status</th>
+        <th class="wfmTh">Exp data Status</th>
+        <th class="wfmTh">Author Release status</th>
+        <th class="wfmTh">Deposition Date</th>
+        <th class="wfmTh">Author Initials</th>
+    </tr>
+    <tr>
+        <td class="textTd"><img src="/wfm/images/%(inst_status)s.png" alt="%(inst_status)s" /></td>
+        <td class="textTd">%(dep_set_id)s</td>
+        <td class="textTd">%(dep_exp_method)s</td>
+        <td class="textTd">%(pdb_id)s / %(bmrb_id)s / %(emdb_id)s</td>
+        <td class="textTd">%(dep_status_code)s</td>
+        <td class="textTd">%(dep_status_code_exp)s</td>
+        <td class="textTd">%(dep_author_release_status_code)s</td>
+        <td class="textTd">%(dep_initial_deposition_date)s</td>
+        <td class="textTd">%(annotator_initials)s</td>
+    </tr>
+</table>
+;
+#
+#workflow_tmplt
+workflow_tmplt              file      no    ?    "workflow_tmplt.html"
+#
+#workflow_module_tmplt
+workflow_module_tmplt       string    no    ?
+;<td align="center" width="100px" style="border:hidden">
+    <div class="mainTask %(inst_status)s">
+        <a href="/service/workmanager/level2?identifier=%(identifier)s&sessionid=%(sessionid)s&annotator=%(annotator)s&instance=%(instance)s&classID=%(classID)s&level=level3"
+           style ="color:black;width:auto;display:block">%(taskID)s - %(name)s</a>
+        <input type="button" value="Restart" onclick="RunAnnotateWF('%(sessionid)s', '%(annotator)s', 'goback', '%(identifier)s', 'None', '%(classID)s', 'restartGoWF', 'latest', '%(method)s', '');" />
+        %(download_ciffile)s  <br/>
+        <b>status:</b> %(inst_status)s <br/>
+        %(open_interface)s
+    </div>
+</td>
+;
+#notdone_module_tmplt
+notdone_module_tmplt        string    no    ?
+;<td align="center" width="100px" style="border:hidden">
+    <div class="mainTask %(inst_status)s">
+        %(taskID)s - %(name)s <br/><b>status:</b> %(inst_status)s
+    </div>
+</td>
+;
+#
+#single_module_tmplt
+single_module_tmplt         string    no    ?
+;<td align="center" width="100px" style="border:hidden">
+    <div class="mainTask %(inst_status)s">
+        <a href="/service/workmanager/level2?identifier=%(identifier)s&sessionid=%(sessionid)s&annotator=%(annotator)s&instance=%(instance)s&classID=%(classID)s&level=level3"
+           style ="color:black;width:auto;display:block">%(taskID)s - %(name)s</a>
+        <input type="button" value="Run" onclick="RunAnnotateWF('%(sessionid)s', '%(annotator)s', 'rerun_single_module', '%(identifier)s', 'None', '%(classID)s', 'restartGoWF', 'latest', '%(method)s','');" />
+        %(run_with_ui)s <br/> %(open_interface)s
+    </div>
+</td>
+;
+#single_module_UI_tmplt
+single_module_UI_tmplt      string    no    ?
+;<input type="button" value="Run+UI" onclick="RunAnnotateWF('%(sessionid)s', '%(annotator)s', 'rerun_single_module', '%(identifier)s', 'None', '%(classID)sUI', 'restartGoWF', 'latest', '%(method)s', '');" />
+;
+#run_module_tmplt
+run_module_tmplt            string    no    ?
+;<td align="center" width="100px" style="border:hidden">
+    <div class="mainTask %(inst_status)s">
+        <a href="/service/workmanager/level2?identifier=%(identifier)s&sessionid=%(sessionid)s&annotator=%(annotator)s&instance=%(instance)s&classID=%(classID)s&level=level3"
+           style ="color:black;width:auto;display:block">%(classID)s</a>
+        %(instance)s  &nbsp; &nbsp; %(inst_status)s <br/> %(status_timestamp)s <br/> %(download_ciffile)s
+    </div>
+</td>
+;
+#download_tmplt
+download_tmplt              string    no    ?
+;<a href="/service/workmanager/ciffile?identifier=%(identifier)s&sessionid=%(sessionid)s&instance=%(instance)s&filesource=wf-instance&version=latest">mmCIF</a>
+;
+#interface_tmplt
+interface_tmplt             string    no    ?
+;<a %(style)s href="%(base_url)swf?identifier=%(identifier)s&instance=%(instance)s&classID=%(classID)s&filesource=wf-instance&method=%(urlmethod)s&annotator=%(annotator)s" target="_blank">Open Interface</a>
+;
+#download_wf_log_tmplt
+download_wf_log_tmplt       string    no    ?
+;<a style="font-size:16px;" href="/service/workmanager/logfile?identifier=%(identifier)s&sessionid=%(sessionid)s&instance=%(instance)s&classID=%(classID)s">View log file</a>
+;
+#task_tmplt
+task_tmplt                  string    no    ?
+;<td align="center" width="100px" style="border:hidden">
+    <div class="mainTask1 %(task_status)s">
+         %(wf_task_id)s - %(name)s
+        <table>
+            <tr><td align="left">Type:</td><td align="left">%(task_type)s</td></tr>
+            <tr><td align="left">Description:</td><td align="left">%(description)s</td></tr>
+            <tr><td align="left">Status:</td><td align="left">%(task_status)s</td></tr>
+            <tr><td align="left">Time:</td><td align="left">%(status_timestamp)s</td></tr>
+            <tr><td align="center" colspan="2"> %(log_file)s </td></tr>
+            <tr><td align="center" colspan="2"> %(open_interface)s </td></tr>
+        </table>
+    </div>
+</td>
+;
+#download_task_log_tmplt
+download_task_log_tmplt     string    no    ?
+;<a style ="color:black;display:block;" href="/service/workmanager/logfile?identifier=%(identifier)s&sessionid=%(sessionid)s&instance=%(instance)s&classID=%(classID)s&taskID=%(wf_task_id)s&reference=%(reference)s">View log file</a>
+;
+loop_
+_page_template_parameter.page_id
+_page_template_parameter.variable
+_page_template_parameter.value
+_page_template_parameter.type
+_page_template_parameter.preprocess
+#level2_tmplt
+level2_tmplt                page_head                         common_page_header_tmplt                                                page_template    y
+level2_tmplt                sessionid                         sessionid                                                               sessionInfo      n
+level2_tmplt                identifier                        identifier                                                              sessionInfo      n
+level2_tmplt                DAVersion                         DAVersion                                                               sessionInfo      n 
+level2_tmplt                annotator                         annotator                                                               sessionInfo      n
+level2_tmplt                user_name                         user_name                                                               userInfo         n
+level2_tmplt                group_name                        group_name                                                              userInfo         n
+level2_tmplt                first_name                        first_name                                                              userInfo         n
+level2_tmplt                last_name                         last_name                                                               userInfo         n
+level2_tmplt                pdb_id                            pdb_id                                                                  dataInfo         n
+level2_tmplt                bmrb_id                           bmrb_id                                                                 dataInfo         n
+level2_tmplt                emdb_id                           emdb_id                                                                 dataInfo         n
+level2_tmplt                level                             2                                                                       constant         n
+level2_tmplt                breadcrumbs                       "[1]Deposition Summary --> [2]Business Flow"                            constant         n
+level2_tmplt                entry_info                        entry_tmplt                                                             page_template    n
+level2_tmplt                workflow_info                     "self,DepictLevel2WorkFlow"                                             function         n
+#level3_tmplt
+level3_tmplt                page_head                         common_page_header_tmplt                                                page_template    y
+level3_tmplt                sessionid                         sessionid                                                               sessionInfo      n
+level3_tmplt                identifier                        identifier                                                              sessionInfo      n
+level3_tmplt                DAVersion                         DAVersion                                                               sessionInfo      n
+level3_tmplt                annotator                         annotator                                                               sessionInfo      n
+level3_tmplt                instance                          instance                                                                sessionInfo      n
+level3_tmplt                classID                           classID                                                                 sessionInfo      n
+level3_tmplt                method                            method                                                                  sessionInfo      n
+level3_tmplt                user_name                         user_name                                                               userInfo         n
+level3_tmplt                group_name                        group_name                                                              userInfo         n
+level3_tmplt                first_name                        first_name                                                              userInfo         n
+level3_tmplt                last_name                         last_name                                                               userInfo         n
+level3_tmplt                pdb_id                            pdb_id                                                                  dataInfo         n
+level3_tmplt                bmrb_id                           bmrb_id                                                                 dataInfo         n
+level3_tmplt                emdb_id                           emdb_id                                                                 dataInfo         n
+level3_tmplt                level                             3                                                                       constant         n
+level3_tmplt                breadcrumbs                       "[1]Deposition Summary --> [2]Business Flow --> [3]Workflow Details"    constant         n
+level3_tmplt                name                              name                                                                    dataInfo         n
+level3_tmplt                title                             title                                                                   dataInfo         n
+level3_tmplt                major                             major                                                                   dataInfo         n
+level3_tmplt                inst_status                       inst_status                                                             dataInfo         n
+level3_tmplt                status_timestamp                  status_timestamp                                                        dataInfo         n
+level3_tmplt                log_file                          log_file                                                                dataInfo         n
+level3_tmplt                task_info                         task_info                                                               dataInfo         n
+level3_tmplt                entry_info                        entry_tmplt                                                             page_template    n
+#common_page_header_tmplt
+common_page_header_tmplt    head_title                        "%(pdb_id)s/%(bmrb_id)s/%(emdb_id)s/%(identifier)s:%(level)s"           constant         n
+common_page_header_tmplt    user                              "%(user_name)s"                                                         constant         n
+common_page_header_tmplt    sessionid                         "%(sessionid)s"                                                         constant         n
+common_page_header_tmplt    breadcrumbs                       "%(breadcrumbs)s"                                                       constant         n
+common_page_header_tmplt    group_name                        "%(group_name)s"                                                        constant         n
+common_page_header_tmplt    first_name                        "%(first_name)s"                                                        constant         n
+common_page_header_tmplt    last_name                         "%(last_name)s"                                                         constant         n
+#entry_tmplt
+entry_tmplt                 inst_status                       inst_status                                                             dataInfo         n
+entry_tmplt                 dep_set_id                        dep_set_id                                                              dataInfo         n
+entry_tmplt                 dep_exp_method                    dep_exp_method                                                          dataInfo         n
+entry_tmplt                 pdb_id                            pdb_id                                                                  dataInfo         n
+entry_tmplt                 bmrb_id                           bmrb_id                                                                 dataInfo         n
+entry_tmplt                 emdb_id                           emdb_id                                                                 dataInfo         n
+entry_tmplt                 dep_status_code                   dep_status_code                                                         dataInfo         n
+entry_tmplt                 dep_status_code_exp               dep_status_code_exp                                                     dataInfo         n
+entry_tmplt                 dep_author_release_status_code    dep_author_release_status_code                                          dataInfo         n
+entry_tmplt                 dep_initial_deposition_date       dep_initial_deposition_date                                             dataInfo         n
+entry_tmplt                 annotator_initials                annotator_initials                                                      dataInfo         n
+#level3_tmplt
+workflow_tmplt              sessionid                         sessionid                                                               sessionInfo      n
+workflow_tmplt              identifier                        identifier                                                              sessionInfo      n
+workflow_tmplt              annotator                         annotator                                                               sessionInfo      n
+workflow_tmplt              wf_inst_id                        wf_inst_id                                                              sessionInfo      n
+workflow_tmplt              wf_class_id                       wf_class_id                                                             sessionInfo      n
+workflow_tmplt              method                            method                                                                  sessionInfo      n
+workflow_tmplt              urlmethod                         urlmethod                                                               sessionInfo      n
+workflow_tmplt              name                              name                                                                    dataInfo         n
+workflow_tmplt              major                             major                                                                   dataInfo         n
+workflow_tmplt              author                            author                                                                  dataInfo         n
+workflow_tmplt              date                              date                                                                    dataInfo         n
+workflow_tmplt              wf_entry_id                       wf_entry_id                                                             dataInfo         n
+workflow_tmplt              wf_entry_name                     wf_entry_name                                                           dataInfo         n
+workflow_tmplt              wf_exit_id                        wf_exit_id                                                              dataInfo         n
+workflow_tmplt              wf_exit_name                      wf_exit_name                                                            dataInfo         n
+workflow_tmplt              sub_workflow_module               "self,getDataResult"                                                    function         n
+workflow_tmplt              run_workflow_module               "self,getDataResult"                                                    function         n
+workflow_tmplt              single_workflow_module            "self,getDataResult"                                                    function         n
+#
+loop_
+_function_parameter.id
+_function_parameter.name
+_function_parameter.value
+_function_parameter.value_type
+_function_parameter.external_flag
+_function_parameter.parameter_type
+"workflow_tmplt,sub_workflow_module"       input_type    sub_workflow_module       str    ?    constant
+"workflow_tmplt,run_workflow_module"       input_type    run_workflow_module       str    ?    constant
+"workflow_tmplt,single_workflow_module"    input_type    single_workflow_module    str    ?    constant

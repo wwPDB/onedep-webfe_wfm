@@ -1,0 +1,81 @@
+
+%(page_head)s
+
+    <div id="pageTitle">
+        <br/>
+        <center><table border="0" cellspacing=0 cellpadding=0><tr><td> Annotator Screen: Workflow Details [Level 3] </td></tr></table></center>
+    </div>
+
+    <div id="content">
+        <br/><br/>
+        %(entry_info)s
+        <br/>
+        <center>
+            <p class="subtitle"><a href="/service/workmanager/level2?identifier=%(identifier)s&sessionid=%(sessionid)s&annotator=%(annotator)s" target = "_self">Back to Workflow</a>
+            <br/>
+            <table cellspacing="10">
+                <tr><td style="text-align:center;border-style:none;font-size:16px;color:#669966;" colspan="6">Current Workflow</td></tr>
+                <tr>
+                    <td style="text-align:center;border-style:none;font-size:16px;"><span style="color:#669966;">Name:</span> %(name)s</td>
+                    <td style="text-align:center;border-style:none;font-size:16px;"><span style="color:#669966;">Title:</span> %(title)s</td>
+                    <td style="text-align:center;border-style:none;font-size:16px;"><span style="color:#669966;">Version:</span> %(major)s</td>
+                    <td style="text-align:center;border-style:none;font-size:16px;"><span style="color:#669966;">Status:</span> %(inst_status)s</td>
+                    <td style="text-align:center;border-style:none;font-size:16px;"><span style="color:#669966;">Timestamp:</span> %(status_timestamp)s</td>
+                    <td style="text-align:center;border-style:none;"> %(log_file)s </td>
+                </tr>
+                <tr><td style="text-align:center;border-style:none;font-size:16px;color:#669966;" colspan="6">Workflow Action</td></tr>
+                <tr>
+                    <td style="text-align:left;border-style:none;font-size:14px;" colspan="3">Kill this deposition (restart with "Go back/restart")</td>
+                    <td style="text-align:left;border-style:none;"> &nbsp; </td>
+                    <td style="text-align:left;border-style:none;font-size:14px;">
+                       <input type="button" name="Kill" value="Kill" onclick="RunAnnotateWF('%(sessionid)s', '%(annotator)s', 'kill', '%(identifier)s', '%(instance)s', '%(classID)s', 'killWF', '', '%(method)s', '');" />
+                    </td>
+                    <td style="text-align:left;border-style:none;"> &nbsp; </td>
+                </tr>
+                <tr>
+                    <td style="text-align:left;border-style:none;font-size:14px;" colspan="3">Kill this deposition and set the system back to start</td>
+                    <td style="text-align:left;border-style:none;"> &nbsp; </td>
+                    <td style="text-align:left;border-style:none;font-size:14px;">
+                       <input type="button" name="Restart" value="Restart" onclick="RunAnnotateWF('%(sessionid)s', '%(annotator)s', 'restart', '%(identifier)s', '%(instance)s', '%(classID)s', 'restartWF', '', '%(method)s', '');" />
+                    </td>
+                    <td style="text-align:left;border-style:none;"> &nbsp; </td>
+                </tr>
+                <tr>
+                    <td style="text-align:left;border-style:none;font-size:14px;" colspan="3">Break the Open lock on a UI - so it can be re-opened</td>
+                    <td style="text-align:left;border-style:none;"> &nbsp; </td>
+                    <td style="text-align:left;border-style:none;font-size:14px;">
+                       <input type="button" name="Open" value="Open" onclick="RunAnnotateWF('%(sessionid)s', '%(annotator)s', 'open', '%(identifier)s', '%(instance)s', '%(classID)s', 'waitWF', '', '%(method)s', '');" />
+                    </td>
+                    <td style="text-align:left;border-style:none;"> &nbsp; </td>
+                </tr>
+                <tr>
+                    <td style="text-align:left;border-style:none;font-size:14px;" colspan="3">Request the Annotation to start - only if waiting to start</td>
+                    <td style="text-align:left;border-style:none;"> &nbsp; </td>
+                    <td style="text-align:left;border-style:none;font-size:16px;">
+                       <input type="button" name="Run" value="Run" onclick="RunAnnotateWF('%(sessionid)s', '%(annotator)s', 'init', '%(identifier)s', '%(instance)s', '%(classID)s', 'runWF', '', '%(method)s', '');" />
+                    </td>
+                    <td style="text-align:left;border-style:none;"> &nbsp; </td>
+                </tr>
+                <tr>
+                    <td style="text-align:left;border-style:none;font-size:14px;" colspan="3">Rerun the deposition workflow again - becuase of problem - will redo ligands and validation</td>
+                    <td style="text-align:left;border-style:none;"> &nbsp; </td>
+                    <td style="text-align:left;border-style:none;font-size:14px;"><input type="button" name="ReRun" value="ReRun" onclick="rerunWF('%(sessionid)s', '%(identifier)s', '%(annotator)s');"/></td>
+                    <td style="text-align:left;border-style:none;"> &nbsp; </td>
+                </tr>
+            </table>
+        </center>
+        <p style="font-size:16px;"><b> Workflow Progress: </b></p>
+        <table class="workflow" width="100%%" cellspacing="20" border="1">
+        %(task_info)s
+        </table>
+    </div>
+
+<script type="text/javascript">
+var session_ID = '%(sessionid)s';
+var annotator  = '%(annotator)s';
+</script>
+<br/>
+<p class="version">Version: %(DAVersion)s</p>
+</body>
+</html>
+

@@ -1,0 +1,88 @@
+
+%(page_head)s
+
+    <div id="pageTitle">
+        <center>
+            <table border="0" cellspacing=0 cellpadding=0>
+                <tr>
+                    <td> %(pageTitle)s </td>
+                    <form>
+                        <td  colspan="3"><input style="font-size:0.8em;" type="button" name="Refresh" value="Refresh Pages" onclick="refresh_level1_pages('all')"/></td>
+                    </form>
+                </tr>
+            </table>
+%(comment_start)s
+            <table style="min-width:1080px;width:98%%;" cellpadding="0px">
+                <tr>
+                    <td colspan="4" align="left">
+                        <table class="wfmserver" cellpadding="0px">
+%(server_info)s
+                        </table>
+                    </td>
+<!--
+                    <td width = "10"> &nbsp; </td>
+-->
+                    <td colspan="3" align="left"><p class="tabTitle"><a href="/review_v2/review_admin.html" target="_blank"><b>Review</b></a></p></td>
+<!--
+                    <td width = "10"> &nbsp; </td>
+-->
+                    <td colspan="3" align="left"><p class="tabTitle"><a href="/service/release/new_session/wf?filesource=archive&annotator=%(initials)s" target="_blank"><b>Release</b></a></p></td>
+<!--
+                    <td width = "10"> &nbsp; </td>
+                    <td colspan="3" align="left"><p class="tabTitle"><a href="/service/workmanager/open_editing_page?annotator=%(initials)s" target="_blank"><b>Link</b></a></p></td>
+-->
+                    <td width = "3"> &nbsp; </td>
+
+                    <td colspan="3" align="right">
+                        <table class="wfmlegend" cellpadding="0px" align="right">
+                            <tr>
+                                <td class="tabtextTd" width="10%%"><img src="/wfm/images/exception.png" alt="exception"/></td>
+                                <td class="tabtextTd" width="10%%"><img src="/wfm/images/finished.png" alt="finished"/></td>
+                                <td class="tabtextTd" width="10%%"><img src="/wfm/images/init.png" alt="init"/></td>
+                                <td class="tabtextTd" width="10%%"><img src="/wfm/images/open.png" alt="open"/></td>
+                                <td class="tabtextTd" width="10%%"><img src="/wfm/images/running.png" alt="running"/></td>
+                                <td class="tabtextTd" width="10%%"><img src="/wfm/images/waiting.png" alt="waiting"/></td>
+                                <td class="tabtextTd" width="10%%"><img src="/wfm/images/restartWF.png" alt="restartWF"/></td>
+                            </tr>
+                            <tr>
+                                <td class="tabtextTd" width="10%%">exception</td>
+                                <td class="tabtextTd" width="10%%">finished</td>
+                                <td class="tabtextTd" width="10%%">init</td>
+                                <td class="tabtextTd" width="10%%">open</td>
+                                <td class="tabtextTd" width="10%%">running</td>
+                                <td class="tabtextTd" width="10%%">waiting</td>
+                                <td class="tabtextTd" width="10%%">restartWF</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+%(comment_end)s
+        </center>
+    </div>
+
+    <!-- progress spinner -->
+    <div id="loading">
+        <div id="loadingcontent">
+            <p id="loadingspinner">
+                Running ...
+            </p>
+        </div>
+    </div>
+
+
+    <div id="content">
+        <table class="tabber">
+            <tr>
+%(tab_tags)s
+            </tr>
+        </table>
+        <div id="tabContents" class="contentTabTd" style="position: relative;">
+%(tab_contents)s
+        </div>
+    </div>
+<br/>
+<p class="version">Version: %(DAVersion)s</p>
+</body>
+</html>
+

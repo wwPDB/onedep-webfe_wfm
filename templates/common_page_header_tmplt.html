@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>%(head_title)s</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta http-equiv="Content-Language" content="English" />
+
+    <link rel="stylesheet" type="text/css" href="/wfm/styles/bootstrap.min.css" media="all">
+    <link rel="stylesheet" type="text/css" href="/wfm/styles/bootstrap-table.css" media="all">
+    <link rel="stylesheet" type="text/css" href="/wfm/styles/style.css" media="all">
+
+    <script type="text/javascript" language="javascript" src="/js/jquery-10.2/core/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" language="javascript" src="/wfm/js/bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="/wfm/js/bootstrap-table.min.js"></script>
+    <script type="text/javascript" language="javascript" src="/assets/js/jquery-11/plugins/spin.js"></script>
+    <script type="text/javascript" language="javascript" src="/assets/js/jquery-11/plugins/jquery.spin.js"></script>
+    <script type="text/javascript" language="javascript" src="/wfm/js/skinnytip.js"></script>
+    <script type="text/javascript" language="javascript" src="/wfm/js/wfm.js"></script>
+
+    %(script)s 
+
+    <script type="text/javascript">
+       $(function(){
+            $("#anchorfocus").focus();
+            %(onload)s
+       });
+    </script>
+</head>
+<body>
+    <div id="tiplayer" style="position:absolute; visibility:hidden; z-index:10000;"></div>
+    <div id="header">
+        <div id="logo">
+            <h1> <a name="anchorfocus" id="anchorfocus" href="/wfm/"><img src="/wfm/images/wwpdb_logo.gif" border="0" alt="wwPDB" width="187" height="58"
+                  onmouseover="return tooltip('Workflow Manager - Annotation tool for the wwPDB');" onmouseout="return hideTip();" onClick="return false;"></a><span>workflow</span> manager
+            </h1><br/>
+            <p align="right">
+                <a href="/service/workmanager/edituserdata?sessionid=%(sessionid)s&user=%(user)s" target="_blank">User Management</a> |
+                <a href="/service/workmanager/logout?sessionid=%(sessionid)s">logout</a>
+            </p>
+        </div><br/>
+        <div id="subheader">
+            <table>
+                <tr><td colspan="2" bgcolor="#006633">&nbsp;</td></tr>        
+                <tr><td class="breadCrumbs"> %(breadcrumbs)s </td>
+                    <td class="logged"> %(group_name)s | %(first_name)s %(last_name)s </td>
+                </tr>
+            </table>
+        </div>
+    </div>

@@ -1,0 +1,149 @@
+data_template
+#
+loop_
+_page_template.id
+_page_template.type
+_page_template.repeat
+_page_template.dependence
+_page_template.page
+#allfile_tmplt
+allfile_tmplt               string    no    ?  
+;
+%(page_head)s
+
+    <div id="pageTitle">
+        <center>
+            <table border="0" cellspacing=0 cellpadding=0>
+                <tr>
+                    <td> Deposition Summary of All Files : <b> %(identifier)s ( %(pdb_id)s / %(bmrb_id)s / %(emdb_id)s ) </b>  </td>
+                </tr>
+            </table>
+            </br>
+        </center>
+    </div>
+
+    <div id="content">
+
+<h2> Archive File List </h2>
+%(archive)s
+
+<br />
+<h2> Deposit File List </h2>
+%(deposit)s
+
+<br />
+<h2> Workflow Instance File List </h2>
+%(wf_instance)s
+
+    </div>
+<br/>
+<p class="version">Version: %(DAVersion)s</p>
+</body>
+</html>
+;
+#common_page_header_tmpl
+common_page_header_tmplt    file      no    ?    "common_page_header_tmplt.html"   
+#snapshot_tmplt
+snapshot_tmplt              string    no    ?
+;<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Snapshot:%(identifier)s</title>
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta http-equiv="Content-Language" content="English" />
+    <meta name="Robots" content="index,follow" />
+    <meta name="Generator" content="sNews 1.5" />
+</head>
+<body>
+    <div id="pageTitle">
+        <center>
+            <table width="100%%" border="0" cellspacing=0 cellpadding=0>
+                <tr>
+                    <td>Deposition Difference of depUI and last snapshot : %(identifier)s ( %(pdb_id)s / %(bmrb_id)s / %(emdb_id)s ) </td>
+                <tr>
+            </table>
+        </center>
+    </div>
+    <div id="content">
+        <p><b>Deposition %(identifier)s</b></p>
+        <p><b>Snapshot type %(type)s</b></p>
+        <p><b>Snapshot date %(date)s</b></p>
+        <p><b>Snapshot time %(time)s</b></p>
+        %(diffs)s
+    </div>
+</body>
+</html>
+;
+#snapshot_diff_tmplt
+snapshot_diff_tmplt         string    no    snapshot_row_tmplt
+;<br/>
+<p><b>Category : %(category)s</b></p>
+<table border="1" width="100%%" cellpadding="5px">
+    <tr>
+        <th width="100px">Instance</th>
+        <th width="250">Item</th>
+        <th width="300px">Now</th>
+        <th width="300px">Reference</th>
+    </tr>
+    %(rows)s
+</table>
+;
+#snapshot_row_tmplt
+snapshot_row_tmplt          string    yes   ? 
+;<tr>
+    <td>%(instance)s</td>
+    <td>%(item)s</td>
+    <td>%(d1)s</td>
+    <td>%(d2)s</td>
+</tr>
+;
+#
+loop_
+_page_template_parameter.page_id
+_page_template_parameter.variable
+_page_template_parameter.value
+_page_template_parameter.type
+_page_template_parameter.preprocess
+#allfile_tmplt
+allfile_tmplt              page_head     common_page_header_tmplt            page_template  y
+allfile_tmplt              sessionid     sessionid                           sessionInfo    n
+allfile_tmplt              identifier    identifier                          sessionInfo    n
+allfile_tmplt              DAVersion     DAVersion                           sessionInfo    n
+allfile_tmplt              user_name     user_name                           userInfo       n
+allfile_tmplt              group_name    group_name                          userInfo       n
+allfile_tmplt              first_name    first_name                          userInfo       n
+allfile_tmplt              last_name     last_name                           userInfo       n
+allfile_tmplt              pdb_id        pdb_id                              dataInfo       n
+allfile_tmplt              bmrb_id       bmrb_id                             dataInfo       n
+allfile_tmplt              emdb_id       emdb_id                             dataInfo       n
+allfile_tmplt              archive       archive                             dataInfo       n
+allfile_tmplt              deposit       deposit                             dataInfo       n
+allfile_tmplt              wf_instance   wf_instance                         dataInfo       n
+#common_page_header_tmplt
+common_page_header_tmplt   head_title   "WFM-Sum:%(pdb_id)s/%(bmrb_id)s/%(emdb_id)s/%(identifier)s"  constant       n
+common_page_header_tmplt   script       " "                                  constant       n
+common_page_header_tmplt   onload       " "                                  constant       n
+common_page_header_tmplt   user         "%(user_name)s"                      constant       n
+common_page_header_tmplt   sessionid    "%(sessionid)s"                      constant       n
+common_page_header_tmplt   breadcrumbs  "[1]Deposition Summary detail"       constant       n
+common_page_header_tmplt   group_name   "%(group_name)s"                     constant       n
+common_page_header_tmplt   first_name   "%(first_name)s"                     constant       n
+common_page_header_tmplt   last_name    "%(last_name)s"                      constant       n
+#
+#snapshot_tmplt
+snapshot_tmplt             identifier    identifier                          sessionInfo    n
+snapshot_tmplt             pdb_id        pdb_id                              dataInfo       n
+snapshot_tmplt             bmrb_id       bmrb_id                             dataInfo       n
+snapshot_tmplt             emdb_id       emdb_id                             dataInfo       n
+snapshot_tmplt             type          type                                dataInfo       n
+snapshot_tmplt             date          date                                dataInfo       n
+snapshot_tmplt             time          time                                dataInfo       n
+snapshot_tmplt             diffs         snapshot_diff_tmplt                 page_template  n
+#snapshot_diff_tmplt
+snapshot_diff_tmplt        category      category                            dataInfo       n
+snapshot_diff_tmplt        rows          snapshot_row_tmplt                  page_template  n
+#snapshot_row_tmplt
+snapshot_row_tmplt         instance      instance                            dataInfo       n
+snapshot_row_tmplt         item          item                                dataInfo       n
+snapshot_row_tmplt         d1            d1                                  dataInfo       n
+snapshot_row_tmplt         d2            d2                                  dataInfo       n

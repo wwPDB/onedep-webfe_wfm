@@ -1,0 +1,298 @@
+data_template
+#
+loop_
+_page_template.id
+_page_template.type
+_page_template.repeat
+_page_template.dependence
+_page_template.page
+#group_workflow_tmplt
+group_workflow_tmplt        string    no    ?  
+;
+%(page_head)s
+
+    <div id="pageTitle">
+        <br/>
+        <center><table border="0" cellspacing=0 cellpadding=0><tr><td> Level 1 Work Flow Starting point for Group %(identifier)s </td></tr></table></center>
+    </div>
+
+    <div id="content">
+<form id="run_select_workflow">
+<br/><br/>
+<center><input type="button" value="Run Selected Workflow" onClick="run_selected_workflow();" /></center>
+<p><b>Select workflow:</b></p>
+<table class="workflow" width="100%%" cellspacing="20" border="1">
+%(workflow_info)s
+</table>
+<br/><br/>
+<p>
+<b>Select entries:</b>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<input id="workflow_select_all" type="button" value="Unselect All" onClick="select_entry('run_select_workflow', 'workflow_select_all');" />
+</p>
+<table class="workflow" width="100%%" cellspacing="20" border="0">
+%(entry_info)s
+</table>
+</form>
+    </div>
+
+<script type="text/javascript">
+var session_ID = '%(sessionid)s';
+var annotator  = '%(annotator)s';
+</script>
+<br/>
+<p class="version">Version: %(DAVersion)s</p>
+</body>
+</html>
+;
+#group_worktask_tmplt
+group_worktask_tmplt        string    no    ?  
+;
+%(page_head)s
+
+    <div id="pageTitle">
+        <br/>
+        <center><table border="0" cellspacing=0 cellpadding=0><tr><td> Run Tasks for Group %(identifier)s </td></tr></table></center>
+    </div>
+
+    <!-- progress spinner -->
+    <div id="loading">
+        <div id="loadingcontent">
+            <p id="loadingspinner">
+                Running ...
+            </p>
+        </div>
+    </div>
+
+    <div id="content">
+<form id="run_select_worktask" enctype="multipart/form-data" method="post">
+<input type="hidden" name="identifier" id="identifier" value="%(identifier)s" />
+<p><b>Run Tasks:</b></p>
+<table class="workflow" width="100%%" cellspacing="20" border="1">
+<tr>
+<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Merge Sequence Assignment" onClick="show_merge_sequence_panel();" /></td>
+<!--
+<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Merge Ligand Assignment" onClick="run_selected_task('ligand');" /></td>
+-->
+<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Status Tasks" onClick="show_status_selection_panel();" /></td>
+<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Cif Check" onClick="run_selected_task('cifcheck');" /></td>
+<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Generate PDB Files" onClick="run_selected_task('pdbfile');" /></td>
+<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Load Database" onClick="run_selected_task('database');" /></td>
+<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Copy Processed Files to Deposition" onClick="run_selected_task('copy_to_deposition');" /></td>
+</tr>
+</table>
+<br/><br/>
+<div id="merge-sequence-dialog" class="status-inline displaynone">
+   <legend><input type="button" value="Merge Sequence Assignment" onClick="run_selected_task('sequence');" /></legend>
+   <div class="row">
+      <div class="col-sm-12">
+         <label class="control-label"> Please input deposition data set ID and internal file verson number (default: latest) for template model file: </label>
+      </div> 
+   </div>
+   <div class="row">
+      <div class="col-sm-4">
+         <label for="template_identifier" class="control-label"> Deposition ID </label>
+         <input type="text" name="template_identifier" id="template_identifier" value="" placeholder="D_1000000000" />
+      </div>
+      <div class="col-sm-6">
+         <label for="template_file_version" class="control-label"> Version number </label>
+         <input type="text" name="template_file_version" id="template_file_version" value="" placeholder="latest" />
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-sm-12"> &nbsp; </div>
+   </div>
+   <div class="row">
+      <div class="col-sm-12">
+         <label class="control-label"> Or upload template model file: </label>
+      </div> 
+   </div>
+   <div class="row">
+      <div class="col-sm-6">
+         <input type="file" name="template_file" id="template_file" value="" />
+      </div>
+   </div>
+</div>
+<div id="status-identifier-dialog" class="status-inline displaynone">
+   <legend><input type="button" value="Update Status" onClick="run_update_status_task();" /></legend>
+   <div class="row">
+      <div class="col-sm-4">
+         <label for="status_code" class="control-label">Processing Status Code</label>
+         <select id="status_code" name="status_code">
+            <option value="" selected="selected"></option>
+            <option value="HPUB">HPUB</option>
+            <option value="AUTH">AUTH</option>
+            <option value="HOLD">HOLD</option>
+            <option value="WAIT">WAIT</option>
+            <option value="PROC">PROC</option>
+            <option value="REFI">REFI</option>
+            <option value="AUCO">AUCO</option>
+            <option value="REPL">REPL</option>
+            <option value="POLC">POLC</option>
+            <option value="WDRN">WDRN</option>
+         </select>
+      </div>
+      <div class="col-sm-6">
+         <label for="author_approval_type" class="control-label">Approval type</label>
+         <select id="author_approval_type" name="author_approval_type">
+            <option value="" selected="selected"></option>
+            <option value="explicit">explict</option>
+            <option value="implicit">implicit</option>
+         </select>
+      </div>
+   </div>
+   <br/>
+   <div class="row">
+      <div class="col-sm-4">
+         <label class="control-label" for="author_release_status_code">Author Release Status Code</label>
+         <select id="author_release_status_code" name="author_release_status_code">
+            <option value="" selected="selected"></option>
+            <option value="HPUB">HPUB</option>
+            <option value="HOLD">HOLD</option>
+            <option value="REL">REL</option>
+         </select>
+      </div>
+      <div class="col-sm-6">
+         <div class="row">
+            <div class="col-sm-3">
+               <label for="date_hold_coordinates" class="control-label">Author hold date</label>
+            </div>
+            <div class="col-sm-5 input-group date form_date" data-date="" data-date-format="yyyy-mm-dd">
+               <input id="date_hold_coordinates" name="date_hold_coordinates" class="form-control" size="12" type="text" value="" readonly />
+               <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+               <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+            </div>
+         </div>
+      </div>
+   </div>
+   <br/>
+   <div class="row">
+      <div class="col-sm-4">
+         <label for="pdbx_annotator" class="control-label"> Reassign annotator </label>
+         <input type="text" name="pdbx_annotator" id="pdbx_annotator" value="" placeholder="initials" />
+      </div>
+      <div class="col-sm-6">
+         <label class="control-label" for="process_site">Process site</label>
+         <select id="process_site" name="process_site">
+            <option value="" selected="selected"></option>
+            <option value="RCSB">RCSB</option>
+            <option value="PDBE">PDBE</option>
+            <option value="PDBJ">PDBJ</option>
+         </select>
+      </div>
+   </div>
+</div>
+<br/><br/>
+<p>
+<b>Select entries:</b>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<input id="worktask_select_all" type="button" value="Unselect All" onClick="select_entry('run_select_worktask', 'worktask_select_all');" />
+</p>
+<table class="workflow" width="100%%" cellspacing="20" border="0">
+%(entry_info)s
+</table>
+</form>
+    </div>
+
+<script type="text/javascript">
+var session_ID = '%(sessionid)s';
+var annotator  = '%(annotator)s';
+</script>
+<br/>
+<p class="version">Version: %(DAVersion)s</p>
+</body>
+</html>
+;
+#common_page_header_tmplt
+common_page_header_tmplt    file      no    ?    "common_page_no_table_tmplt.html"   
+#group_task_header_tmplt
+group_task_header_tmplt     file      no    ?    "group_task_page_header_tmplt.html"   
+#module_tmplt
+module_tmplt                string    no    ?
+;<td align="center" width="100px" style="border:hidden">
+    <div class="groupTask init">
+        <input type="radio" name="classID" value="%(classID)s"/> %(name)s
+    </div>
+</td>
+;
+#entry_tmplt
+entry_tmplt                 string    no    ?
+;<td align="center" width="100px" style="border:hidden">
+    <div class="groupEntry finished">
+        <input type="checkbox" name="entry_id" value="%(dep_set_id)s" checked />
+<a href="/service/workmanager/level2?identifier=%(dep_set_id)s&sessionid=%(sessionid)s&annotator=%(annotator)s" target = "_blank">%(dep_set_id)s</a>
+    </div>
+</td>
+;
+#task_entry_tmplt
+task_entry_tmplt            string    no    ?
+;<td align="center" width="100px" style="border:hidden">
+    <div class="groupEntry finished">
+        <input type="checkbox" name="entry_id" value="%(dep_set_id)s" checked /> %(dep_set_id)s
+    </div>
+</td>
+;
+loop_
+_page_template_parameter.page_id
+_page_template_parameter.variable
+_page_template_parameter.value
+_page_template_parameter.type
+_page_template_parameter.preprocess
+#group_workflow_tmplt
+group_workflow_tmplt           page_head                      common_page_header_tmplt                                                page_template    y
+group_workflow_tmplt           sessionid                      sessionid                                                               sessionInfo      n
+group_workflow_tmplt           identifier                     identifier                                                              sessionInfo      n
+group_workflow_tmplt           DAVersion                      DAVersion                                                               sessionInfo      n 
+group_workflow_tmplt           annotator                      annotator                                                               sessionInfo      n
+group_workflow_tmplt           user_name                      user_name                                                               userInfo         n
+group_workflow_tmplt           group_name                     group_name                                                              userInfo         n
+group_workflow_tmplt           first_name                     first_name                                                              userInfo         n
+group_workflow_tmplt           last_name                      last_name                                                               userInfo         n
+group_workflow_tmplt           breadcrumbs                    "[1] Business Flow"                                                     constant         n
+group_workflow_tmplt           workflow_info                  "self,getDataResult"                                                    function         n
+group_workflow_tmplt           entry_info                     "self,getDataResult"                                                    function         n
+#group_worktask_tmplt
+group_worktask_tmplt           page_head                      group_task_header_tmplt                                                 page_template    y
+group_worktask_tmplt           sessionid                      sessionid                                                               sessionInfo      n
+group_worktask_tmplt           identifier                     identifier                                                              sessionInfo      n
+group_worktask_tmplt           DAVersion                      DAVersion                                                               sessionInfo      n 
+group_worktask_tmplt           annotator                      annotator                                                               sessionInfo      n
+group_worktask_tmplt           user_name                      user_name                                                               userInfo         n
+group_worktask_tmplt           group_name                     group_name                                                              userInfo         n
+group_worktask_tmplt           first_name                     first_name                                                              userInfo         n
+group_worktask_tmplt           last_name                      last_name                                                               userInfo         n
+group_worktask_tmplt           breadcrumbs                    "Non-Workflow Tasks"                                                    constant         n
+group_worktask_tmplt           entry_info                     "self,getDataResult"                                                    function         n
+#common_page_header_tmplt
+common_page_header_tmplt       head_title                     "WorkFlow for %(identifier)s"                                           constant         n
+common_page_header_tmplt       user                           "%(user_name)s"                                                         constant         n
+common_page_header_tmplt       sessionid                      "%(sessionid)s"                                                         constant         n
+common_page_header_tmplt       breadcrumbs                    "%(breadcrumbs)s"                                                       constant         n
+common_page_header_tmplt       group_name                     "%(group_name)s"                                                        constant         n
+common_page_header_tmplt       first_name                     "%(first_name)s"                                                        constant         n
+common_page_header_tmplt       last_name                      "%(last_name)s"                                                         constant         n
+#group_task_header_tmplt
+group_task_header_tmplt        head_title                     "WorkFlow for %(identifier)s"                                           constant         n
+group_task_header_tmplt        user                           "%(user_name)s"                                                         constant         n
+group_task_header_tmplt        sessionid                      "%(sessionid)s"                                                         constant         n
+group_task_header_tmplt        breadcrumbs                    "%(breadcrumbs)s"                                                       constant         n
+group_task_header_tmplt        group_name                     "%(group_name)s"                                                        constant         n
+group_task_header_tmplt        first_name                     "%(first_name)s"                                                        constant         n
+group_task_header_tmplt        last_name                      "%(last_name)s"                                                         constant         n
+#
+loop_
+_function_parameter.id
+_function_parameter.name
+_function_parameter.value
+_function_parameter.value_type
+_function_parameter.external_flag
+_function_parameter.parameter_type
+"group_workflow_tmplt,workflow_info"       input_type    workflow_info       str    ?    constant
+"group_workflow_tmplt,entry_info"          input_type    entry_info          str    ?    constant
+"group_worktask_tmplt,entry_info"          input_type    entry_info          str    ?    constant

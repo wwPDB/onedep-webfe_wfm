@@ -1,0 +1,692 @@
+
+
+/*************************************************************/
+/*															 */
+/************** Element Definition****************************/
+
+body {
+	margin-top: 10px;
+	padding: 0;
+
+	text-align: justify;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 12px;
+	color: #336633;
+}
+
+a {
+	text-decoration: none;
+/*	text-transform: uppercase; */
+	color: #336633;
+}
+
+a:hover {
+	border-bottom: none;
+	text-decoration: underline;
+}
+
+
+/*************************************************************/
+/*															 */
+/************** ID Definition   ******************************/
+
+/**** HEADER - SUBHEADER****/
+
+#header {
+        min-width: 1080px;
+	width: 98%;
+	margin: 0 auto;
+	height: 100px;
+	
+	/*background: #006633 url(/wfm/images/background.jpg) repeat left top;*/
+}
+
+#subheader{
+	padding:0px;
+	text-transform: uppercase; 
+	font-size: 10px; 
+}
+#subheader table{
+        min-width: 1080px;
+	width: 98%; 
+	border:hidden; 
+}
+
+.subtitle{
+	font-size: medium;
+}
+
+/**** HEADER - SUBHEADER****/
+
+#logo {
+        min-width: 1080px;
+	width: 98%;
+	height: 70px;
+	margin: 0 auto;
+	padding: 0;
+}
+#logo h1{
+	float: left;
+	margin: 0;
+	color: #336633;
+}
+
+#logo p {
+	float: right;
+	margin: 0;
+	color: #336633;
+}
+
+#logo span {
+	color: #000000;
+}
+
+#logo h1 {
+	padding: 15px 0 0 0;
+	letter-spacing: -1px;
+	text-transform: lowercase;
+	font-weight: normal;
+	font-size: 3em;
+}
+
+h2 { font-size: 1.5em; }
+#logo p {
+	text-transform: uppercase;
+	padding: 47px 0 0 3px;
+	font-size: 10px;
+	color: #336633;
+}
+#logo hr{
+	color: #336633;
+}
+
+/**** SUB HR****/
+
+.breadCrumbs{
+	border-right-style: inset;
+	border-right-width: 0px;
+	text-align: left; 
+}
+.logged{
+	text-align: right; 
+	font-weight: bold; 
+}
+
+
+/**** CONTENT****/
+#pageTitle{
+/*
+	height: 55px;
+*/
+	min-width: 1080px;
+        width : 98%;
+	margin: 0px auto;
+	padding: 5px; 
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: large;
+	text-align: center;
+	color: #333333;
+	font-size: 18px;
+}
+#pageTitle table{
+	width:auto;
+	margin: auto;
+	padding: 0px;
+	border-color:#336633;	
+}
+
+#content {
+	min-width: 1080px;
+        width : 98%;
+	margin: 0px auto;
+	padding: 0px; 
+	color:black;
+	border:black; 
+	z-index: 0; 
+        
+}
+
+.clearfloat{clear:both; height:0; font-size:1px; line-height:0; overflow:hidden}
+
+/*************************************************************/
+/*															 */
+/************** WORKFLOW BOXES *******************************/
+.arrow{
+	width:100px; 
+	height:40px;
+	position:relative; 
+	opacity:0.8; 
+	filter:alpha(opacity=80);  
+	opacity: 0.8; 
+	-moz-opacity:0.8; 
+	z-index:2; 
+	color:#000000; 
+	vertical-align: middle;
+	text-align: center; 
+}
+.task{
+	padding: 10px;
+	background-color:#E4E4E4;
+	width:auto;
+	height:50px;
+	position:relative; 
+	opacity:0.8; 
+	filter:alpha(opacity=80); 
+	opacity: 0.8; 
+	-moz-opacity:0.5; 
+	z-index:2; 
+	border:1px solid #000000;
+	box-shadow:black 5px 5px 5px; 
+	-webkit-box-shadow:black 5px 5px 5px; 
+	-o-box-shadow:black 5px 5px 5px; 
+	-moz-box-shadow:black 5px 5px 5px;
+	color:#000000; 
+	text-align: center; 
+	cursor:pointer;	
+}
+.mainTask {
+		padding: 10px;
+	background-color:#E4E4E4;
+	width:auto;
+	height:75px;
+	position:relative; 
+	opacity:0.8; 
+	filter:alpha(opacity=80); 
+	opacity: 0.8; 
+	-moz-opacity:0.5; 
+	z-index:2; 
+	border:1px solid #000000;
+	box-shadow:black 5px 5px 5px; 
+	-webkit-box-shadow:black 5px 5px 5px; 
+	-o-box-shadow:black 5px 5px 5px; 
+	-moz-box-shadow:black 5px 5px 5px;
+	color:#000000; 
+	text-align: center; 
+		
+}
+.groupEntry {
+	padding: 8px;
+        margin: 10px;
+	background-color:#E4E4E4;
+	width:auto;
+	height:35px;
+	position:relative; 
+	opacity:0.8; 
+	filter:alpha(opacity=80); 
+	opacity: 0.8; 
+	-moz-opacity:0.5; 
+	z-index:2; 
+	border:1px solid #000000;
+	box-shadow:black 5px 5px 5px; 
+	-webkit-box-shadow:black 5px 5px 5px; 
+	-o-box-shadow:black 5px 5px 5px; 
+	-moz-box-shadow:black 5px 5px 5px;
+	color:#000000; 
+	text-align: center; 
+		
+}
+.mainTask1 {
+		padding: 10px;
+	background-color:#E4E4E4;
+	width:auto;
+        height:135px;
+	position:relative; 
+	opacity:0.8; 
+	filter:alpha(opacity=80); 
+	opacity: 0.8; 
+	-moz-opacity:0.5; 
+	z-index:2; 
+	border:1px solid #000000;
+	box-shadow:black 5px 5px 5px; 
+	-webkit-box-shadow:black 5px 5px 5px; 
+	-o-box-shadow:black 5px 5px 5px; 
+	-moz-box-shadow:black 5px 5px 5px;
+	color:#000000; 
+	text-align: center; 
+		
+}
+.init {
+	background-color:#ebebeb;
+}
+.killed {
+	background-color:#336633;
+}
+.resettedWF {
+	background-color:#edb78b;
+}
+.restartWF {
+	background-color:#edb78b;
+}
+.finished {
+	background-color:#04f005;
+}
+.waiting {
+	background-color:#f1f104;
+}
+.waitingWF {
+	background-color:#f1f104;
+}
+.working {
+	background-color:#ab9bbe;
+}
+.running {
+	background-color:#8cc2d0;
+}
+.runningWF {
+	background-color:#8cc2d0;
+}
+.open {
+	background-color:#b1b1b1;
+}
+.notdone {
+	background-color:white;
+}
+.exception {
+	background-color:#f20404;
+}
+.crashedX {
+	background-color:#f20404;
+}
+.wfflowTd{
+	border-width: 1px 0px 1px 0px;
+	border-spacing: 2px;
+	border-style: inset none inset none;
+	border-color: #528DC8 #528DC8 #528DC8 #528DC8;
+	padding: 10px;
+	border-collapse: collapse;
+	text-align: left; 
+	
+}
+/*************************************************************/
+/*															 */
+/************** TABLE DEFINITION *****************************/
+
+#filter {
+	min-width: 1080px;
+        width : 98%;
+	margin: 0px auto;
+	padding: 0px;
+	padding-top: 40px;
+	padding-bottom: 50px; 
+	color:black;
+	border:black; 
+}
+.errorText{
+	color:red;
+	font-weight: bold;
+	text-align: center;
+}
+.wfmserver{
+	width:60%;	
+	border-width: 1px 1px 1px 1px;
+	border-spacing: 3px;
+	border-style: inset inset inset inset;
+	border-color: #669966 #669966 #669966 #669966;
+	border-collapse: collapse;
+	background-color:white;
+}
+.wfmlegend{
+	width:40%;	
+	border-width: 1px 1px 1px 1px;
+	border-spacing: 3px;
+	border-style: inset inset inset inset;
+	border-color: #669966 #669966 #669966 #669966;
+	border-collapse: collapse;
+	background-color:white;
+}
+.wfmTable{
+	min-width:1080px;	
+        width: 98%;
+	border-width: 1px 1px 1px 1px;
+	border-spacing: 3px;
+	border-style: inset inset inset inset;
+	border-color: #669966 #669966 #669966 #669966;
+	border-collapse: collapse;
+	background-color:white;
+}
+.wfmTablesmall{
+	width:60%;	
+	border-width: 1px 1px 1px 1px;
+	border-spacing: 3px;
+	border-style: inset inset inset inset;
+	border-color: #669966 #669966 #669966 #669966;
+	border-collapse: collapse;
+	background-color:white;
+}
+.small{
+	width:90%;	
+}
+
+.verysmall{
+	width:60%;	
+}
+.micro {
+	width:25%;
+}
+.inner{
+	border-style: none none none none;
+}
+
+.wfmTh{
+	text-transform: capitalize;
+	border-width: 1px 1px 1px 1px;
+	border-spacing: 2px;
+	border-style: inset inset inset inset;
+	border-color: #669966 #669966 #669966 #669966;
+	border-collapse: collapse;
+	text-align: center; 
+	font-size: 12px; 
+	color: #669966; 
+}
+.nobottom{
+	border-width: 1px 1px 0px 1px;
+	border-spacing: 2px;
+	border-style: inset inset none inset;
+	border-color: #669966 #669966 #669966 #669966;
+	border-collapse: collapse;
+}
+
+.wfmMainTh{
+	text-transform: uppercase;
+	border-width: 0px 1px 0px 1px;
+	border-spacing: 2px;
+	border-style: double double double double;
+	border-color: #669966 #669966 #669966 #669966;
+	border-collapse: collapse;
+	text-align: center; 
+	font-size: 12px; 
+	color: #669966; 
+	font-weight: bold;
+	text-decoration: 
+}
+
+.textTd{
+	border-width: 1px 0px 1px 0px;
+	border-spacing: 2px;
+	border-style: inset none inset none;
+	border-color: #669966 #669966 #669966 #669966;
+	border-collapse: collapse;
+	text-align: center; 
+}
+
+.textTdTop{
+	border-width: 1px 0px 1px 0px;
+	border-spacing: 2px;
+	border-style: inset none none none;
+	border-color: #669966 #669966 #669966 #669966;
+	border-collapse: collapse;
+	text-align: center; 
+}
+
+.textTdDown{
+	border-width: 1px 0px 1px 0px;
+	border-spacing: 2px;
+	border-style: none none inset none;
+	border-color: #669966 #669966 #669966 #669966;
+	border-collapse: collapse;
+	text-align: left; 
+}
+
+.statTd{
+	border-width: 1px 0px 1px 0px;
+	border-spacing: 2px;
+	border-style: inset none inset none;
+	border-color: #669966 #669966 #669966 #669966;
+	border-collapse: collapse;
+	text-align: left;
+}
+
+.wfmTableTitle{
+	text-align: center; 
+	font-size: 14px; 
+	color: #669966; 
+	text-transform: uppercase;
+}
+
+/*************************************************************/
+/*															 */
+/************** Workflow Table  ******************************/
+
+.wfMainbox{
+ 
+	height: 50px;
+	text-transform: uppercase;
+	border-width:1px 1px 1px 1px;
+	border-spacing: 8px;
+	border-style: double double double double;
+	border-color: #669966 #669966 #669966 #669966;
+	border-collapse: collapse;
+	text-align: center; 
+	font-size: 12px; 
+	background-color: #DDDDDD;
+	color: #669966; 
+}
+.wfbox{
+ 
+	height: 50px;
+	text-transform: capitalize;
+	border-width: 1px 1px 1px 1px;
+	border-spacing: 8px;
+	border-style: double double double double;
+	border-color: #669966 #669966 #669966 #669966;
+	border-collapse: collapse;
+	text-align: center; 
+	font-size: 12px; 
+	background-color: #DDDDDD;
+}
+.arrowbox{
+ 
+	height: 50px;
+	text-transform: capitalize;
+	border-spacing: 4px;
+	border-style: none none none none;
+	border-collapse: collapse;
+	text-align: center; 
+	font-size: 12px; 
+
+}
+#workflow{
+	min-width:1080px;	
+        width : 98%;
+}
+
+.divMap {
+	position:relative; 
+	z-index:1; 
+	border:0px solid #000000;
+}
+
+
+/*************************************************************/
+/*															 */
+/*************** Tabulator ***********************************/
+
+.tabber{
+	text-align: center;
+	min-width:1080px;	
+        width : 98%;
+}
+
+.tabTitle{
+	font-weight: bold;
+	font-size: 14px;
+	text-decoration: underline;
+}
+.conts{
+	display: none;
+	vertical-align:top;
+	/*background:#006633 url(/wfm/images/background.jpg) repeat left top;*/
+}
+
+.tab{
+	border-width: 1px 1px 1px 1px;
+	border-spacing: 0px;
+	border-style: solid solid solid solid;
+	border-color: #669966 #669966 #669966 #669966;
+	text-align: center;
+	font-size: 14px;
+	cursor:pointer;
+	
+}
+
+.tabtextTd{
+	border-width: 1px 1px 1px 1px;
+	border-spacing: 2px;
+	border-style: none none none none;
+	border-color: #669966 #669966 #669966 #669966;
+	text-align: center; 
+	font-size: 12px;
+}
+
+.selTab	{	 
+	font-weight: bold;
+	background-color: #669966;
+	color: white;
+	text-decoration: none;
+	text-align: center;
+}
+.selTab a{
+	color: white;
+}
+.contentTabTd{
+	border-width: 1px 1px 1px 1px;
+	border-spacing: 0px;
+	border-style: solid solid solid solid;
+	border-color: #669966  #669966 #669966 #669966;
+	/*background:#006633 url(/wfm/images/background.jpg) repeat left top;
+	height: 500px;*/ 
+	min-width: 1080px; 
+        width : 98%;
+	vertical-align:top;
+}
+.contentTabTdsmall{
+	border-width: 1px 1px 1px 1px;
+	border-spacing: 0px;
+	border-style: solid solid solid solid;
+	border-color: #669966  #669966 #669966 #669966;
+	background:#006633 url(/wfm/images/background.jpg) repeat left top;
+	height: 300px; 
+	min-width: 1080px; 
+        width : 98%;
+	vertical-align:top;
+}
+/**** PAGINATION ****/
+
+ul#pagination{
+    font:12px Arial,sans-serif;
+    margin: 1em 0;padding: 0;
+    list-style: none;text-align: center}
+    
+ul#pagination li{
+    display: inline;margin-right: 0.5em}
+    
+ul#pagination a{text-decoration: none;
+    border: 1px solid #1258CC;padding: 0 3px;
+    background: #3C86FF;color: #FFF}
+    
+ul#pagination a:hover{
+    background: #FFF;color: #003EA5}
+    
+ ul#pagination li#currentpage a{
+    border: 0px;background: #FFF;
+    color: #000;cursor: default}
+
+/*************************************************************/
+/*															 */
+/*************** Status Bar***********************************/
+
+
+img.percentImage1 {
+ background: white url(/wfm/images/statusbar/percentImage_back1.png) top left no-repeat;
+ padding: 0;
+ margin: 5px 0 0 0;
+ background-position: 1px 0;
+}
+
+img.percentImage2 {
+ background: white url(/wfm/images/statusbar/percentImage_back2.png) top left no-repeat;
+ padding: 0;
+ margin: 5px 0 0 0;
+ background-position: 1px 0;
+}
+
+img.percentImage3 {
+ background: white url(/wfm/images/statusbar/percentImage_back3.png) top left no-repeat;
+ padding: 0;
+ margin: 5px 0 0 0;
+ background-position: 1px 0;
+}
+
+img.percentImage4 {
+ background: white url(/wfm/images/statusbar/percentImage_back4.png) top left no-repeat;
+ padding: 0;
+ margin: 5px 0 0 0;
+ background-position: 1px 0;
+}
+
+.background-red {
+	background-color:#C00000;
+}
+.background-lightblue {
+	background-color:#66CCFF;
+}
+.background-pink {
+	background-color:#FFCCCC;
+}
+
+.cell-font-color-red {
+        color:red;
+}
+
+.class_width_5 {
+        width: 5px;
+}
+
+#loading {
+        display:none;
+        position:fixed;
+        left:0;
+        top:0;
+        width:100%;
+        height:100%;
+        background:rgba(255,255,255,0.8);
+        z-index:1000;
+}
+
+#loadingcontent {
+        display:table;
+        position:fixed;
+        left:0;
+        top:0;
+        width:100%;
+        height:100%;
+}
+
+#loadingspinner {
+        display: table-cell;
+        vertical-align:middle;
+        width: 100%;
+        text-align: center;
+        font-size:larger;
+        padding-top:80px;
+}
+
+.version {
+        padding-left: 15px;
+}
+
+.status-inline {
+       display: block;
+       margin: 20px auto;
+       border-width: 1px;
+       border-style: solid;
+       border-color:  #dddddd;
+       border-radius: 10px;
+       background: #efefef;
+       padding: 15px;
+       -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+       box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+}
+
+.displaynone{display:none}

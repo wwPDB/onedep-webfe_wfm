@@ -1,0 +1,40 @@
+<table class="workflow" width="100%%" cellspacing="20">
+    <tr>
+        <td align="center" width="160px">
+            <div class="mainTask">
+                %(wf_entry_id)s - %(wf_entry_name)s <br/>
+                <a href="/service/workmanager/ciffile?identifier=%(identifier)s&sessionid=%(sessionid)s&filesource=archive&version=original">View first mmCIF</a>
+            </div>
+        </td>
+        <td align="center"><img src="/wfm/images/2r.png"></td>
+        <td align="center" width=="610px">
+            <div class="mainTask">
+                <b>Workflow Name:</b> %(name)s &nbsp; &nbsp; &nbsp; &nbsp; <b>Version:</b> %(major)s <br/>
+                <b>Author:</b> %(author)s  &nbsp; &nbsp; &nbsp; &nbsp; <b>Date:</b> %(date)s <br/> <br/> 
+                <input type="button" name="Restart from origin" value="Restart from origin" onclick="RunAnnotateWF('%(sessionid)s', '%(annotator)s', 'restart', '%(identifier)s', 'None', 'Annotate', 'restartGoWF', '', '%(method)s', 'Are you sure to start from beginning?');" />
+            </div>
+        </td>
+        <td align="center"><img src="/wfm/images/2r.png"></td>
+        <td align="center" width="160px">
+            <div class="mainTask">
+                %(wf_exit_id)s - %(wf_exit_name)s <br/>
+                <input type="button" name="EditCif" value="EditCif" onclick="editCif('%(sessionid)s', '%(identifier)s', '%(wf_inst_id)s', '%(wf_class_id)s', '%(urlmethod)s', '%(annotator)s');" /><br/>
+                <a href="/service/workmanager/ciffile?identifier=%(identifier)s&sessionid=%(sessionid)s&filesource=archive&version=latest">View last mmCIF</a>
+            </div>
+        </td>
+    </tr>
+</table>
+<center><img src="/wfm/images/2d.png"></center>
+<p><b> Module workflow order: </b></p>
+<table class="workflow" width="100%%" cellspacing="20" border="1">
+%(sub_workflow_module)s
+</table>
+<p><b> Modules you have run in order they were run: </b></p>
+<table class="workflow" width="100%%" cellspacing="20" border="1">
+%(run_workflow_module)s
+</table>
+<p><b> Run a Module : This will run the selecte module only - then STOP </b></p>
+<p><b>  module run from here will be outside the WF system - and will abort the current workflow </b></p>
+<table class="workflow" width="100%%" cellspacing="20" border="1">
+%(single_workflow_module)s
+</table>

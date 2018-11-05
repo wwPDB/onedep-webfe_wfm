@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Edit User Data</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta http-equiv="Content-Language" content="English" />
+
+    <link rel="stylesheet" href="/wfm/styles/style.css" type="text/css" media="all">
+
+    <script type="text/javascript" src="/js/jquery-10.2/core/jquery-1.10.2.min.js"></script>
+    <script type='text/javascript' src='/wfm/js/skinnytip.js'></script>
+
+    <script type="text/javascript">
+       $(function(){
+            $("#anchorfocus").focus();
+         });
+    </script>
+</head>
+<body>
+    <div id="tiplayer" style="position:absolute; visibility:hidden; z-index:10000;"></div>
+    <div id="header">
+        <div id="logo">
+            <h1> <a name="anchorfocus" id="anchorfocus" href="/wfm/"><img src="/wfm/images/wwpdb_logo.gif" border="0" alt="wwPDB" width="187" height="58"
+                  onmouseover="return tooltip('Workflow Manager - Annotation tool for the wwPDB');" onmouseout="return hideTip();" onClick="return false;"></a><span>workflow</span> manager
+            </h1><br/>
+        </div><br/>
+        <div id="subheader">
+            <table>
+                <tr><td colspan="2" bgcolor="#006633">&nbsp;</td></tr>        
+                <tr><td class="breadCrumbs"></td>
+                    <td class="logged"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <br/>
+    <div id="pageTitle">Edit My Data</div>
+    <br/>
+
+    <div id="content">
+        <form method="POST" action="/service/workmanager/saveuserdata">
+            <input type="hidden" name="sessionid" id="sessionid_citation" value="%(sessionid)s" />
+            <table width="250" align="center">
+                <tr>
+                    <th class="wfmTh">Username:</th>
+                    <td ><input id="id_user" type="text" name="user_name" maxlength="200" value="%(user_name)s" readonly /></td>
+                </tr>
+                <tr >
+                    <th class="wfmTh"><label for="id_psw">Password :</label></th>
+                    <td ><input id="id_psw" type="password" name="password" maxlength="50" value="%(password)s"/></td>
+                </tr>
+                <tr>
+                    <th class="wfmTh"><label for="id_email">email:</label></th>
+                    <td ><input id="id_email" type="text" name="email" maxlength="200" value="%(email)s" /></td>
+                </tr>
+                <tr >
+                    <th class="wfmTh">Initials :</th>
+                    <td ><input id="id_ai" type="text" name="initials" maxlength="200" value="%(initials)s" readonly /></td>
+                </tr>
+                <tr>
+                    <th class="wfmTh"><label for="id_first">First Name:</label></th>
+                    <td ><input id="id_first" type="text" name="first_name" maxlength="200" value="%(first_name)s"/></td>
+                </tr>
+                <tr >
+                    <th class="wfmTh"><label for="id_psw">Last Name :</label></th>
+                    <td ><input id="id_last" type="text" name="last_name" maxlength="200" value="%(last_name)s"/></td>
+                </tr>                                   
+                <tr><td colspan="2" >&nbsp;</td></tr>        
+                <tr><td class="actionTd" align="center" colspan="2"> <input type="submit" name="save" value="Save Changes"> </td></tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
+

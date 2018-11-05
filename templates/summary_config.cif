@@ -1,0 +1,129 @@
+data_template
+#
+loop_
+_page_template.id
+_page_template.type
+_page_template.repeat
+_page_template.dependence
+_page_template.page
+#summary_tmplt
+summary_tmplt               file      no    ?    "summary_tmplt.html"           
+#common_page_header_tmpl
+common_page_header_tmplt    file      no    ?    "common_page_header_tmplt.html"   
+#
+#contact_table_tmplt
+contact_table_tmplt         string    no    contact_table_row_tmplt
+;<table>
+<tr><th colspan="2"><b> Role </b></th><th colspan="2"><b>Name</b></th><th colspan="2"><b> Email </b></th><th><b> Country </b><th></tr>
+%(table_rows)s
+</table>
+<br />
+;
+#contact_table_row_tmplt
+contact_table_row_tmplt    string     yes   ?
+;<tr><td> %(role)s </td>
+     <td>&nbsp; &nbsp;</td>
+     <td> %(name_first)s %(name_mi)s %(name_last)s </td>
+     <td>&nbsp; &nbsp; </td>
+     <td> %(email)s </td>
+     <td>&nbsp; &nbsp; </td>
+     <td> %(country)s <td>
+</tr>
+;
+#audit_history_table_tmplt
+audit_history_table_tmplt         string    no    audit_history_table_row_tmplt
+;<table>
+<tr><th colspan="5"><b>Audit history</b></th></tr>
+<tr><th ><b>Version</b></th><th>&nbsp; &nbsp;</th><th><b>Release Date</b></th><th>&nbsp; &nbsp;</th><th><b>mmCIF version number</b></th></tr>
+%(table_rows)s
+</table>
+<br />
+;
+#audit_history_table_row_tmplt
+audit_history_table_row_tmplt    string     yes   ?
+'<tr><td align="center">%(public_version)s</td><td>&nbsp; &nbsp;</td><td>%(date)s</td><td>&nbsp; &nbsp;</td><td align="center">%(file_version)s</td></tr>'
+#timestamp_table_tmplt
+timestamp_table_tmplt     string    no      timestamp_table_row_tmplt
+;<br />
+<p><b>Details of activity of the depositor  </b></p>
+      <table class="wfmTable" cellpadding="5px">
+          <tr>
+              <th class="wfmTh" width="12%%">Event</th>
+              <th class="wfmTh" width="15%%">When</th>
+              <th class="wfmTh" width="30%%">Data 1</th>
+              <th class="wfmTh" width="30%%">Data 2</th>
+          </tr>
+%(table_rows)s
+      </table>
+;
+#timestamp_table_row_tmplt
+timestamp_table_row_tmplt  string     yes   ?
+;          <tr>
+              <td class="textTd" width="12%%">%(event)s</td>
+              <td class="textTd" width="15%%">%(mtime)s</td>
+              <td class="textTd" width="30%%">%(info1)s</td>
+              <td class="textTd" width="30%%">%(info2)s</td>
+          </tr>
+;
+#
+loop_
+_page_template_parameter.page_id
+_page_template_parameter.variable
+_page_template_parameter.value
+_page_template_parameter.type
+_page_template_parameter.preprocess
+#summary_tmplt
+summary_tmplt              page_head     common_page_header_tmplt            page_template  y
+summary_tmplt              sessionid     sessionid                           sessionInfo    n
+summary_tmplt              identifier    identifier                          sessionInfo    n
+summary_tmplt              DAVersion     DAVersion                           sessionInfo    n
+summary_tmplt              annotator     annotator                           sessionInfo    n
+summary_tmplt              current_dep_url current_dep_url                   sessionInfo    n
+summary_tmplt              user_name     user_name                           userInfo       n
+summary_tmplt              group_name    group_name                          userInfo       n
+summary_tmplt              first_name    first_name                          userInfo       n
+summary_tmplt              last_name     last_name                           userInfo       n
+summary_tmplt              title         title                               dataInfo       n
+summary_tmplt              pdb_id        pdb_id                              dataInfo       n
+summary_tmplt              bmrb_id       bmrb_id                             dataInfo       n
+summary_tmplt              emdb_id       emdb_id                             dataInfo       n
+summary_tmplt              deppw         deppw                               dataInfo       n
+summary_tmplt              contact_authors   contact_table_tmplt             page_template  n
+summary_tmplt              audit_history audit_history_table_tmplt           page_template  n
+summary_tmplt              timestamp     timestamp_table_tmplt               page_template  n
+#common_page_header_tmplt
+common_page_header_tmplt   head_title   "WFM-Sum:%(pdb_id)s/%(bmrb_id)s/%(emdb_id)s/%(identifier)s"  constant       n
+common_page_header_tmplt   script
+;<script type='text/javascript' src='/wfm/js/depui.js'></script>
+;
+constant       n
+common_page_header_tmplt   onload       " "                                  constant       n
+common_page_header_tmplt   user         "%(user_name)s"                      constant       n
+common_page_header_tmplt   sessionid    "%(sessionid)s"                      constant       n
+common_page_header_tmplt   breadcrumbs  "[1]Deposition Summary detail"       constant       n
+common_page_header_tmplt   group_name   "%(group_name)s"                     constant       n
+common_page_header_tmplt   first_name   "%(first_name)s"                     constant       n
+common_page_header_tmplt   last_name    "%(last_name)s"                      constant       n
+#contact_table_tmplt
+contact_table_tmplt        table_rows   contact_table_row_tmplt              page_template  n
+#audit_history_table_tmplt
+audit_history_table_tmplt  table_rows   audit_history_table_row_tmplt        page_template  n
+#timestamp_table_tmplt
+timestamp_table_tmplt      table_rows   timestamp_table_row_tmplt            page_template  n
+#contact_table_row_tmplt
+contact_table_row_tmplt    role         role                                 dataInfo       n
+contact_table_row_tmplt    name_first   name_first                           dataInfo       n
+contact_table_row_tmplt    name_mi      name_mi                              dataInfo       n
+contact_table_row_tmplt    name_last    name_last                            dataInfo       n
+contact_table_row_tmplt    email        email                                dataInfo       n
+contact_table_row_tmplt    country      country                              dataInfo       n
+#audit_history_table_row_tmplt
+audit_history_table_row_tmplt  public_version public_version                 dataInfo       n
+audit_history_table_row_tmplt  date           date                           dataInfo       n
+audit_history_table_row_tmplt  file_version   file_version                   dataInfo       n
+#timestamp_table_row_tmplt
+timestamp_table_row_tmplt  event        event                                dataInfo       n
+timestamp_table_row_tmplt  mtime        mtime                                dataInfo       n
+timestamp_table_row_tmplt  info1        info1                                dataInfo       n
+timestamp_table_row_tmplt  info2        info2                                dataInfo       n
+#

@@ -1,0 +1,111 @@
+
+%(page_head)s
+
+    <div id="pageTitle">
+        <center>
+            <table border="0" cellspacing=0 cellpadding=0>
+                <tr>
+                    <td> Deposition Summary of CIF file : <b> %(identifier)s ( %(pdb_id)s / %(bmrb_id)s / %(emdb_id)s ) </b>  </td>
+                </tr>
+            </table>
+            </br>
+        </center>
+    </div>
+
+    <div id="content">
+
+<h3> Title: %(title)s </h3>
+%(contact_authors)s
+%(audit_history)s
+<br />
+<p> <b>   The following are the report logs for this deposition, they will only exist once the report Module has run </b></p>
+<table>
+<tr>
+<td width="300" >Dictionary check report</td>
+<td  width="280"> <a href="/service/review_v2/full_report?identifier=%(identifier)s&filesource=archive" target="_blank">Full report page summary for %(identifier)s </a></td>
+</tr>
+<tr>
+<td width="300" >Changes in the UI since last snapshot</td>
+<td  width="280"> <a href="/service/workmanager/snapshotdiff?identifier=%(identifier)s&sessionid=%(sessionid)s&annotator=%(annotator)s" target="_blank">Difference from last snapshot since reset</a></td>
+</tr>
+</table>
+
+<p><b> Control the deposition - change properties of the deposition UI </b></p>
+
+<center><table class="wfmTable" width="80%%">
+<tr><th>Action</th><th>Command</th></tr>
+<tr>
+    <td class="textTd">Tell me the password of %(identifier)s  </td>
+    <td class="textTd" width="10%%"><input type="button" name="Password" value="Password" onclick="getpassword('%(sessionid)s','%(identifier)s');"/></td>
+</tr>
+
+<tr>
+    <td class="textTd">Open the depUI for this deposition %(identifier)s  </td>
+    <td class="textTd" width="10%%"><input type="button" name="Open" value="Open DepUI" onclick="window.open('%(current_dep_url)s?depID=%(identifier)s&token=%(deppw)s');" /></td>
+</tr>
+
+<tr>
+    <td class="textTd">Lock the depUI for this deposition %(identifier)s </td>
+    <td class="textTd" width="10%%"><input type="button" name="Lock" value="Lock DepUI" onclick="dodepuistatus('%(sessionid)s','%(identifier)s','lock');"/></td>
+</tr>
+
+<tr>
+    <td class="textTd">UnLock the depUI with Reset for this deposition to use CURRENT depID data %(identifier)s</td>
+    <td class="textTd" width="10%%"><input type="button" name="Unlock" value="unLock DepUI with Reset" onclick="dodepuistatus('%(sessionid)s','%(identifier)s','unlock_with_rest');"/></td>
+</tr>
+
+<tr>
+    <td class="textTd">UnLock the depUI without Reset for this deposition to use CURRENT depID data %(identifier)s</td>
+    <td class="textTd" width="10%%"><input type="button" name="Unlock" value="unLock DepUI without Reset" onclick="dodepuistatus('%(sessionid)s','%(identifier)s','unlock');"/></td>
+</tr>
+
+<tr>
+    <td class="textTd">Write a milestone file in the archive %(identifier)s </td>
+    <td class="textTd" width="10%%"><input type="button" name="MileStone" value="milestone" onclick="domilestone('%(sessionid)s','%(identifier)s');"/></td>
+</tr>
+
+<tr>
+    <td class="textTd">Write a milestone - open the depUI - force a read of this milestone into depUI %(identifier)s :
+        <b>Very careful with this one - it will rewrite all data in the depUI</b></td>
+    <td class="textTd" width="10%%"><input type="button" name="Reset" value="reset" onclick="dodepuireset('%(sessionid)s','%(identifier)s',true);"/></td>
+</tr>
+
+<tr>
+    <td class="textTd">Allow a deposition to be uploaded incomplete %(identifier)s : <b>You will get bad data in deposition</b></td>
+    <td class="textTd" width="10%%"><input type="button" name="allow2" value="Allow upload" onclick="allowUpload('%(sessionid)s','%(identifier)s','%(annotator)s');"/></td>
+</tr>
+
+<tr>
+    <td class="textTd">Prevent a deposition to be uploaded incomplete %(identifier)s : <b>Will stop bad data in deposition</b></td>
+    <td class="textTd" width="10%%"><input type="button" name="allow2" value="Prevent upload" onclick="preventUpload('%(sessionid)s','%(identifier)s','%(annotator)s');"/></td>
+</tr>
+
+<tr>
+    <td class="textTd">Enable users to FTP files and import them to depUI %(identifier)s : Only if upload failed in depUI</td>
+    <td class="textTd" width="10%%"><input type="button" name="ftpupload" value="FTP upload"  onclick="enableFtp('%(sessionid)s','%(identifier)s','%(annotator)s');"/></td>
+</tr>
+
+<tr>
+    <td class="textTd">Allow a deposition to be submitted incomplete %(identifier)s : <b>You will get incomplete data in annotation</b></td>
+    <td class="textTd" width="10%%"><input type="button" name="allow" value="Allow submit" onclick="allowSubmit('%(sessionid)s','%(identifier)s','%(annotator)s');"/></td>
+</tr>
+
+<tr>
+    <td class="textTd">Block a deposition from submission if incomplete (default) %(identifier)s : </td>
+    <td class="textTd" width="10%%"><input type="button" name="block" value="Block submit"  onclick="preventSubmit('%(sessionid)s','%(identifier)s','%(annotator)s');"/></td>
+</tr>
+
+<tr>
+    <td class="textTd">Rerun the deposition workflow again - becuase of problem - will redo ligands and validation</td>
+    <td class="textTd" width="10%%"><input type="button" name="rerun" value="Rerun depWF"  onclick="rerunWF('%(sessionid)s','%(identifier)s','%(annotator)s');"/></td>
+</tr>
+</table></center>
+
+%(timestamp)s
+
+    </div>
+<br/>
+<p class="version">Version: %(DAVersion)s</p>
+</body>
+</html>
+

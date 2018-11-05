@@ -1,0 +1,46 @@
+Dear Depositor,
+
+In order to upload large files to your deposition session, please follow the following instructions.
+
+Before you start, you will require:
+  - an FTP client which supports secure file transfer mechanism. We recommend FileZilla (https://filezilla-project.org) or command-line lftp (http://lftp.yar.ru/get.html),
+  - your deposition ID (%(depositionid)s) and password.
+
+To transfer your files
+
+If you choose to use lftp:
+  1. Open a terminal window (command prompt on MS Windows)
+  2. Type the following command in the window:
+    lftp  -e '%(ftp_connect_details_1)s' -p %(ftp_port_number)s ftps://%(depositionid)s@%(ftp_host_name)s
+  3. Enter the deposition password when prompted
+  4. Transfer the required files as in the examples below, replacing <filenameN> as appropriate (the whole path should be provided for each file that is not in the current folder):
+    put <filename1> <filename2>
+  5. Quit the FTP client by typing:
+    bye
+
+If you choose to use FileZilla:
+  1. Open FileZilla's Site Manager
+  2. Add a 'New site' and enter the following information:
+    Host: %(ftp_host_name)s
+    Port: %(ftp_port_number)s
+    Protocol: FTP - File Transfer Protocol
+    Encryption: %(ftp_connect_details_0)s
+    Logon Type: Ask for password
+    User: %(depositionid)s
+  3. Click the Connect button and enter the deposition password when prompted
+  4. Choose the files you want to transfer and 'drag and drop' them from your computer (Local site) to the FTP area (Remote site)
+
+After the files are transferred
+
+  1. Login back to your deposition session at %(site_dep_email_url)s using your deposition id and password
+  2. Navigate to the file upload page
+  3. Click the 'Get my files' button at the bottom of the File upload page
+  4. Once the file import has finished, you should see the transferred files available to continue your deposition session. Select the file type for each of the files and proceed as normal.
+
+For any questions or comments, please navigate to the communication page in your deposition session. Your queries will be attended to by the wwPDB annotation staff.
+Please do not reply to this e-mail.
+
+
+Best regards,
+
+wwPDB Annotation Staff
