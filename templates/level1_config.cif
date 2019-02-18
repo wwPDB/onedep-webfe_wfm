@@ -156,27 +156,27 @@ _tab_preprocess_mapping.id
 _tab_preprocess_mapping.variable
 _tab_preprocess_mapping.value
 #to_do_entry_tmplt
-"to_do_entry_tmplt,tab_selection_tmplt"          tab_label      "To-Do Entries (%(counts)s)"
+"to_do_entry_tmplt,tab_selection_tmplt"          tab_label      "To-Do (%(counts)s)"
 "to_do_entry_tmplt,tab_content_tmplt"            tab_title      "To-Do Entries"
 "to_do_entry_tmplt,tab_content_tmplt"            left_position  "35%%"
 #proc_entry_tmplt
-"proc_entry_tmplt,tab_selection_tmplt"           tab_label      "Proc Entries (%(counts)s)"
+"proc_entry_tmplt,tab_selection_tmplt"           tab_label      "PROC (%(counts)s)"
 "proc_entry_tmplt,tab_content_tmplt"             tab_title      "PROC Entries"
 "proc_entry_tmplt,tab_content_tmplt"             left_position  "45%%"
 #author_correction_tmplt
-"author_correction_tmplt,tab_selection_tmplt"    tab_label      "Author's Corrections (%(counts)s)"
+"author_correction_tmplt,tab_selection_tmplt"    tab_label      "REPL (%(counts)s)"
 "author_correction_tmplt,tab_content_tmplt"      tab_title      "Author's Corrections : %(counts)s"
 "author_correction_tmplt,tab_content_tmplt"      left_position  "30px"
 #pending_entry_tmplt
-"pending_entry_tmplt,tab_selection_tmplt"        tab_label      "Pending Entries (%(counts)s)"
+"pending_entry_tmplt,tab_selection_tmplt"        tab_label      "Pending (%(counts)s)"
 "pending_entry_tmplt,tab_content_tmplt"          tab_title      "Pending : %(counts)s"
 "pending_entry_tmplt,tab_content_tmplt"          left_position  "1px"
 #reminder_entry_tmplt
-"reminder_entry_tmplt,tab_selection_tmplt"       tab_label      "Reminder Entries (%(counts)s)"
+"reminder_entry_tmplt,tab_selection_tmplt"       tab_label      "Reminder (%(counts)s)"
 "reminder_entry_tmplt,tab_content_tmplt"         tab_title      "Reminder Entries (%(counts)s)"
 "reminder_entry_tmplt,tab_content_tmplt"         left_position  "35%%"
 #search_tmplt
-"search_tmplt,tab_selection_tmplt"               tab_label      "Search Options"
+"search_tmplt,tab_selection_tmplt"               tab_label      "Search"
 "search_tmplt,tab_search_tmplt"                  tab_title      "Search for Entry/Depositor/Deposition"
 "search_tmplt,tab_search_tmplt"                  select_options
 ;<option value="entry_by_ids">Find Entry by Dep/PDB/BMRB/EMDB ID(s)</option>
@@ -217,11 +217,11 @@ _tab_preprocess_mapping.value
 "all_message_tmplt,tab_content_tmplt"            tab_title      "All outstanding messages (%(counts)s)"
 "all_message_tmplt,tab_content_tmplt"            left_position  "35%%"
 #retired_annotator_tmplt
-"retired_annotator_tmplt,tab_selection_tmplt"    tab_label      "Past Annotators' Entries (%(counts)s)"
+"retired_annotator_tmplt,tab_selection_tmplt"    tab_label      "Past Annotators (%(counts)s)"
 "retired_annotator_tmplt,tab_content_tmplt"      tab_title      "All outstanding messages (%(counts)s)"
 "retired_annotator_tmplt,tab_content_tmplt"      left_position  "35%%"
 #deposit_message_tmplt
-"deposit_message_tmplt,tab_selection_tmplt"      tab_label      "Unsubmitted Entries w/ Messages (%(counts)s)"
+"deposit_message_tmplt,tab_selection_tmplt"      tab_label      "Unsubmitted w/Messages (%(counts)s)"
 "deposit_message_tmplt,tab_content_tmplt"        tab_title      "Unsubmitted Entries w/ Messages"
 "deposit_message_tmplt,tab_content_tmplt"        left_position  "40%%"
 #deposit_entry_tmplt
