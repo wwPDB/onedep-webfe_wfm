@@ -161,63 +161,25 @@ function onchange_function() {
 }
 
 function valid_entry_ids(input_ids) {
-       var list = input_ids.replace(/\s+/g, '').split(',');
-       var pattern_4 = /[1-9][A-Za-z][A-Za-z0-9]{2}/;
-       var pattern_4_test = /[A-Za-z0-9]{4}/;
-       var pattern_5 = /\d{5}/;
-       var pattern_8 = /[Ee][Mm][Dd]-\d{4}/;
-       var pattern_9_emd = /[Ee][Mm][Dd]-\d{5}/;
-       var pattern_9 = /[Gg]_\d{7}/;
-       var pattern_10 = /\d{10}/;
-       var pattern_12 = /[Dd]_\d{10}/;
-       var found_invalid_id = false;
-       output_ids = '';
-       for (var i = 0; i < list.length; i++) {
-            var is_valid_id = false;
-            if (list[i].length == 4) {
-                 if (pattern_4.test(list[i]) || pattern_4_test.test(list[i])) {
-                      is_valid_id = true;
-                      if (output_ids != '') output_ids += ',';
-                      output_ids += list[i].toUpperCase();
-                 }
-            } else if (list[i].length == 5) {
-                 if (pattern_5.test(list[i])) {
-                      is_valid_id = true;
-                      if (output_ids != '') output_ids += ',';
-                      output_ids += list[i];
-                 }
-            } else if (list[i].length == 8) {
-                 if (pattern_8.test(list[i])) {
-                      is_valid_id = true;
-                      if (output_ids != '') output_ids += ',';
-                      output_ids += list[i].toUpperCase();
-                 }
-            } else if (list[i].length == 9) {
-                 if (pattern_9_emd.test(list[i]) || pattern_9.test(list[i])) {
-                      is_valid_id = true;
-                      if (output_ids != '') output_ids += ',';
-                      output_ids += list[i].toUpperCase();
-                 }
-            } else if (list[i].length == 10) {
-                 if (pattern_10.test(list[i])) {
-                      is_valid_id = true;
-                      if (output_ids != '') output_ids += ',';
-                      output_ids += 'D_' + list[i];
-                 }
-            } else if (list[i].length == 12) {
-                 if (pattern_12.test(list[i])) {
-                      is_valid_id = true;
-                      if (output_ids != '') output_ids += ',';
-                      output_ids += list[i].toUpperCase();
-                 }
-            }
-            if (!is_valid_id) {
-                 alert('ID: "' + list[i] + '" is not valid!');
-                 found_invalid_id = true;
-            }
-       }
-       if (found_invalid_id) return '';
-       return output_ids;
+     const splitted = input_ids.split(/[^A-Za-z0-9_-]/);
+     const regExps = new Array(
+          new RegExp(/[A-Za-z0-9]{4}/), // a PDB-id (promissing one)
+          new RegExp(/[Ee][Mm][Dd]-\d{4,5}/), // EMDB-id
+          new RegExp(/\d{5}/), // BMRB-ids
+          new RegExp(/[Gg]_\d{7}/), // group deposition-id
+          new RegExp(/([Dd]_){0,1}\d{10}/)); //deposition-id
+
+     const match = splitted
+          .filter(x => regExps.some(y => y.test(x)))
+          .map(x => {
+               if (x.length === 10) x = `D_${x}`;
+               return x.toUpperCase();
+          });
+
+     if (match.length === 0) return '';
+
+
+     return match.reduce((x, y) => `${x},${y}`);
 }
 
 function submit_function() {
