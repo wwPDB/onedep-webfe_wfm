@@ -130,13 +130,16 @@ function refresh_level1_pages(tab_id) {
 }
 
 function editMyList(type, sessionid, depID, initials) {
-       $.ajax({ type: 'GET', async: false, url: '/service/workmanager/edit_my_list', dataType: 'json',
+     const scrollPosition = $(`#${selected_tab_id} .fixed-table-body`).scrollTop();
+     $.ajax({
+          type: 'GET', async: false, url: '/service/workmanager/edit_my_list', dataType: 'json',
             data: { 'type': type, 'sessionid': sessionid, 'identifier': depID, 'annotator': initials },
             success: function(jsonOBJ) {
                  if ('map' in jsonOBJ) {
                       update_count(jsonOBJ.map);
                  }
                  setTab(selected_tab_id);
+                 $(`#${selected_tab_id} .fixed-table-body`).scrollTop(scrollPosition);
             },
             error: function (data, status, e) { alert(e); }
        });
