@@ -461,7 +461,7 @@ function RunAnnotateWF(sessionid, initials, type, depID, instID, classID, comman
        var data = { 'sessionid': sessionid, 'annotator': initials, 'type': type, 'identifier': depID, 'instance': instID,
                     'classID': classID, 'command': command, 'version': version, 'method': method };
        var ret = make_ajax_call('', 'GET', data, '/service/workmanager/runengine', true);
-       if (ret !== 'OK') alert('Workflow did not started!');
+       if (ret !== 'OK') alert(`Workflow did not start! Possible reason: ${ret}.`);
 }
 
 function select_entry(formid, tagid) {
