@@ -1018,27 +1018,27 @@ loop_
 _table_option_definition.id
 _table_option_definition.option
 option_definition_1
-;data-toggle="table" data-height="899" data-search="true" data-sortable="true" data-sort-name="default_order" data-sort-order="asc" data-show-toggle="true" 
-data-show-columns="true" data-row-style="rowStyle" data-show-pagination-switch="true" data-pagination="false" data-page-size="3" data-page-list="[3, 5, 10, ALL]"
+;data-toggle="table" data-pagination-v-align="both" data-search="true" data-sortable="true" data-sort-name="default_order" data-sort-order="asc" data-show-toggle="true" 
+data-show-columns="true" data-row-style="rowStyle" data-show-pagination-switch="true" data-pagination="false" data-page-size="25" data-page-list="[10, 25, 50, ALL]"
 ;
 option_definition_2
-;data-toggle="table" data-height="899" data-search="true" data-sortable="true" data-sort-name="default_order" data-sort-order="asc" data-show-toggle="true"
-data-show-columns="true" data-show-pagination-switch="true" data-pagination="true" data-page-size="5" data-page-list="[3, 5, 10, ALL]"
+;data-toggle="table" data-pagination-v-align="both" data-search="true" data-sortable="true" data-sort-name="default_order" data-sort-order="asc" data-show-toggle="true"
+data-show-columns="true" data-show-pagination-switch="true" data-pagination="true" data-page-size="25" data-page-list="[10, 25, 50, ALL]"
 ;
 option_definition_3
-;data-toggle="table" data-height="899" data-search="true" data-sortable="true" data-show-toggle="true" data-show-columns="true"
-data-row-style="rowStyle" data-show-pagination-switch="true" data-pagination="false" data-page-size="5" data-page-list="[3, 5, 10, 15, 20, ALL]"
+;data-toggle="table" data-pagination-v-align="both" data-search="true" data-sortable="true" data-show-toggle="true" data-show-columns="true"
+data-row-style="rowStyle" data-pagination-v-align="up" data-show-pagination-switch="true" data-pagination="false" data-page-size="25" data-page-list="[10, 25, 50, ALL]"
 ;
 option_definition_4
 ;data-toggle="table" data-sortable="true" data-classes="table table-hover table-condensed" data-striped="true"
 ;
 option_definition_5
-;data-toggle="table" data-height="899" data-search="true" data-sortable="true" data-show-toggle="true" data-show-columns="true"
-data-show-pagination-switch="true" data-pagination="true" data-page-size="5" data-page-list="[3, 5, 10, ALL]"
+;data-toggle="table" data-pagination-v-align="both" data-search="true" data-sortable="true" data-show-toggle="true" data-show-columns="true"
+data-show-pagination-switch="true" data-pagination="true" data-page-size="25" data-page-list="[10, 25, 50, ALL]"
 ;
 option_definition_6
-;data-toggle="table" data-height="899" data-search="true" data-sortable="true" data-show-toggle="true" data-show-columns="true" 
-data-row-style="rowStyle" data-show-pagination-switch="true" data-pagination="false" data-page-size="3" data-page-list="[3, 5, 10, ALL]"
+;data-toggle="table" data-pagination-v-align="both" data-search="true" data-sortable="true" data-show-toggle="true" data-show-columns="true" 
+data-row-style="rowStyle" data-show-pagination-switch="true" data-pagination="false" data-page-size="25" data-page-list="[10, 25, 50, ALL]"
 ;
 #
 loop_
