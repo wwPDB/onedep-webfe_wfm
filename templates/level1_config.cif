@@ -1178,7 +1178,7 @@ l.dep_emdb_id != '?' and l.dep_status_code_emdb = 'PROC' ) ) order by dep_initia
 ;
 "dep_author_release_status_code:REL"
 author_correction_tmplt    table_1    selection_2    ?    initials         
-;l.dep_set_id = d.dep_set_id and l.annotator_initials in ('%(initials)s', 'EBI') and l.locking = 'DEP' and ( ( l.dep_status_code in ( 'REPL', 'AUCO', 'REUP', 'AUXS', 'AUXU' ) and l.pdb_id != '?' ) or
+;l.dep_set_id = d.dep_set_id and l.annotator_initials in ('%(initials)s', 'EBI') and l.dep_locking = 'DEP' and ( ( l.dep_status_code in ( 'REPL', 'AUCO', 'REUP', 'AUXS', 'AUXU' ) and l.pdb_id != '?' ) or
 ( l.pdb_id = '?' and l.dep_emdb_id != '?' and l.dep_status_code_emdb in ( 'REPL', 'AUCO', 'REUP', 'AUXS', 'AUXU' ) ) ) order by dep_initial_deposition_date ASC
 ;
 "dep_status_code:REL,OBS,WDRN"
