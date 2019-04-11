@@ -913,8 +913,6 @@ table_definition_1   column_definition_13
 table_definition_1   column_definition_14
 table_definition_1   column_definition_15
 table_definition_1   column_definition_16
-table_definition_1   column_definition_17
-table_definition_1   column_definition_19
 table_definition_1   column_definition_101
 table_definition_1   column_definition_102
 #table_definition_2
@@ -927,14 +925,14 @@ table_definition_2   column_definition_6
 table_definition_2   column_definition_7
 table_definition_2   column_definition_8
 table_definition_2   column_definition_9
+table_definition_2   column_definition_17
+table_definition_2   column_definition_19
 table_definition_2   column_definition_10
 table_definition_2   column_definition_12
 table_definition_2   column_definition_13
 table_definition_2   column_definition_14
 table_definition_2   column_definition_15
 table_definition_2   column_definition_16
-table_definition_2   column_definition_17
-table_definition_2   column_definition_19
 table_definition_2   column_definition_101
 table_definition_2   column_definition_102
 #table_definition_3
