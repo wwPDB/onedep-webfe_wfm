@@ -1065,7 +1065,7 @@ column_definition_8     "Auth Coord"           author_status      true    ?     
 column_definition_9     "Dep/Rel Dates"        dep_date           true    ?        ?               ?               ?
 column_definition_10    Ann                    initials           true    ?        ?               ?               ?
 column_definition_11    Remove                 remove_list        ?       ?        ?               ?               ?
-column_definition_12    Add                    add_list           ?       ?        ?               ?               ?
+column_definition_12    Add                    add_list           true    ?        ?               ?               ?
 column_definition_13    Comm                   commun             ?       ?        ?               ?               ?
 column_definition_14    Title                  title              true    ?        ?               ?               ?
 column_definition_15    Author                 author_list        true    ?        ?               ?               ?
