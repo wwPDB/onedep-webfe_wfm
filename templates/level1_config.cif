@@ -128,7 +128,7 @@ _tab_definition_table.default_load
 _tab_definition_table.table_title
 to_do_entry_tmplt          table_1    table_definition_1    option_definition_1    inline    true      ?
 proc_entry_tmplt           table_1    table_definition_2    option_definition_1    inline    true      ?
-author_correction_tmplt    table_1    table_definition_2    option_definition_1    inline    true      ?
+author_correction_tmplt    table_1    table_definition_20    option_definition_1    inline    true      ?
 pending_entry_tmplt        table_1    table_definition_2    option_definition_1    inline    true      ?
 reminder_entry_tmplt       table_1    table_definition_3    option_definition_1    inline    true      ?
 search_tmplt               table_1    table_definition_2    option_definition_1    none      false     ?
@@ -1009,6 +1009,28 @@ table_definition_11   column_definition_41
 table_definition_11   column_definition_45
 table_definition_11   column_definition_46
 table_definition_11   column_definition_16
+#table_definition_20
+table_definition_20   column_definition_1
+table_definition_20   column_definition_2
+table_definition_20   column_definition_3
+table_definition_20   column_definition_4
+table_definition_20   column_definition_5
+table_definition_20   column_definition_50
+table_definition_20   column_definition_19
+table_definition_20   column_definition_20
+table_definition_20   column_definition_6
+table_definition_20   column_definition_7
+table_definition_20   column_definition_8
+table_definition_20   column_definition_9
+table_definition_20   column_definition_10
+table_definition_20   column_definition_12
+table_definition_20   column_definition_13
+table_definition_20   column_definition_14
+table_definition_20   column_definition_15
+table_definition_20   column_definition_16
+table_definition_20   column_definition_101
+table_definition_20   column_definition_102
+
 #
 loop_
 _table_binding_definition.id
@@ -1105,6 +1127,8 @@ column_definition_46    "E-mail Notification"  group_notification ?       ?     
 column_definition_47    "Group ID"             unsubmitted_group  true    ?        ?               ?               ?
 column_definition_48    'Group Status'         status_code        true    ?        ?               ?               ?
 column_definition_49    'Deposition Date'      deposition_date    true    ?        ?               ?               ?
+column_definition_50    'Submission Date'      submit_date        true    ?        ?               ?               ?
+
 #
 loop_
 _table_data_field_binding.id
@@ -1137,6 +1161,7 @@ validation_date    last_validation_sent_date        "dataInfo"
 received_date      last_message_received_date       "dataInfo"
 sent_date          last_message_sent_date           "dataInfo"
 reminder_date      last_reminder_sent_date          "dataInfo"
+submit_date        submit_date                      "dataInfo"
 dep_workflow       class_id                         "dataInfo"
 dep_entry_id       dep_entry_id_tmplt                page_template
 dep_method         abbrv_method                     "dataInfo"
