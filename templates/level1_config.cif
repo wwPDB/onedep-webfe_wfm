@@ -903,8 +903,11 @@ table_definition_1   column_definition_2
 table_definition_1   column_definition_3
 table_definition_1   column_definition_4
 table_definition_1   column_definition_5
-table_definition_1   column_definition_19
-table_definition_1   column_definition_20
+table_definition_3   column_definition_17
+table_definition_3   column_definition_18
+table_definition_3   column_definition_19
+table_definition_3   column_definition_20
+table_definition_3   column_definition_21
 table_definition_1   column_definition_6
 table_definition_1   column_definition_7
 table_definition_1   column_definition_8
@@ -923,8 +926,11 @@ table_definition_2   column_definition_2
 table_definition_2   column_definition_3
 table_definition_2   column_definition_4
 table_definition_2   column_definition_5
-table_definition_2   column_definition_19
-table_definition_2   column_definition_20
+table_definition_3   column_definition_17
+table_definition_3   column_definition_18
+table_definition_3   column_definition_19
+table_definition_3   column_definition_20
+table_definition_3   column_definition_21
 table_definition_2   column_definition_6
 table_definition_2   column_definition_7
 table_definition_2   column_definition_8
