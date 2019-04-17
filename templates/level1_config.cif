@@ -127,7 +127,7 @@ _tab_definition_table.default_display
 _tab_definition_table.default_load
 _tab_definition_table.table_title
 to_do_entry_tmplt          table_1    table_definition_1    option_definition_1    inline    true      ?
-proc_entry_tmplt           table_1    table_definition_2    option_definition_1    inline    true      ?
+proc_entry_tmplt           table_1    table_definition_20    option_definition_1    inline    true      ?
 author_correction_tmplt    table_1    table_definition_2    option_definition_1    inline    true      ?
 pending_entry_tmplt        table_1    table_definition_2    option_definition_1    inline    true      ?
 reminder_entry_tmplt       table_1    table_definition_3    option_definition_1    inline    true      ?
@@ -937,6 +937,24 @@ table_definition_2   column_definition_15
 table_definition_2   column_definition_16
 table_definition_2   column_definition_101
 table_definition_2   column_definition_102
+#table_definition_20
+table_definition_20   column_definition_1
+table_definition_20   column_definition_2
+table_definition_20   column_definition_3
+table_definition_20   column_definition_4
+table_definition_20   column_definition_5
+table_definition_20   column_definition_6
+table_definition_20   column_definition_7
+table_definition_20   column_definition_8
+table_definition_20   column_definition_9
+table_definition_20   column_definition_10
+table_definition_20   column_definition_12
+table_definition_20   column_definition_13
+table_definition_20   column_definition_14
+table_definition_20   column_definition_15
+table_definition_20   column_definition_16
+table_definition_20   column_definition_101
+table_definition_20   column_definition_102
 #table_definition_3
 table_definition_3   column_definition_1
 table_definition_3   column_definition_2
