@@ -1183,16 +1183,22 @@ author_correction_tmplt    table_1    selection_2    ?    initials
 ;
 "dep_status_code:REL,OBS,WDRN"
 pending_entry_tmplt        table_1    selection_2    ?    initials         
-;l.dep_set_id = d.dep_set_id and l.annotator_initials = '%(initials)s' and ( ( ( l.dep_status_code in ( 'AUTH', 'REFI', 'WAIT' ) and l.pdb_id != '?' ) or 
+;l.annotator_initials = '%(initials)s' and ( ( ( l.dep_status_code in ( 'AUTH', 'REFI', 'WAIT' ) and l.pdb_id != '?' ) or 
 ( l.pdb_id = '?' and l.dep_emdb_id != '?' and l.dep_status_code_emdb in ( 'AUTH', 'REFI', 'WAIT' ) ) ) or ( ( ( l.dep_status_code in ( 'HOLD', 'HPUB', 'OBS', 'REL', 'WDRN' ) 
 and l.pdb_id != '?' ) or ( l.pdb_id = '?' and l.dep_emdb_id != '?' and l.dep_status_code_emdb in ( 'HOLD', 'HPUB', 'OBS', 'REL', 'WDRN' ) ) ) and l.dep_notify <> '' ) ) 
 order by dep_initial_deposition_date ASC
 ;
 "dep_status_code:REL,OBS,WDRN"
-reminder_entry_tmplt       table_1    selection_2    ?    initials
-;l.dep_set_id = d.dep_set_id and l.annotator_initials = '%(initials)s' and ( ( l.dep_status_code in ( 'WAIT', 'PROC', 'REPL', 'AUTH', 'AUCO' ) and l.pdb_id != '?' ) or 
-( l.pdb_id = '?' and l.dep_emdb_id != '?' and l.dep_status_code_emdb in ( 'WAIT', 'PROC', 'REPL', 'AUTH', 'AUCO' ) ) ) and 
-l.dep_initial_deposition_date <= DATE_SUB(curdate(), interval 14 day) order by dep_initial_deposition_date ASC
+# This is continuing a join
+reminder_entry_tmplt       table_1    selection_8    ?    initials
+;l.annotator_initials = '%(initials)s' and 
+(   ( ( l.dep_status_code in ( 'WAIT', 'PROC', 'REPL', 'AUTH', 'AUCO' ) and l.pdb_id != '?' ) 
+or ( l.pdb_id = '?' and l.dep_emdb_id != '?' and l.dep_status_code_emdb in ( 'WAIT', 'PROC', 'REPL', 'AUTH', 'AUCO' ) ) )
+and 
+  l.dep_initial_deposition_date <= DATE_SUB(curdate(), interval 14 day)) or
+( l.dep_status_code = 'REL' and l.dep_post_rel_status in ( 'WAIT', 'PROC', 'REPL', 'AUTH', 'AUCO' ) and l.pdb_id != '?'
+  and r.last_validation_sent_date <= DATE_SUB(curdate(), interval 21 day))
+order by l.dep_status_code = 'REL' ASC, dep_initial_deposition_date ASC
 ;
 ?
 search_tmplt               table_1    selection_2    ?    ?    ?    ?
@@ -1258,6 +1264,13 @@ selection_6
 selection_7
 ;select distinct b.dep_set_id, b.email, b.country, b.notify as dep_notify from batch_user_data as b left outer join group_deposition_information as g 
 on (b.dep_set_id = g.group_id) where
+;
+# Used for reminder message
+selection_8
+;select distinct l.class_id, l.inst_id, l.inst_status, l.dep_set_id, l.deppw, l.dep_exp_method as method, l.pdb_id, l.dep_bmrb_id as bmrb_id, l.dep_emdb_id as emdb_id, 
+l.dep_status_code, l.dep_status_code_exp, l.dep_author_release_status_code, l.dep_status_code_emdb, l.dep_initial_deposition_date, l.annotator_initials, l.dep_notify, 
+l.dep_locking, l.dep_title, l.dep_author_list, l.dep_post_rel_status, d.dep_author_release_status_code_emdb, d.title_emdb, d.author_list_emdb, r.last_validation_sent_date from dep_last_instance as l inner join deposition as d on l.dep_set_id = d.dep_set_id 
+left join remind_message_track as r on l.dep_set_id=r.dep_set_id where
 ;
 #
 loop_
