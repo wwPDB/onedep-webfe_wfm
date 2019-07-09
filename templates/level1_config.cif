@@ -1183,7 +1183,7 @@ author_correction_tmplt    table_1    selection_2    ?    initials
 ;
 "dep_status_code:REL,OBS,WDRN"
 pending_entry_tmplt        table_1    selection_2    ?    initials         
-;l.annotator_initials = '%(initials)s' and ( ( ( l.dep_status_code in ( 'AUTH', 'REFI', 'WAIT' ) and l.pdb_id != '?' ) or 
+;l.dep_set_id = d.dep_set_id and l.annotator_initials = '%(initials)s' and ( ( ( l.dep_status_code in ( 'AUTH', 'REFI', 'WAIT' ) and l.pdb_id != '?' ) or 
 ( l.pdb_id = '?' and l.dep_emdb_id != '?' and l.dep_status_code_emdb in ( 'AUTH', 'REFI', 'WAIT' ) ) ) or ( ( ( l.dep_status_code in ( 'HOLD', 'HPUB', 'OBS', 'REL', 'WDRN' ) 
 and l.pdb_id != '?' ) or ( l.pdb_id = '?' and l.dep_emdb_id != '?' and l.dep_status_code_emdb in ( 'HOLD', 'HPUB', 'OBS', 'REL', 'WDRN' ) ) ) and l.dep_notify <> '' ) ) 
 order by dep_initial_deposition_date ASC
