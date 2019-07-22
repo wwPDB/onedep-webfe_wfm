@@ -34,14 +34,14 @@ contact_table_row_tmplt    string     yes   ?
 audit_history_table_tmplt         string    no    audit_history_table_row_tmplt
 ;<table>
 <tr><th colspan="5"><b>Audit history</b></th></tr>
-<tr><th ><b>Version</b></th><th>&nbsp; &nbsp;</th><th><b>Release Date</b></th><th>&nbsp; &nbsp;</th><th><b>mmCIF version number</b></th></tr>
+<tr><th ><b>Version</b></th><th>&nbsp; &nbsp;</th><th><b>Release Date</b></th><th>&nbsp; &nbsp;</th><th><b>mmCIF version number</b></th><th>&nbsp; &nbsp;</th><th><b>Author Replacement</b></th></tr>
 %(table_rows)s
 </table>
 <br />
 ;
 #audit_history_table_row_tmplt
 audit_history_table_row_tmplt    string     yes   ?
-'<tr><td align="center">%(public_version)s</td><td>&nbsp; &nbsp;</td><td>%(date)s</td><td>&nbsp; &nbsp;</td><td align="center">%(file_version)s</td></tr>'
+'<tr><td align="center">%(public_version)s</td><td>&nbsp; &nbsp;</td><td>%(date)s</td><td>&nbsp; &nbsp;</td><td align="center">%(file_version)s</td><td>&nbsp; &nbsp;</td><td align="center">%(description)s</td></tr>'
 #timestamp_table_tmplt
 timestamp_table_tmplt     string    no      timestamp_table_row_tmplt
 ;<br />
@@ -121,6 +121,7 @@ contact_table_row_tmplt    country      country                              dat
 audit_history_table_row_tmplt  public_version public_version                 dataInfo       n
 audit_history_table_row_tmplt  date           date                           dataInfo       n
 audit_history_table_row_tmplt  file_version   file_version                   dataInfo       n
+audit_history_table_row_tmplt  description    description                    dataInfo       n
 #timestamp_table_row_tmplt
 timestamp_table_row_tmplt  event        event                                dataInfo       n
 timestamp_table_row_tmplt  mtime        mtime                                dataInfo       n

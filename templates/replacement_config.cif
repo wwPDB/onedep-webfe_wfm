@@ -1,0 +1,70 @@
+data_template
+#
+loop_
+_page_template.id
+_page_template.type
+_page_template.repeat
+_page_template.dependence
+_page_template.page
+#replacement_tmplt
+replacement_tmplt           file      no    ?    "replacement_tmplt.html"           
+#common_page_header_tmpl
+common_page_header_tmplt    file      no    ?    "common_page_header_tmplt.html"   
+#replace_count_table_tmplt
+replace_count_table_tmplt   string    no    replace_count_table_row_tmplt
+;<table>
+<p><b>Number of replacements per PI in last year</b></p>
+      <table class="wfmTablesmall" cellpadding="5px">
+          <tr>
+              <th class="wfmTh" style="text-align: left;" width="33%%">Name</th>
+              <th class="wfmTh" width="33%%">ORCID</th>
+              <th class="wfmTh" width="10%%"># replacements</th>
+          </tr>
+%(table_rows)s
+      </table>
+;
+#replace_count_table_row_tmplt
+replace_count_table_row_tmplt    string     yes   ?
+;          <tr>
+              <td class="textTdDown" width="33%%">%(name)s</td>
+              <td class="textTd" width="33%%">%(ORCID)s</td>
+              <td class="textTd" width="10%%">%(numreplace)s</td>
+          </tr>
+;
+#
+loop_
+_page_template_parameter.page_id
+_page_template_parameter.variable
+_page_template_parameter.value
+_page_template_parameter.type
+_page_template_parameter.preprocess
+#replacement_tmplt
+replacement_tmplt              page_head     common_page_header_tmplt            page_template  y
+replacement_tmplt              sessionid     sessionid                           sessionInfo    n
+replacement_tmplt              identifier    identifier                          sessionInfo    n
+replacement_tmplt              DAVersion     DAVersion                           sessionInfo    n
+replacement_tmplt              annotator     annotator                           sessionInfo    n
+replacement_tmplt              user_name     user_name                           userInfo       n
+replacement_tmplt              group_name    group_name                          userInfo       n
+replacement_tmplt              first_name    first_name                          userInfo       n
+replacement_tmplt              last_name     last_name                           userInfo       n
+replacement_tmplt              replace_count  replace_count_table_tmplt          page_template   n
+#common_page_header_tmplt
+common_page_header_tmplt   head_title   "PostRel replacement history"        constant       n
+common_page_header_tmplt   script
+;<script type='text/javascript' src='/wfm/js/depui.js'></script>
+;
+constant       n
+common_page_header_tmplt   onload       " "                                  constant       n
+common_page_header_tmplt   user         "%(user_name)s"                      constant       n
+common_page_header_tmplt   sessionid    "%(sessionid)s"                      constant       n
+common_page_header_tmplt   breadcrumbs  "PI Replacement detail"              constant       n
+common_page_header_tmplt   group_name   "%(group_name)s"                     constant       n
+common_page_header_tmplt   first_name   "%(first_name)s"                     constant       n
+common_page_header_tmplt   last_name    "%(last_name)s"                      constant       n
+#replace_count_table_tmplt
+replace_count_table_tmplt  table_rows   replace_count_table_row_tmplt        page_template  n
+#replace_count_table_row_tmplt
+replace_count_table_row_tmplt  ORCID    ORCID                 dataInfo       n
+replace_count_table_row_tmplt  name           name                           dataInfo       n
+replace_count_table_row_tmplt  numreplace   numreplace                   dataInfo       n
