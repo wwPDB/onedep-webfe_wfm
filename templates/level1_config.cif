@@ -1214,7 +1214,7 @@ and
   l.dep_initial_deposition_date <= DATE_SUB(curdate(), interval 14 day)) or
 ( l.dep_status_code = 'REL' and l.dep_post_rel_status in ( 'WAIT', 'PROC', 'REPL', 'AUTH', 'AUCO' ) and l.pdb_id != '?'
   and r.last_validation_sent_date <= DATE_SUB(curdate(), interval 21 day))
-order by l.dep_status_code = 'REL' ASC, dep_initial_deposition_date ASC
+order by l.dep_status_code = 'REL' DESC, dep_initial_deposition_date ASC
 ;
 ?
 search_tmplt               table_1    selection_2    ?    ?    ?    ?
