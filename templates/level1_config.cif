@@ -1207,13 +1207,23 @@ order by dep_initial_deposition_date ASC
 "dep_status_code:REL,OBS,WDRN"
 # This is continuing a join
 reminder_entry_tmplt       table_1    selection_8    ?    initials
-;l.annotator_initials = '%(initials)s' and 
-(   ( ( l.dep_status_code in ( 'WAIT', 'PROC', 'REPL', 'AUTH', 'AUCO' ) and l.pdb_id != '?' ) 
-or ( l.pdb_id = '?' and l.dep_emdb_id != '?' and l.dep_status_code_emdb in ( 'WAIT', 'PROC', 'REPL', 'AUTH', 'AUCO' ) ) )
-and 
-  l.dep_initial_deposition_date <= DATE_SUB(curdate(), interval 14 day)) or
-( l.dep_status_code = 'REL' and l.dep_post_rel_status in ( 'WAIT', 'PROC', 'REPL', 'AUTH', 'AUCO' ) and l.pdb_id != '?'
-  and r.last_validation_sent_date <= DATE_SUB(curdate(), interval 21 day))
+;l.annotator_initials = '%(initials)s'
+and
+(
+ (
+   (
+     ( l.dep_status_code in ( 'WAIT', 'PROC', 'REPL', 'AUTH', 'AUCO' ) and l.pdb_id != '?' )
+     or
+     ( l.pdb_id = '?' and l.dep_emdb_id != '?' and l.dep_status_code_emdb in ( 'WAIT', 'PROC', 'REPL', 'AUTH', 'AUCO' ) )
+   )
+   and 
+   l.dep_initial_deposition_date <= DATE_SUB(curdate(), interval 14 day)
+ )
+or
+ ( l.dep_status_code = 'REL' and l.dep_post_rel_status in ( 'WAIT', 'PROC', 'REPL', 'AUTH', 'AUCO' ) and l.pdb_id != '?'
+   and r.last_validation_sent_date <= DATE_SUB(curdate(), interval 21 day)
+ )
+)
 order by l.dep_status_code = 'REL' DESC, dep_initial_deposition_date ASC
 ;
 ?
