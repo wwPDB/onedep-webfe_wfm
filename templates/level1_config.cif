@@ -8,6 +8,7 @@ DEP     deposit_template
 LEAD    leader_template
 PDBE    leader_template
 PDBJ    leader_template
+BMRB    leader_template
 #
 #loop_
 #_user_tab_table_column_config.user_id
