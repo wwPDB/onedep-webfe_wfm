@@ -1218,7 +1218,7 @@ and
      ( l.pdb_id = '?' and l.dep_emdb_id != '?' and l.dep_status_code_emdb in ( 'WAIT', 'PROC', 'REPL', 'AUTH', 'AUCO' ) )
    )
    and 
-   l.dep_initial_deposition_date <= DATE_SUB(curdate(), interval 14 day)
+   l.dep_initial_deposition_date <= DATE_SUB(curdate(), interval 21 day)
  )
 or
  ( l.dep_status_code = 'REL' and l.dep_post_rel_status in ( 'WAIT', 'PROC', 'REPL', 'AUTH', 'AUCO' ) and l.pdb_id != '?'
