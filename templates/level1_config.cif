@@ -207,8 +207,8 @@ _tab_preprocess_mapping.value
 <option value="dep_by_author">Find On-going Deposition by Author</option>
 ;
 #my_message_tmplt
-"my_message_tmplt,tab_selection_tmplt"           tab_label      "My Messages (%(counts)s)"
-"my_message_tmplt,tab_content_tmplt"             tab_title      "My outstanding messages (%(counts)s)"
+"my_message_tmplt,tab_selection_tmplt"           tab_label      "New Messages (%(counts)s)"
+"my_message_tmplt,tab_content_tmplt"             tab_title      "New messages (%(counts)s)"
 "my_message_tmplt,tab_content_tmplt"             left_position  "35%%"
 #assign_tmplt
 "assign_tmplt,tab_selection_tmplt"               tab_label      "Open Assignment (%(counts)s)"
@@ -219,10 +219,10 @@ _tab_preprocess_mapping.value
 "all_message_tmplt,tab_content_tmplt"            left_position  "35%%"
 #retired_annotator_tmplt
 "retired_annotator_tmplt,tab_selection_tmplt"    tab_label      "For Release (%(counts)s)"
-"retired_annotator_tmplt,tab_content_tmplt"      tab_title      "For Release (%(counts)s)"
+"retired_annotator_tmplt,tab_content_tmplt"      tab_title      "Entries marked for release (%(counts)s)"
 "retired_annotator_tmplt,tab_content_tmplt"      left_position  "35%%"
 #deposit_message_tmplt
-"deposit_message_tmplt,tab_selection_tmplt"      tab_label      "Unsubmitted w/Messages (%(counts)s)"
+"deposit_message_tmplt,tab_selection_tmplt"      tab_label      "Unsubmitted Messages (%(counts)s)"
 "deposit_message_tmplt,tab_content_tmplt"        tab_title      "Unsubmitted Entries w/ Messages"
 "deposit_message_tmplt,tab_content_tmplt"        left_position  "40%%"
 #deposit_entry_tmplt
