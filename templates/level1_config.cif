@@ -1244,10 +1244,10 @@ all_message_tmplt          table_1    selection_2    ?    ?
 or ( l.pdb_id = '?' and l.dep_emdb_id != '?' and l.dep_status_code_emdb not in ('DEP', 'VAL') ) ) order by l.annotator_initials DESC, l.dep_status_code DESC
 ;
 "dep_status_code:REL"
-retired_annotator_tmplt    table_1    selection_2    ?    retired_annotator
-;l.dep_set_id = d.dep_set_id and l.annotator_initials in ( '%(retired_annotator)s' ) and ( l.dep_notify <> '' or
-( l.dep_status_code in ('REPL', 'AUCO', 'REUP', 'AUXS', 'AUXU') and l.pdb_id != '?' ) or ( l.pdb_id = '?' and l.dep_emdb_id != '?' and 
-l.dep_status_code_emdb in ('REPL', 'AUCO', 'REUP', 'AUXS', 'AUXU') ) ) order by l.annotator_initials DESC, l.dep_status_code DESC
+retired_annotator_tmplt    table_1    selection_2    ?    ?
+;l.dep_set_id = d.dep_set_id and ( l.dep_notify like '%%N%%' or l.dep_notify like '%%B%%' or (l.dep_notify <> '' and l.annotator_initials = 'EBI')) and 
+(( l.dep_status_code not in ('DEP', 'VAL') and l.pdb_id != '?') or ( l.pdb_id = '?' and l.dep_emdb_id != '?' and l.dep_status_code_emdb not in ('DEP', 'VAL') ))
+and (l.dep_notify = 'R*') order by l.annotator_initials DESC, l.dep_status_code DESC
 ;
 ? 
 deposit_message_tmplt      table_1    selection_4    ?    ?    "annotator_initials = 'DEP' and dep_status_code = 'DEP' and dep_notify <> '' order by dep_initial_deposition_date DESC"
