@@ -218,8 +218,8 @@ _tab_preprocess_mapping.value
 "all_message_tmplt,tab_content_tmplt"            tab_title      "All outstanding messages (%(counts)s)"
 "all_message_tmplt,tab_content_tmplt"            left_position  "35%%"
 #retired_annotator_tmplt
-"retired_annotator_tmplt,tab_selection_tmplt"    tab_label      "Past Annotators (%(counts)s)"
-"retired_annotator_tmplt,tab_content_tmplt"      tab_title      "All outstanding messages (%(counts)s)"
+"retired_annotator_tmplt,tab_selection_tmplt"    tab_label      "For Release (%(counts)s)"
+"retired_annotator_tmplt,tab_content_tmplt"      tab_title      "For Release (%(counts)s)"
 "retired_annotator_tmplt,tab_content_tmplt"      left_position  "35%%"
 #deposit_message_tmplt
 "deposit_message_tmplt,tab_selection_tmplt"      tab_label      "Unsubmitted w/Messages (%(counts)s)"
