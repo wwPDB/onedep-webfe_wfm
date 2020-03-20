@@ -36,7 +36,7 @@ default_template     reminder_entry_tmplt          ?           ?
 default_template     search_tmplt                  ?           ? 
 default_template     my_message_tmplt              ?           ? 
 default_template     all_message_tmplt             ?           ? 
-default_template     for_release_tmplt       ?           ? 
+default_template     retired_annotator_tmplt       ?           ? 
 default_template     group_entry_tmplt             statusDB    batch_user_data 
 default_template     unsubmit_group_entry_tmplt    statusDB    batch_user_data 
 default_template    deposit_message_tmplt         ?           ?
@@ -94,8 +94,8 @@ assign_tmplt               tab_tags        tab_selection_tmplt    html    tab_co
 assign_tmplt               tab_contents    tab_assign_tmplt       html    ?               ?                                          ?            
 all_message_tmplt          tab_tags        tab_selection_tmplt    html    tab_count       num_entries                                count_tmplt1 
 all_message_tmplt          tab_contents    tab_content_tmplt      html    status_count    num_entries                                count_tmplt1 
-for_release_tmplt          tab_tags        tab_selection_tmplt    html    tab_count       num_entries                                count_tmplt1 
-for_release_tmplt          tab_contents    tab_content_tmplt      html    status_count    num_entries                                count_tmplt1 
+retired_annotator_tmplt    tab_tags        tab_selection_tmplt    html    tab_count       num_entries                                count_tmplt1 
+retired_annotator_tmplt    tab_contents    tab_content_tmplt      html    status_count    num_entries                                count_tmplt1 
 deposit_message_tmplt      tab_tags        tab_selection_tmplt    html    tab_count       num_entries                                count_tmplt1 
 deposit_message_tmplt      tab_contents    tab_content_tmplt      html    ?               ?                                          ?            
 deposit_entry_tmplt        tab_tags        tab_selection_tmplt    html    tab_count       num_entries                                count_tmplt1 
@@ -140,7 +140,7 @@ dep_search_tmplt           table_3    table_definition_4    option_definition_2 
 my_message_tmplt           table_1    table_definition_2    option_definition_1    inline    true      ?
 assign_tmplt               table_1    table_definition_6    option_definition_3    inline    true      ?
 all_message_tmplt          table_1    table_definition_2    option_definition_1    inline    true      ?
-for_release_tmplt          table_1    table_definition_2    option_definition_1    inline    true      ?
+retired_annotator_tmplt    table_1    table_definition_2    option_definition_1    inline    true      ?
 deposit_message_tmplt      table_1    table_definition_4    option_definition_2    inline    true      ?
 deposit_entry_tmplt        table_1    table_definition_4    option_definition_2    inline    true      ?
 group_entry_tmplt          table_1    table_definition_10   option_definition_6    inline    true      ?
@@ -217,10 +217,10 @@ _tab_preprocess_mapping.value
 "all_message_tmplt,tab_selection_tmplt"          tab_label      "All Messages (%(counts)s)"
 "all_message_tmplt,tab_content_tmplt"            tab_title      "All outstanding messages (%(counts)s)"
 "all_message_tmplt,tab_content_tmplt"            left_position  "35%%"
-#for_release_tmplt
-for_release_tmplt,tab_selection_tmplt"           tab_label      "Past Annotators (%(counts)s)"
-for_release_tmplt,tab_content_tmplt"             tab_title      "All outstanding messages (%(counts)s)"
-for_release_tmplt,tab_content_tmplt"             left_position  "35%%"
+#retired_annotator_tmplt
+"retired_annotator_tmplt,tab_selection_tmplt"    tab_label      "Past Annotators (%(counts)s)"
+"retired_annotator_tmplt,tab_content_tmplt"      tab_title      "All outstanding messages (%(counts)s)"
+"retired_annotator_tmplt,tab_content_tmplt"      left_position  "35%%"
 #deposit_message_tmplt
 "deposit_message_tmplt,tab_selection_tmplt"      tab_label      "Unsubmitted w/Messages (%(counts)s)"
 "deposit_message_tmplt,tab_content_tmplt"        tab_title      "Unsubmitted Entries w/ Messages"
@@ -1244,7 +1244,7 @@ all_message_tmplt          table_1    selection_2    ?    ?
 or ( l.pdb_id = '?' and l.dep_emdb_id != '?' and l.dep_status_code_emdb not in ('DEP', 'VAL') ) ) order by l.annotator_initials DESC, l.dep_status_code DESC
 ;
 "dep_status_code:REL"
-for_release_tmplt    table_1    selection_2    ?    retired_annotator
+retired_annotator_tmplt    table_1    selection_2    ?    retired_annotator
 ;l.dep_set_id = d.dep_set_id and l.annotator_initials in ( '%(retired_annotator)s' ) and ( l.dep_notify <> '' or
 ( l.dep_status_code in ('REPL', 'AUCO', 'REUP', 'AUXS', 'AUXU') and l.pdb_id != '?' ) or ( l.pdb_id = '?' and l.dep_emdb_id != '?' and 
 l.dep_status_code_emdb in ('REPL', 'AUCO', 'REUP', 'AUXS', 'AUXU') ) ) order by l.annotator_initials DESC, l.dep_status_code DESC
