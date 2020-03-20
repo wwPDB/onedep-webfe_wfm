@@ -1241,7 +1241,7 @@ and l.pdb_id != '?' ) or ( l.pdb_id = '?' and l.dep_emdb_id != '?' and l.dep_sta
 assign_tmplt               table_1    selection_5    ?    site     "annotator_initials = 'unknown' and dep_status_code = 'PROC' and dep_deposit_site = '%(site)s'"    ?
 all_message_tmplt          table_1    selection_2    ?    ? 
 ;l.dep_set_id = d.dep_set_id and ( l.dep_notify like '%%N%%' or l.dep_notify like '%%B%%' or (l.dep_notify <> '' and l.annotator_initials = 'EBI')) and ( ( l.dep_status_code not in ('DEP', 'VAL') and l.pdb_id != '?' )
-or ( l.pdb_id = '?' and l.dep_emdb_id != '?' and l.dep_status_code_emdb not in ('DEP', 'VAL') ) ) and (l.dep_notify != 'R*') order by l.annotator_initials DESC, l.dep_status_code DESC
+or ( l.pdb_id = '?' and l.dep_emdb_id != '?' and l.dep_status_code_emdb not in ('DEP', 'VAL') ) ) order by l.annotator_initials DESC, l.dep_status_code DESC
 ;
 "dep_status_code:REL"
 retired_annotator_tmplt    table_1    selection_2    ?    ?
