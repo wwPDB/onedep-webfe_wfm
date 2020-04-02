@@ -478,14 +478,14 @@ function select_entry(formid, tagid) {
        }
 }
 
-function check_entry(formid) {
-       var found_checked_entry = false;
+function get_entry_array(formid, selected_only) {
+       var entry_array = [];
        $('#' + formid).find('input[name="entry_id"]').each(function() {
-            if ($(this).is(':checked')) {
-                 found_checked_entry = true;
-            }
+            if (selected_only) {
+                 if ($(this).is(':checked')) entry_array.push($(this).val());
+            } else entry_array.push($(this).val());
        });
-       return found_checked_entry;
+       return entry_array;
 }
 
 function ajax_submit_form(formid, url, option_value) {
@@ -501,7 +501,7 @@ function ajax_submit_form(formid, url, option_value) {
                 if (jsonObj.errorflag) {
                      alert(jsonObj.errortext);
                 } else {
-                     if (option_value == 'cifcheck' || option_value == 'sequence') {
+                     if ((option_value == 'cifcheck') || (option_value == 'sequence') || (option_value == 'other') || (option_value == 'recover')) {
                          var myWindow = window.open('', '_blank');
                          myWindow.document.write('<pre>\n' + jsonObj.textcontent + '\n</pre>\n');
                          myWindow.document.close();
@@ -509,10 +509,18 @@ function ajax_submit_form(formid, url, option_value) {
                      } else {
                           alert(jsonObj.textcontent);
                      }
-                     if (option_value == 'status') {
-                          $("#status-identifier-dialog").addClass("displaynone");
-                     } else if (option_value == 'sequence') {
-                          $("#merge-sequence-dialog").addClass("displaynone");
+
+                     if (option_value == 'other') {
+                          var entryArray = get_entry_array(formid, false);
+                          for (var i = 0; i < entryArray.length; ++i) {
+                               $('#' + entryArray[i]).html("");
+                               $('#' + entryArray[i]).addClass("displaynone");
+                          }
+                     }
+
+                     if ((option_value == 'status') || (option_value == 'sequence') || (option_value == 'other') || (option_value == 'recover')) {
+                          $("#panel-dialog").addClass("displaynone");
+                          $("#panel-dialog").hide();
                      }
                 }
             },
@@ -523,14 +531,25 @@ function ajax_submit_form(formid, url, option_value) {
        });
 }
 
-function show_merge_sequence_panel() {
-       $("#status-identifier-dialog").addClass("displaynone");
-       $("#merge-sequence-dialog").removeClass("displaynone");
-}
+function show_selected_panel(panel_name, prefix) {
+       var val = $("#" + panel_name).html();
+       var HtmlText = val;
+       if (prefix != '') HtmlText = val.replace(/XXX/g, prefix);
+       $("#panel-dialog").html(HtmlText);
+       $("#panel-dialog").show();
 
-function show_status_selection_panel() {
-       $("#merge-sequence-dialog").addClass("displaynone");
-       $("#status-identifier-dialog").removeClass("displaynone");
+       $('#ligand_select_label').addClass("displaynone");
+       $('#ligand_select_all').val("Select All");
+       $('#ligand_select_all').addClass("displaynone");
+
+       var entryArray = get_entry_array('run_select_worktask', false);
+       for (var i = 0; i < entryArray.length; ++i) {
+            $('#' + entryArray[i]).html("");
+            $('#' + entryArray[i]).addClass("displaynone");
+       }
+
+       if (panel_name != 'status-identifier-dialog') return;
+
        var myDate1 = new Date();
        var myDate2 = new Date();
        var dayOfMonth = myDate2.getDate();
@@ -546,12 +565,99 @@ function show_status_selection_panel() {
        });
 }
 
+function get_ligand_of_interesting_map() {
+       var identifier = $("#identifier").val();
+       getLigandMapFlag = true;
+
+       $.ajax({ type: 'GET', async: false, url: '/service/workmanager/get_ligand_list', dataType: 'json',
+            data: { 'sessionid': session_ID, 'annotator': annotator, 'identifier': identifier },
+            beforeSend: function() {
+                 progressStart();
+            },
+            success: function(jsonOBJ) {
+                 progressEnd();
+                 if (!jsonOBJ.errorflag) {
+                      if ('map' in jsonOBJ) {
+                           for (var prop in jsonOBJ.map) {
+                                if (jsonOBJ.map.hasOwnProperty(prop)) ligandMap[prop] = jsonOBJ.map[prop];
+                           }
+                      }
+                 } else alert(jsonOBJ.errortext);
+            },
+            error: function (data, status, e) {
+                 progressEnd();
+                 alert(e);
+            }
+       });
+}
+
+$(document).on('click','.loi_update', function() {
+       if (!getLigandMapFlag) get_ligand_of_interesting_map();
+
+       var ischecked = false;
+       if (this.checked) ischecked = true;
+
+       if (Object.keys(ligandMap).length === 0) {
+            if (ischecked) {
+                 alert("No ligand found.");
+                 $(this).prop('checked', false);
+            }
+            return;
+       }
+
+       var entryArray = get_entry_array('run_select_worktask', false);
+       for (var i = 0; i < entryArray.length; ++i) {
+            if (ischecked) {
+                 var htmlText = "";
+                 if (entryArray[i] in ligandMap) {
+                      for (var j = 0; j < ligandMap[entryArray[i]].length; ++j) {
+                           htmlText += '<input type="checkbox" name="ligand_' + entryArray[i] + '" value="' + ligandMap[entryArray[i]][j] + '" /> '
+                                     + ligandMap[entryArray[i]][j] + '&nbsp; &nbsp; &nbsp; &nbsp;'
+                      }
+                 }
+                 $('#' + entryArray[i]).html(htmlText);
+                 $('#' + entryArray[i]).removeClass("displaynone");
+            } else {
+                 $('#' + entryArray[i]).html("");
+                 $('#' + entryArray[i]).addClass("displaynone");
+            }
+       }
+
+       if (ischecked) {
+            $('#ligand_select_label').removeClass("displaynone");
+            $('#ligand_select_all').removeClass("displaynone");
+       } else {
+            $('#ligand_select_label').addClass("displaynone");
+            $('#ligand_select_all').val("Select All");
+            $('#ligand_select_all').addClass("displaynone");
+       }
+});
+
+function select_ligand(formid, tagid) {
+       var request = $('#' + tagid).attr('value');
+
+       var entryId_array  = get_entry_array(formid, false);
+       for (var i = 0; i < entryId_array.length; ++i) {
+            $('#' + formid).find('input[name="ligand_' + entryId_array[i] +'"]').each(function() {
+                if (request == 'Select All')
+                     $(this).prop('checked', true);
+                else $(this).prop('checked', false);
+            });
+       }
+
+       if (request == 'Select All') {
+           $('#' + tagid).attr('value', 'Unselect All');
+       } else {
+           $('#' + tagid).attr('value', 'Select All');
+       }
+}
+
 function run_update_status_task() {
        var status_tokens = [ 'status_code', 'author_approval_type', 'author_release_status_code', 
                              'date_hold_coordinates', 'pdbx_annotator', 'process_site' ];
        var found_value = false;
        for (var i = 0; i < status_tokens.length; i++) {
-            var val = $('#' + status_tokens[i]).val();
+            var val = $('#status_' + status_tokens[i]).val();
             if (val != '') {
                  found_value = true;
                  break;
@@ -561,8 +667,8 @@ function run_update_status_task() {
             alert('No status info. selected.');
             return;
        }
-       var found_checked_entry = check_entry('run_select_worktask');
-       if (!found_checked_entry) {
+       var entryArray = get_entry_array('run_select_worktask', true);
+       if (entryArray.length == 0) {
             alert('No entry selected.');
             return;
        }
@@ -579,8 +685,8 @@ function run_selected_workflow() {
             found_error = true;
        }
 
-       var found_checked_entry = check_entry('run_select_workflow');
-       if (!found_checked_entry) {
+       var entryArray = get_entry_array('run_select_workflow', true);
+       if (entryArray.length == 0) {
             alert('No entry selected.');
             found_error = true;
        }
@@ -592,17 +698,49 @@ function run_selected_workflow() {
 function run_selected_task(option) {
        var error_msg = '';
 
-       var found_checked_entry = check_entry('run_select_worktask');
-       if (!found_checked_entry) error_msg = 'No entry selected.';
+       var entryArray = get_entry_array('run_select_worktask', true);
+       if (entryArray.length == 0) {
+            error_msg = 'No entry selected.';
+       }
 
-       if (option == 'sequence') {
-            var val_id = $('#template_identifier').val();
-            var val_file = $('#template_file').val();
-            if (val_id == '' && val_file == '') {
+       var has_loi_token = false;
+       var has_other_token = false;
+       if ((option == 'other') || (option == 'recover')) {
+            $('#run_select_worktask').find('input[name="checked_list"]').each(function() {
+                 if (this.checked) {
+                      if ($(this).val() == "loi") has_loi_token = true;
+                      else has_other_token = true;
+                 }
+            });
+            if (!has_loi_token && !has_other_token) {
+                 if (error_msg != '') error_msg += '\n';
+                 error_msg += 'No task selected.';
+            }
+
+            if (has_loi_token) {
+                 var has_ligand_selected = false;
+                 for (var i = 0; i < entryArray.length; ++i) {
+                      $('#run_select_worktask').find('input[name="ligand_' + entryArray[i] +'"]').each(function() {
+                          if ($(this).is(':checked')) has_ligand_selected = true;
+                      });
+                 }
+                 if (!has_ligand_selected) {
+                      if (error_msg != '') error_msg += '\n';
+                      error_msg += "No ligand selected for 'Ligand of interesting' task.";
+                 }
+            }
+       }
+
+       if ((option == 'sequence') || ((option == 'other') && has_other_token)) {
+            var val_id = $('#' + option + '_template_identifier').val();
+            var val_file = $('#' + option + '_template_file').val();
+
+            if (val_id == '' && ((val_file == '') || (val_file == undefined))) {
                  if (error_msg != '') error_msg += '\n';
                  error_msg += "No template deposition ID or model file name defined.";
             }
        }
+
        if (error_msg != '') {
             alert(error_msg);
             return;

@@ -68,25 +68,8 @@ group_worktask_tmplt        string    no    ?
     </div>
 
     <div id="content">
-<form id="run_select_worktask" enctype="multipart/form-data" method="post">
-<input type="hidden" name="identifier" id="identifier" value="%(identifier)s" />
-<p><b>Run Tasks:</b></p>
-<table class="workflow" width="100%%" cellspacing="20" border="1">
-<tr>
-<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Merge Sequence Assignment" onClick="show_merge_sequence_panel();" /></td>
-<!--
-<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Merge Ligand Assignment" onClick="run_selected_task('ligand');" /></td>
--->
-<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Status Tasks" onClick="show_status_selection_panel();" /></td>
-<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Cif Check" onClick="run_selected_task('cifcheck');" /></td>
-<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Generate PDB Files" onClick="run_selected_task('pdbfile');" /></td>
-<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Load Database" onClick="run_selected_task('database');" /></td>
-<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Copy Processed Files to Deposition" onClick="run_selected_task('copy_to_deposition');" /></td>
-</tr>
-</table>
-<br/><br/>
 <div id="merge-sequence-dialog" class="status-inline displaynone">
-   <legend><input type="button" value="Merge Sequence Assignment" onClick="run_selected_task('sequence');" /></legend>
+   <legend><input type="button" value="Merge Sequence Annotation" onClick="run_selected_task('sequence');" /></legend>
    <div class="row">
       <div class="col-sm-12">
          <label class="control-label"> Please input deposition data set ID and internal file verson number (default: latest) for template model file: </label>
@@ -94,34 +77,41 @@ group_worktask_tmplt        string    no    ?
    </div>
    <div class="row">
       <div class="col-sm-4">
-         <label for="template_identifier" class="control-label"> Deposition ID </label>
-         <input type="text" name="template_identifier" id="template_identifier" value="" placeholder="D_1000000000" />
+         <label for="XXX_template_identifier" class="control-label"> Deposition ID </label>
+         <input type="text" name="template_identifier" id="XXX_template_identifier" value="" placeholder="D_1000000000" />
       </div>
       <div class="col-sm-6">
-         <label for="template_file_version" class="control-label"> Version number </label>
-         <input type="text" name="template_file_version" id="template_file_version" value="" placeholder="latest" />
+         <label for="XXX_template_file_version" class="control-label"> Version number </label>
+         <input type="text" name="template_file_version" id="XXX_template_file_version" value="" placeholder="latest" />
       </div>
    </div>
    <div class="row">
       <div class="col-sm-12"> &nbsp; </div>
    </div>
    <div class="row">
-      <div class="col-sm-12">
+      <div class="col-sm-4">
          <label class="control-label"> Or upload template model file: </label>
       </div> 
+      <div class="col-sm-6">
+         <input type="file" name="template_file" id="XXX_template_file" value="" />
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-sm-12"> &nbsp; </div>
    </div>
    <div class="row">
       <div class="col-sm-6">
-         <input type="file" name="template_file" id="template_file" value="" />
-      </div>
+         <label for="XXX_mismatch_flag" class="control-label"> Fix ALA/GLY mismatch: </label>
+         <input type="checkbox", name="mismatch_flag" id="XXX_mismatch_flag" />
+      </div> 
    </div>
 </div>
 <div id="status-identifier-dialog" class="status-inline displaynone">
    <legend><input type="button" value="Update Status" onClick="run_update_status_task();" /></legend>
    <div class="row">
       <div class="col-sm-4">
-         <label for="status_code" class="control-label">Processing Status Code</label>
-         <select id="status_code" name="status_code">
+         <label for="XXX_status_code" class="control-label">Processing Status Code</label>
+         <select id="XXX_status_code" name="status_code">
             <option value="" selected="selected"></option>
             <option value="HPUB">HPUB</option>
             <option value="AUTH">AUTH</option>
@@ -136,8 +126,8 @@ group_worktask_tmplt        string    no    ?
          </select>
       </div>
       <div class="col-sm-6">
-         <label for="author_approval_type" class="control-label">Approval type</label>
-         <select id="author_approval_type" name="author_approval_type">
+         <label for="XXX_author_approval_type" class="control-label">Approval type</label>
+         <select id="XXX_author_approval_type" name="author_approval_type">
             <option value="" selected="selected"></option>
             <option value="explicit">explict</option>
             <option value="implicit">implicit</option>
@@ -147,8 +137,8 @@ group_worktask_tmplt        string    no    ?
    <br/>
    <div class="row">
       <div class="col-sm-4">
-         <label class="control-label" for="author_release_status_code">Author Release Status Code</label>
-         <select id="author_release_status_code" name="author_release_status_code">
+         <label class="control-label" for="XXX_author_release_status_code">Author Release Status Code</label>
+         <select id="XXX_author_release_status_code" name="author_release_status_code">
             <option value="" selected="selected"></option>
             <option value="HPUB">HPUB</option>
             <option value="HOLD">HOLD</option>
@@ -158,10 +148,10 @@ group_worktask_tmplt        string    no    ?
       <div class="col-sm-6">
          <div class="row">
             <div class="col-sm-3">
-               <label for="date_hold_coordinates" class="control-label">Author hold date</label>
+               <label for="XXX_date_hold_coordinates" class="control-label">Author hold date</label>
             </div>
             <div class="col-sm-5 input-group date form_date" data-date="" data-date-format="yyyy-mm-dd">
-               <input id="date_hold_coordinates" name="date_hold_coordinates" class="form-control" size="12" type="text" value="" readonly />
+               <input id="XXX_date_hold_coordinates" name="date_hold_coordinates" class="form-control" size="12" type="text" value="" readonly />
                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
             </div>
@@ -171,12 +161,12 @@ group_worktask_tmplt        string    no    ?
    <br/>
    <div class="row">
       <div class="col-sm-4">
-         <label for="pdbx_annotator" class="control-label"> Reassign annotator </label>
-         <input type="text" name="pdbx_annotator" id="pdbx_annotator" value="" placeholder="initials" />
+         <label for="XXX_pdbx_annotator" class="control-label"> Reassign annotator </label>
+         <input type="text" name="pdbx_annotator" id="XXX_pdbx_annotator" value="" placeholder="initials" />
       </div>
       <div class="col-sm-6">
-         <label class="control-label" for="process_site">Process site</label>
-         <select id="process_site" name="process_site">
+         <label class="control-label" for="XXX_process_site">Process site</label>
+         <select id="XXX_process_site" name="process_site">
             <option value="" selected="selected"></option>
             <option value="RCSB">RCSB</option>
             <option value="PDBE">PDBE</option>
@@ -185,14 +175,96 @@ group_worktask_tmplt        string    no    ?
       </div>
    </div>
 </div>
+<div id="merge-other-dialog" class="status-inline displaynone">
+   <legend><input type="button" value="Merge Other Values" onClick="run_selected_task('other');" /></legend>
+   <div class="row">
+      <div class="col-sm-12">
+         <label class="control-label"> Please input deposition data set ID and internal file verson number (default: latest) for template model file: </label>
+      </div> 
+   </div>
+   <div class="row">
+      <div class="col-sm-4">
+         <label for="XXX_template_identifier" class="control-label"> Deposition ID </label>
+         <input type="text" name="template_identifier" id="XXX_template_identifier" value="" placeholder="D_1000000000" />
+      </div>
+      <div class="col-sm-6">
+         <label for="XXX_template_file_version" class="control-label"> Version number </label>
+         <input type="text" name="template_file_version" id="XXX_template_file_version" value="" placeholder="latest" />
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-sm-12"> &nbsp; </div>
+   </div>
+   <div class="row">
+      <div class="col-sm-4">
+         <label class="control-label"> Or upload template model file: </label>
+      </div> 
+      <div class="col-sm-6">
+         <input type="file" name="template_file" id="XXX_template_file" value="" />
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-sm-12"> &nbsp; </div>
+   </div>
+   <div class="row">
+      <div class="col-sm-3"> <input type="checkbox", name="checked_list" value="header" /> &nbsp; &nbsp; Header </div>
+      <div class="col-sm-3"> <input type="checkbox", name="checked_list" value="title" /> &nbsp; &nbsp; Title </div>
+      <div class="col-sm-3"> <input type="checkbox", name="checked_list" value="keyword" /> &nbsp; &nbsp; Keywords </div>
+      <div class="col-sm-3"> <input type="checkbox", name="checked_list" value="author" /> &nbsp; &nbsp; Authors </div>
+   </div>
+   <div class="row">
+      <div class="col-sm-12"> &nbsp; </div>
+   </div>
+   <div class="row">
+      <div class="col-sm-4"> <input type="checkbox", name="checked_list" value="citation" /> &nbsp; &nbsp; Citation </div>
+      <div class="col-sm-4"> <input type="checkbox", name="checked_list" value="crystallization" /> &nbsp; &nbsp; Crystallization conditions </div>
+      <div class="col-sm-4"> <input type="checkbox", name="checked_list" value="loi" class="loi_update" /> &nbsp; &nbsp; Ligand of interesting </div>
+<!--
+      <div class="col-sm-3"> <input type="checkbox", name="checked_list" value="depdate" /> &nbsp; &nbsp; Initial Deposition Date </div>
+-->
+   </div>
+</div>
+<div id="merge-recover-dialog" class="status-inline displaynone">
+   <legend><input type="button" value="Merge Initial Deposition Date/Revision History" onClick="run_selected_task('recover');" /></legend>
+   <div class="row">
+      <div class="col-sm-6"> <input type="checkbox", name="checked_list" value="depdate" /> &nbsp; &nbsp; Initial Deposition Date </div>
+      <div class="col-sm-6"> <input type="checkbox", name="checked_list" value="revision" /> &nbsp; &nbsp; Initial Deposition Date </div>
+   </div>
+</div>
+<form id="run_select_worktask" enctype="multipart/form-data" method="post">
+<input type="hidden" name="identifier" id="identifier" value="%(identifier)s" />
+<p><b>Run Tasks:</b></p>
+<table class="workflow" width="100%%" cellspacing="20" border="1">
+<tr>
+<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Merge Sequence Annotation" onClick="show_selected_panel('merge-sequence-dialog', 'sequence');" /></td>
+<!--
+<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Merge Ligand Assignment" onClick="run_selected_task('ligand');" /></td>
+-->
+<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Status Tasks" onClick="show_selected_panel('status-identifier-dialog', 'status');" /></td>
+<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Merge Other Values" onClick="show_selected_panel('merge-other-dialog', 'other');" /></td>
+<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Cif Check" onClick="run_selected_task('cifcheck');" /></td>
+<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Generate PDB Files" onClick="run_selected_task('pdbfile');" /></td>
+<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Load Database" onClick="run_selected_task('database');" /></td>
+<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Copy Processed Files to Deposition" onClick="run_selected_task('copy_to_deposition');" /></td>
+</tr>
+<tr><td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Merge Initial Deposition Date/Revision History"
+ onClick="show_selected_panel('merge-recover-dialog', 'recover');" /></td></tr>
+</table>
+<br/><br/>
+<div id="panel-dialog" class="status-inline displaynone"></div>
 <br/><br/>
 <p>
 <b>Select entries:</b>
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 <input id="worktask_select_all" type="button" value="Unselect All" onClick="select_entry('run_select_worktask', 'worktask_select_all');" />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<b id="ligand_select_label" class="displaynone">Select ligands:</b>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<input id="ligand_select_all" type="button" value="Select All" onClick="select_ligand('run_select_worktask', 'ligand_select_all');" class="displaynone" />
 </p>
 <table class="workflow" width="100%%" cellspacing="20" border="0">
 %(entry_info)s
@@ -203,6 +275,8 @@ group_worktask_tmplt        string    no    ?
 <script type="text/javascript">
 var session_ID = '%(sessionid)s';
 var annotator  = '%(annotator)s';
+var ligandMap = {};
+var getLigandMapFlag = false;
 </script>
 <br/>
 <p class="version">Version: %(DAVersion)s</p>
@@ -234,7 +308,8 @@ entry_tmplt                 string    no    ?
 task_entry_tmplt            string    no    ?
 ;<td align="center" width="100px" style="border:hidden">
     <div class="groupEntry finished">
-        <input type="checkbox" name="entry_id" value="%(dep_set_id)s" checked /> %(dep_set_id)s
+        <input type="checkbox" name="entry_id" value="%(dep_set_id)s" checked /> %(dep_set_id)s &nbsp; &nbsp; &nbsp; &nbsp;
+        <span id="%(dep_set_id)s" class="displaynone"> hello </span>
     </div>
 </td>
 ;
@@ -278,7 +353,7 @@ common_page_header_tmplt       group_name                     "%(group_name)s"  
 common_page_header_tmplt       first_name                     "%(first_name)s"                                                        constant         n
 common_page_header_tmplt       last_name                      "%(last_name)s"                                                         constant         n
 #group_task_header_tmplt
-group_task_header_tmplt        head_title                     "WorkFlow for %(identifier)s"                                           constant         n
+group_task_header_tmplt        head_title                     "Tasks for %(identifier)s"                                              constant         n
 group_task_header_tmplt        user                           "%(user_name)s"                                                         constant         n
 group_task_header_tmplt        sessionid                      "%(sessionid)s"                                                         constant         n
 group_task_header_tmplt        breadcrumbs                    "%(breadcrumbs)s"                                                       constant         n

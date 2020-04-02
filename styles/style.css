@@ -210,7 +210,8 @@ h2 { font-size: 1.5em; }
         margin: 10px;
 	background-color:#E4E4E4;
 	width:auto;
-	height:35px;
+        height:auto;
+        // height:35px;
 	position:relative; 
 	opacity:0.8; 
 	filter:alpha(opacity=80); 
