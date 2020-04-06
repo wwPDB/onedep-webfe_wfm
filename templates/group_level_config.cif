@@ -225,6 +225,14 @@ group_worktask_tmplt        string    no    ?
       <div class="col-sm-3"> <input type="checkbox", name="checked_list" value="crystallization" /> &nbsp; &nbsp; Crystallization conditions </div>
       <div class="col-sm-3"> <input type="checkbox", name="checked_list" value="loi" class="loi_update" /> &nbsp; &nbsp; Ligand of interesting </div>
    </div>
+   <div class="row">
+      <div class="col-sm-12"> &nbsp; </div>
+   </div>
+   <div class="row">
+      <div class="col-sm-12"> 
+          <span style="color:#FF0000">Before clicking "Ligand of interesting" checkbox please run "Load Database" task first if the latest processed files have not been loaded into database.</span>
+      </div>
+   </div>
 </div>
 <div id="merge-recover-dialog" class="status-inline displaynone">
    <legend><input type="button" value="Merge Initial Deposition Date/Revision History" onClick="run_selected_task('recover');" />
