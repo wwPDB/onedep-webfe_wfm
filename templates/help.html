@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Help : Chemical Component Module Editor</title>
+<link rel="stylesheet" type="text/css" media="all" href="/wfm/styles/help.css" />
+</head>
+<body>
+<div id="container">
+<!-- begin #header-->
+        <div id="header">
+            <div id="logo"><img src="/wfm/images/wwpdb_logo.gif" width="187" height="58" alt="logo" /> </div>
+            <div id="headerCont"><h1>Help Page</h1></div>
+            <br class="clearfloat" /> 
+        </div>
+<!-- #header ends above-->
+        <br class="clearfloat" />
+        <br />
+<!-- #mainContent begins -->
+        <div id="mainContent">
+            <div id="summary">
+                <div>
+                    <h4>Summary:</h4>
+                    <p>Non-Workflow Tasks page is designed to run various tasks for group deposition entries. It can run a task simultaneously on multiple entries
+                       of same group deposition as a batch. All entries of the group are selected by default. If you only want to update certain entries to be updated,
+                       click "Unselect All" button and select cetain entries by clicking the checkbox in the front of deposition ID.
+                    </p>
+                    <p>The purpose of each task button are summarized in the following text. For <a href="#Sequence"><span style="color:#669966">"Merge Sequence Annotation"</span></a>, 
+                       <a href="#Status"><span style="color:#669966">"Status Tasks"</span></a>, <a href="#Other"><span style="color:#669966">"Merge Other Values"</span></a>, and 
+                       <a href="#Initial"><span style="color:#669966">"Merge Initial Deposition Date/Revision History"</span></a> tasks, more detail information are provided in each section.
+                    </p>
+                </div>
+                <div>
+                    <p><a href="#Sequence"><span style="color:#669966">"Merge Sequence Annotation" button:</span></a> Merge sequence annotation information from a processed template entry.</p>
+                </div>
+                <div><p><a href="#Status"><span style="color:#669966">"Status Tasks" button:</span></a> Update status information.</p></div>
+                <div><p><a href="#Other"><span style="color:#669966">"Merge Other Values" button:</span></a> Merge other annotation information from a processed template entry.</p></div>
+                <div><p><span style="color:#669966">"Cif Check" button:</span> Run Cif Checking.</p></div>
+                <div><p><span style="color:#669966">"Generate PDB Files" button:</span> Generate PDB files.</p></div>
+                <div><p><span style="color:#669966">"Load Database" button:</span> Load entries into database.</p></div>
+                <div><p><span style="color:#669966">"Copy Processed Files to Deposition" button:</span> Copy processed files to deposition server.</p></div>
+                <div>
+                    <p><a href="#Initial"><span style="color:#669966">"Merge Initial Deposition Date/Revision History" button:</span></a> Copy back the initial deposition date and/or
+                       revision history categories (for released entries only) lost during depositor re-upload files. <span style="color:#FF0000">This task will be removed after the fixing
+                       is being deployed in production.</span>
+                    </p>
+                </div>
+            </div>
+            <div id="Sequence">
+                <div>
+                    <h4>Merge Sequence Annotation:</h4>
+                    <p>This task merges sequence annotation information from a processed entry file with same author sequence(s) into selected entries of the group deposition.</p>
+                </div>
+                <div>
+                    <p><span style="color:#669966">"Fix ALA/GLY mismatch" checkbox:</span> If checked, the ALA/GLY mismatch(es) between author sequence and cordinates will be
+                        automatically fixed during merge process.
+                    </p>
+                </div>
+            </div>
+            <div id="Status">
+                <div>
+                    <h4>Status Tasks:</h4>
+                    <p>This task updates status <span style="font-style: italic;">et al.</span> information in "pdbx_database_status" category for selected entries of the
+                       group deposition.
+                    </p>
+                </div>
+                <div><p><span style="color:#669966">"Processing Status Code":</span> Update "_pdbx_database_status.status_code" value.</p></div>
+                <div><p><span style="color:#669966">"Approval type":</span> Update "_pdbx_database_status.author_approval_type" value.</p></div>
+                <div><p><span style="color:#669966">"Author Release Status Code":</span> Update "_pdbx_database_status.author_release_status_code" value.</p></div>
+                <div><p><span style="color:#669966">"Author hold date":</span> Update "_pdbx_database_status.date_hold_coordinates" value.</p></div>
+                <div><p><span style="color:#669966">"Reassign annotator":</span> Update "_pdbx_database_status.pdbx_annotator" value.</p></div>
+                <div><p><span style="color:#669966">"Process site":</span> Update "_pdbx_database_status.process_site" value.</p></div>
+            </div>
+            <div id="Other">
+                <div>
+                    <h4>Merge Other Values:</h4>
+                    <p>This task merges selected information from a processed entry file into selected entries of the group deposition. If only "Ligand of interesting" information
+                       needs to be updated, no template model file is needed.
+                    </p>
+                </div>
+                <div><p><span style="color:#669966">"Header" checkbox:</span> If checked, copy "_struct_keywords.pdbx_keywords" value from the template model file.</p></div>
+                <div><p><span style="color:#669966">"Title" checkbox:</span> If checked, copy "_struct.title" value from the template model file.</p></div>
+                <div><p><span style="color:#669966">"Keywords" checkbox:</span> If checked, copy "_struct_keywords.text" value from the template model file.</p></div>
+                <div><p><span style="color:#669966">"Authors" checkbox:</span> If checked, copy "audit_author" and "pdbx_contact_author" categories from the template model file.</p></div>
+                <div><p><span style="color:#669966">"Group information" checkbox:</span> If checked, copy "pdbx_deposit_group" category from the template model file.</p></div>
+                <div><p><span style="color:#669966">"Citation" checkbox:</span> If checked, copy "citation", "citation_author" and/or "citation_editor" categories from 
+                        the template model file.
+                     </p>
+                </div>
+                <div><p><span style="color:#669966">"Crystallization conditions" checkbox:</span> If checked, copy "exptl_crystal_grow", and "exptl_crystal_grow_comp"
+                        categories from the template model file.
+                     </p>
+                </div>
+                <div><p><span style="color:#669966">"Crystallization conditions" checkbox:</span> If checked, copy "exptl_crystal_grow", and "exptl_crystal_grow_comp"
+                        categories from the template model file.
+                     </p>
+                </div>
+                <div><p><span style="color:#669966">"Ligand of interesting" checkbox:</span> <span style="color:#FF0000">Please run "Load Database" task first if the
+                        entries have been updated but not loaded into database yet before clicking "Ligand of interesting" checkbox.</span> If checked, all ligand(s)
+                        associated with the entry (if exist) will show up next to the entry checkbox. You can use "Select All" button to select all ligands for all
+                        entries and manually select individual ligand for each entry. The program will update "pdbx_entry_details" category and add the selected
+                        ligand(s) into "pdbx_entity_instance_feature" category.
+                     </p>
+                </div>
+            </div>
+            <div id="Initial">
+                <div>
+                    <h4>Merge Initial Deposition Date/Revision History:</h4>
+                    <p>Temporary solution to address some issues caused by depositor re-upload files after entries have been deposited or released.</p>
+                </div>
+                <div><p><span style="color:#669966">"Initial Deposition Date" checkbox:</span> If checked, copy "_pdbx_database_status.recvd_initial_deposition_date",
+                        "_pdbx_database_status.date_coordinates", "_pdbx_database_status.date_struct_fact", and "_pdbx_database_status.date_submitted" values from the
+                        first version of archival model file.
+                     </p>
+                </div>
+                <div><p><span style="color:#669966">"Revision History" checkbox:</span> If checked, copy revision history (pdbx_audit_revision_*) categories from last
+                        version of release milestone model file.
+                     </p>
+                </div>
+            </div>
+        </div>
+<!-- #mainContent ends above -->
+<!-- #footer begins -->
+        <br class="clearfloat" />
+        <div id="footer"><p>&copy; 2020 wwPDB</p></div>
+<!-- #footer ends above -->
+</div>
+<!-- #container ends above-->
+</body>
+</html>

@@ -1,0 +1,35 @@
+@charset "utf-8";
+*{ font-family: Arial, Verdana, Helvetica,sans-serif !important;}
+
+/* Element Tags */
+
+h1 { color: #696; font-size: 26px; white-space: nowrap;}
+h4 { color: #696; font-size: 20px; }
+p {font-size: 16px; }
+img { border: 0px none;}
+
+body    {
+        font: 80% "Lucida Grande","Lucida Sans Unicode",Verdana,Arial,sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #000;
+}
+
+a       {
+        color:#338; text-decoration:none
+}
+a:hover {
+        text-decoration:underline;
+        color:#696
+}
+
+#container{width:100%; min-width: 790px; background:#fff; margin:0; text-align:left}
+#header{padding:0 10px 0 20px; margin:0; border-bottom:#696 10px solid}
+#header #logo{width:26%; float:left; padding:15px 1% 0 1%; margin-bottom:10px}
+#header #headerCont{width:65%; float:right; padding:1%; margin:0}
+#header h1{margin:0; padding:10px 0 0 0}
+#mainContent{width:95%; padding:0 20px; margin:0; background:#FFF}
+#footer{padding:0 10px; margin:0; background:#696; text-align:center; color:#FFF}
+#footer p{margin:0; padding:10px 0; color:#FFF}
+
+.clearfloat{clear:both; height:0; font-size:1px; line-height:0; overflow:hidden}
