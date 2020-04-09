@@ -254,6 +254,7 @@ group_worktask_tmplt        string    no    ?
 <td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Status Tasks" onClick="show_selected_panel('status-identifier-dialog', 'status');" /></td>
 <td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Merge Other Values" onClick="show_selected_panel('merge-other-dialog', 'other');" /></td>
 <td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Cif Check" onClick="run_selected_task('cifcheck');" /></td>
+<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Misc. Check" onClick="run_selected_task('mischeck');" /></td>
 <td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Generate PDB Files" onClick="run_selected_task('pdbfile');" /></td>
 <td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Load Database" onClick="run_selected_task('database');" /></td>
 <td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Copy Processed Files to Deposition" onClick="run_selected_task('copy_to_deposition');" /></td>

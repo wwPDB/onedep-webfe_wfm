@@ -501,7 +501,8 @@ function ajax_submit_form(formid, url, option_value) {
                 if (jsonObj.errorflag) {
                      alert(jsonObj.errortext);
                 } else {
-                     if ((option_value == 'cifcheck') || (option_value == 'sequence') || (option_value == 'other') || (option_value == 'recover')) {
+                     if ((option_value == 'cifcheck') || (option_value == 'sequence') || (option_value == 'other') ||
+                         (option_value == 'recover') || (option_value == 'mischeck')) {
                          var myWindow = window.open('', '_blank');
                          myWindow.document.write('<pre>\n' + jsonObj.textcontent + '\n</pre>\n');
                          myWindow.document.close();
