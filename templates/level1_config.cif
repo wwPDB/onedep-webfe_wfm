@@ -137,9 +137,9 @@ search_tmplt               table_2    table_definition_5    option_definition_5 
 search_tmplt               table_3    table_definition_4    option_definition_2    none      false     ?
 search_tmplt               table_4    table_definition_10   option_definition_6    none      false     ?
 dep_search_tmplt           table_3    table_definition_4    option_definition_2    none      false     ?
-my_message_tmplt           table_1    table_definition_2    option_definition_1    inline    true      ?
+my_message_tmplt           table_1    table_definition_3    option_definition_1    inline    true      ?
 assign_tmplt               table_1    table_definition_6    option_definition_3    inline    true      ?
-all_message_tmplt          table_1    table_definition_2    option_definition_1    inline    true      ?
+all_message_tmplt          table_1    table_definition_3    option_definition_1    inline    true      ?
 retired_annotator_tmplt    table_1    table_definition_2    option_definition_1    inline    true      ?
 deposit_message_tmplt      table_1    table_definition_4    option_definition_2    inline    true      ?
 deposit_entry_tmplt        table_1    table_definition_4    option_definition_2    inline    true      ?
