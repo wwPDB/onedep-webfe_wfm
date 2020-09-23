@@ -1062,7 +1062,7 @@ column_definition_5     "IDs"                  pdb_ids            true    ?     
 column_definition_6     Status                 coor_status        true    ?        statusSorter    ?               ?
 column_definition_7     "Auth Exp"             exp_status         true    false    statusSorter    ?               ?
 column_definition_8     "Auth Coord"           author_status      true    ?        statusSorter    ?               ?
-column_definition_9     "Dep/Rel"              dep_date           true    ?        ?               ?               ?
+column_definition_9     "Dep / Rel"              dep_date           true    ?        ?               ?               ?
 column_definition_10    Ann                    initials           true    ?        ?               ?               ?
 column_definition_11    Remove                 remove_list        ?       ?        ?               ?               ?
 column_definition_12    Add                    add_list           ?       ?        ?               ?               ?
@@ -1082,12 +1082,12 @@ column_definition_23    "Dep ID"               dep_entry_id       true    ?     
 column_definition_24    "Exp method"           dep_method         true    ?        ?               ?               ?
 column_definition_25    Title                  dep_title          true    ?        ?               ?               ?
 column_definition_26    Author                 dep_author_list    true    ?        ?               ?               ?
-column_definition_27    "Dep/Rel"              dep_dep_date       true    ?        ?               ?               ?
+column_definition_27    "Dep / Rel"              dep_dep_date       true    ?        ?               ?               ?
 column_definition_28    DepUI                  dep_depui          ?       ?        ?               ?               ?
 column_definition_29    Comm                   dep_commun         ?       ?        ?               ?               ?
 column_definition_30    Email                  user_email         true    ?        ?               ?               ?
 column_definition_31    "Last Name"            user_name          true    ?        ?               ?               ?
-column_definition_32    "Dep/Rel"               user_dep_date      true    ?        ?               ?               ?
+column_definition_32    "Dep / Rel"               user_dep_date      true    ?        ?               ?               ?
 column_definition_33    "Dep ID"               user_dep_id        true    ?        ?               ?               ?
 column_definition_34    "IDs"                  user_pdb_id        true    ?        ?               ?               ?
 column_definition_35    Role                   user_role          true    ?        ?               ?               ?
