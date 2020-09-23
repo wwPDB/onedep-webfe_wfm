@@ -1055,11 +1055,11 @@ column_definition_1     Process                workflow           true    ?     
 column_definition_2     "Dep ID"               entry_id           true    ?        ?               dep_set_id      ?
 column_definition_3     DepUI                  depui              ?       false    ?               ?               ?
 column_definition_4     "Exp Method"           method             true    ?        ?               ?               ?
-column_definition_5     "PDB <i>etc.</i> IDs"  pdb_ids            true    ?        ?               ?               ?
+column_definition_5     "IDs"                  pdb_ids            true    ?        ?               ?               ?
 column_definition_6     Status                 coor_status        true    ?        statusSorter    ?               ?
 column_definition_7     "Auth Exp"             exp_status         true    false    statusSorter    ?               ?
 column_definition_8     "Auth Coord"           author_status      true    ?        statusSorter    ?               ?
-column_definition_9     "Dep/Rel Dates"        dep_date           true    ?        ?               ?               ?
+column_definition_9     "Dep/Rel"              dep_date           true    ?        ?               ?               ?
 column_definition_10    Ann                    initials           true    ?        ?               ?               ?
 column_definition_11    Remove                 remove_list        ?       ?        ?               ?               ?
 column_definition_12    Add                    add_list           ?       ?        ?               ?               ?
@@ -1069,7 +1069,7 @@ column_definition_15    Author                 author_list        true    ?     
 column_definition_16    Auxiliary_1            auxiliary          ?       false    ?               ?               ?
 column_definition_101   Auxiliary_2            default_order      true    false    defaultSorter   ?               ?
 column_definition_102   Auxiliary_3            dep_set_id         ?       false    ?               ?               ?
-column_definition_17    "Major Iss"            major_issue        true    ?        ?               ?               cellStyle
+column_definition_17    "Issues"               major_issue        true    ?        ?               ?               cellStyle
 column_definition_18    "Val Sent"             validation_date    true    ?        ?               ?               ?
 column_definition_19    "Msg Recv"             received_date      true    ?        ?               ?               ?
 column_definition_20    "Msg Sent"             sent_date          true    ?        ?               ?               ?
@@ -1079,14 +1079,14 @@ column_definition_23    "Dep ID"               dep_entry_id       true    ?     
 column_definition_24    "Exp method"           dep_method         true    ?        ?               ?               ?
 column_definition_25    Title                  dep_title          true    ?        ?               ?               ?
 column_definition_26    Author                 dep_author_list    true    ?        ?               ?               ?
-column_definition_27    "Dep/Rel Dates"        dep_dep_date       true    ?        ?               ?               ?
+column_definition_27    "Dep/Rel"              dep_dep_date       true    ?        ?               ?               ?
 column_definition_28    DepUI                  dep_depui          ?       ?        ?               ?               ?
 column_definition_29    Comm                   dep_commun         ?       ?        ?               ?               ?
 column_definition_30    Email                  user_email         true    ?        ?               ?               ?
 column_definition_31    "Last Name"            user_name          true    ?        ?               ?               ?
-column_definition_32    "Dep/Rel Dates"        user_dep_date      true    ?        ?               ?               ?
+column_definition_32    "Dep/Rel"               user_dep_date      true    ?        ?               ?               ?
 column_definition_33    "Dep ID"               user_dep_id        true    ?        ?               ?               ?
-column_definition_34    "PDB/BMRB/EMDB"        user_pdb_id        true    ?        ?               ?               ?
+column_definition_34    "IDs"                  user_pdb_id        true    ?        ?               ?               ?
 column_definition_35    Role                   user_role          true    ?        ?               ?               ?
 column_definition_36    " &nbsp; "             select             ?       ?        ?               ?               ?
 column_definition_37    Annotator              assign_annotator   ?       ?        ?               ?               ?
