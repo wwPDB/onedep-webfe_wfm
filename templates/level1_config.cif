@@ -565,7 +565,9 @@ add_list_tmplt              string    no
 ;<input type="button" value="Add" onclick="editMyList('add', '%(sessionid)s', '%(dep_set_id)s', '%(initials)s');" />
 ;
 #accession_code_tmplt
-accession_code_tmplt        string    no     "%(abbrv_method)s<br/>%(pdb_id)s / %(bmrb_id)s / %(emdb_id)s"
+# accession_code_tmplt        string    no     "%(abbrv_method)s<br/>%(pdb_id)s / %(bmrb_id)s / %(emdb_id)s"
+accession_code_tmplt        string    no     "%(pdb_id)s / %(bmrb_id)s / %(emdb_id)s"
+
 #dep_entry_id_tmplt
 dep_entry_id_tmplt          string    no
 ;%(dep_set_id)s
@@ -815,7 +817,7 @@ add_list_tmplt            dep_set_id    dep_set_id                         "data
 add_list_tmplt            sessionid     sessionid                           sessionInfo    n
 add_list_tmplt            initials      initials                            userInfo       n
 #accession_code_tmplt
-accession_code_tmplt      abbrv_method        abbrv_method                             "dataInfo"      n
+# accession_code_tmplt      abbrv_method        abbrv_method                             "dataInfo"      n
 accession_code_tmplt      pdb_id        pdb_id                             "dataInfo"      n
 accession_code_tmplt      bmrb_id       bmrb_id                            "dataInfo"      n
 accession_code_tmplt      emdb_id       emdb_id                            "dataInfo"      n
@@ -903,7 +905,7 @@ _table_definition.column_definition
 table_definition_1   column_definition_1
 table_definition_1   column_definition_2
 table_definition_1   column_definition_3
-# table_definition_1   column_definition_4
+table_definition_1   column_definition_4
 table_definition_1   column_definition_5
 table_definition_1   column_definition_6
 table_definition_1   column_definition_7
@@ -921,7 +923,7 @@ table_definition_1   column_definition_102
 table_definition_2   column_definition_1
 table_definition_2   column_definition_2
 table_definition_2   column_definition_3
-# table_definition_2   column_definition_4
+table_definition_2   column_definition_4
 table_definition_2   column_definition_5
 table_definition_2   column_definition_6
 table_definition_2   column_definition_7
@@ -939,7 +941,7 @@ table_definition_2   column_definition_102
 table_definition_3   column_definition_1
 table_definition_3   column_definition_2
 table_definition_3   column_definition_3
-# table_definition_3   column_definition_4
+table_definition_3   column_definition_4
 table_definition_3   column_definition_5
 table_definition_3   column_definition_17
 table_definition_3   column_definition_18
@@ -1055,8 +1057,8 @@ _table_column_definition.data-cell-style
 column_definition_1     Process                workflow           true    ?        ?               default_order   ?
 column_definition_2     "Dep ID"               entry_id           true    ?        ?               dep_set_id      ?
 column_definition_3     DepUI                  depui              ?       false    ?               ?               ?
-column_definition_4     "Method"           method             true    ?        ?               ?               ?
-column_definition_5     "Method IDs"                  pdb_ids            true    ?        ?               ?               ?
+column_definition_4     "Method"               method             true    ?        ?               ?               ?
+column_definition_5     "IDs"                  pdb_ids            true    ?        ?               ?               ?
 column_definition_6     Status                 coor_status        true    ?        statusSorter    ?               ?
 column_definition_7     "Auth Exp"             exp_status         true    false    statusSorter    ?               ?
 column_definition_8     "Auth Coord"           author_status      true    ?        statusSorter    ?               ?
