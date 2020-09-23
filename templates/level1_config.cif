@@ -1054,7 +1054,7 @@ _table_column_definition.data-cell-style
 column_definition_1     Process                workflow           true    ?        ?               default_order   ?
 column_definition_2     "Dep ID"               entry_id           true    ?        ?               dep_set_id      ?
 column_definition_3     DepUI                  depui              ?       false    ?               ?               ?
-column_definition_4     "Exp Method"           method             true    ?        ?               ?               ?
+column_definition_4     "Method"           method             true    ?        ?               ?               ?
 column_definition_5     "IDs"                  pdb_ids            true    ?        ?               ?               ?
 column_definition_6     Status                 coor_status        true    ?        statusSorter    ?               ?
 column_definition_7     "Auth Exp"             exp_status         true    false    statusSorter    ?               ?
