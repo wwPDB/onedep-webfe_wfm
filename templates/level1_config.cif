@@ -520,7 +520,7 @@ workflow_lock_action_tmplt       string    no
 workflow_init_action_tmplt       string    no
 ;<a href="/service/workmanager/level2?identifier=%(dep_set_id)s&sessionid=%(sessionid)s&annotator=%(initials)s" target = "_blank">%(display_ids)s</a>
 <br />
-<input type="button" name="EditCif" value="EditCif" onclick="editCif('%(sessionid)s', '%(dep_set_id)s', '%(inst_id)s', '%(class_id)s', '%(urlmethod)s', '%(initials)s');" />
+<input type="button" name="EditCif" value="Edit" onclick="editCif('%(sessionid)s', '%(dep_set_id)s', '%(inst_id)s', '%(class_id)s', '%(urlmethod)s', '%(initials)s');" />
 <input type="button" name="Run" value="Run" onclick="RunAnnotateWF('%(sessionid)s', '%(initials)s', 'init', '%(dep_set_id)s', '%(inst_id)s', '%(class_id)s', 'runWF', '', '%(method)s', '');" />
 <br />
 [<a href="/service/review_v2/full_report?identifier=%(dep_set_id)s&filesource=archive&annotator=%(initials)s" target = "_blank">Review</a>]
@@ -540,7 +540,7 @@ workflow_init_action_tmplt       string    no
 workflow_other_action_tmplt      string    no
 ;<a href="/service/workmanager/level2?identifier=%(dep_set_id)s&sessionid=%(sessionid)s&annotator=%(initials)s" target = "_blank">%(display_ids)s</a>
 <br />
-<input type="button" name="EditCif" value="EditCif"  onclick="editCif('%(sessionid)s', '%(dep_set_id)s', '%(inst_id)s', '%(class_id)s', '%(urlmethod)s', '%(initials)s');" />
+<input type="button" name="EditCif" value="Edit"  onclick="editCif('%(sessionid)s', '%(dep_set_id)s', '%(inst_id)s', '%(class_id)s', '%(urlmethod)s', '%(initials)s');" />
 [<a href="/service/workmanager/ciffile?identifier=%(dep_set_id)s&sessionid=%(sessionid)s&filesource=archive&version=latest">ViewCIF</a>]
 <br />
 [<a href="/service/review_v2/full_report?identifier=%(dep_set_id)s&filesource=archive&annotator=%(initials)s" target = "_blank">Review</a>]
