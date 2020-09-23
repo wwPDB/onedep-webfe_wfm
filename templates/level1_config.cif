@@ -565,7 +565,7 @@ add_list_tmplt              string    no
 ;<input type="button" value="Add" onclick="editMyList('add', '%(sessionid)s', '%(dep_set_id)s', '%(initials)s');" />
 ;
 #accession_code_tmplt
-accession_code_tmplt        string    no     "%(abbrv_method)s\n%(pdb_id)s / %(bmrb_id)s / %(emdb_id)s"
+accession_code_tmplt        string    no     "%(abbrv_method)s<br/>%(pdb_id)s / %(bmrb_id)s / %(emdb_id)s"
 #dep_entry_id_tmplt
 dep_entry_id_tmplt          string    no
 ;%(dep_set_id)s
