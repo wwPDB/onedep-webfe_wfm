@@ -903,7 +903,7 @@ _table_definition.column_definition
 table_definition_1   column_definition_1
 table_definition_1   column_definition_2
 table_definition_1   column_definition_3
-table_definition_1   column_definition_4
+# table_definition_1   column_definition_4
 table_definition_1   column_definition_5
 table_definition_1   column_definition_6
 table_definition_1   column_definition_7
@@ -921,7 +921,7 @@ table_definition_1   column_definition_102
 table_definition_2   column_definition_1
 table_definition_2   column_definition_2
 table_definition_2   column_definition_3
-table_definition_2   column_definition_4
+# table_definition_2   column_definition_4
 table_definition_2   column_definition_5
 table_definition_2   column_definition_6
 table_definition_2   column_definition_7
@@ -984,7 +984,7 @@ table_definition_6   column_definition_37
 table_definition_6   column_definition_44
 table_definition_6   column_definition_38
 table_definition_6   column_definition_5
-table_definition_6   column_definition_4
+# table_definition_6   column_definition_4
 table_definition_6   column_definition_39
 table_definition_6   column_definition_9
 table_definition_6   column_definition_14
