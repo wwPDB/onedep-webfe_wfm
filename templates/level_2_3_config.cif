@@ -42,7 +42,7 @@ entry_tmplt                 string    no    ?
 ;<table class="wfmTable" cellpadding="5px">
     <tr>
         <th class="wfmTh">Status</th>
-        <th class="wfmTh">Dep IP</th>
+        <th class="wfmTh">Dep ID</th>
         <th class="wfmTh">Exp method</th>
         <th class="wfmTh">Accession Code</th>
         <th class="wfmTh">Coordinate Status</th>
