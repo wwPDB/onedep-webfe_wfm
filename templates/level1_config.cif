@@ -132,7 +132,7 @@ proc_entry_tmplt           table_1    table_definition_2    option_definition_1 
 author_correction_tmplt    table_1    table_definition_2    option_definition_1    inline    true      ?
 pending_entry_tmplt        table_1    table_definition_2    option_definition_1    inline    true      ?
 reminder_entry_tmplt       table_1    table_definition_3    option_definition_1    inline    true      ?
-search_tmplt               table_1    table_definition_3    option_definition_1    none      false     ?
+search_tmplt               table_1    table_definition_2    option_definition_1    none      false     ?
 search_tmplt               table_2    table_definition_5    option_definition_5    none      false     ?
 search_tmplt               table_3    table_definition_4    option_definition_2    none      false     ?
 search_tmplt               table_4    table_definition_10   option_definition_6    none      false     ?
