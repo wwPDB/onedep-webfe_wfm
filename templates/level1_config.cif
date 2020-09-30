@@ -137,9 +137,9 @@ search_tmplt               table_2    table_definition_5    option_definition_5 
 search_tmplt               table_3    table_definition_4    option_definition_2    none      false     ?
 search_tmplt               table_4    table_definition_10   option_definition_6    none      false     ?
 dep_search_tmplt           table_3    table_definition_4    option_definition_2    none      false     ?
-my_message_tmplt           table_1    table_definition_3    option_definition_1    inline    true      ?
+my_message_tmplt           table_1    table_definition_2    option_definition_1    inline    true      ?
 assign_tmplt               table_1    table_definition_6    option_definition_3    inline    true      ?
-all_message_tmplt          table_1    table_definition_3    option_definition_1    inline    true      ?
+all_message_tmplt          table_1    table_definition_2    option_definition_1    inline    true      ?
 retired_annotator_tmplt    table_1    table_definition_2    option_definition_1    inline    true      ?
 deposit_message_tmplt      table_1    table_definition_4    option_definition_2    inline    true      ?
 deposit_entry_tmplt        table_1    table_definition_4    option_definition_2    inline    true      ?
@@ -914,6 +914,7 @@ table_definition_1   column_definition_9
 table_definition_1   column_definition_10
 table_definition_1   column_definition_11
 table_definition_1   column_definition_13
+table_definition_1   column_definition_19
 table_definition_1   column_definition_14
 table_definition_1   column_definition_15
 table_definition_1   column_definition_16
@@ -932,6 +933,7 @@ table_definition_2   column_definition_9
 table_definition_2   column_definition_10
 table_definition_2   column_definition_12
 table_definition_2   column_definition_13
+table_definition_2   column_definition_19
 table_definition_2   column_definition_14
 table_definition_2   column_definition_15
 table_definition_2   column_definition_16
@@ -945,8 +947,8 @@ table_definition_3   column_definition_4
 table_definition_3   column_definition_5
 table_definition_3   column_definition_17
 table_definition_3   column_definition_18
-# table_definition_3   column_definition_20
-#table_definition_3   column_definition_21
+table_definition_3   column_definition_20
+table_definition_3   column_definition_21
 table_definition_3   column_definition_6
 table_definition_3   column_definition_7
 table_definition_3   column_definition_8
