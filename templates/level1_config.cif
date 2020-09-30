@@ -520,7 +520,7 @@ workflow_lock_action_tmplt       string    no
 workflow_init_action_tmplt       string    no
 ;<a href="/service/workmanager/level2?identifier=%(dep_set_id)s&sessionid=%(sessionid)s&annotator=%(initials)s" target = "_blank">%(display_ids)s</a>
 <br />
-<input type="button" name="EditCif" value="EditCif" onclick="editCif('%(sessionid)s', '%(dep_set_id)s', '%(inst_id)s', '%(class_id)s', '%(urlmethod)s', '%(initials)s');" />
+<input type="button" name="EditCif" value="Edit" onclick="editCif('%(sessionid)s', '%(dep_set_id)s', '%(inst_id)s', '%(class_id)s', '%(urlmethod)s', '%(initials)s');" />
 <input type="button" name="Run" value="Run" onclick="RunAnnotateWF('%(sessionid)s', '%(initials)s', 'init', '%(dep_set_id)s', '%(inst_id)s', '%(class_id)s', 'runWF', '', '%(method)s', '');" />
 <br />
 [<a href="/service/review_v2/full_report?identifier=%(dep_set_id)s&filesource=archive&annotator=%(initials)s" target = "_blank">Review</a>]
@@ -540,7 +540,7 @@ workflow_init_action_tmplt       string    no
 workflow_other_action_tmplt      string    no
 ;<a href="/service/workmanager/level2?identifier=%(dep_set_id)s&sessionid=%(sessionid)s&annotator=%(initials)s" target = "_blank">%(display_ids)s</a>
 <br />
-<input type="button" name="EditCif" value="EditCif"  onclick="editCif('%(sessionid)s', '%(dep_set_id)s', '%(inst_id)s', '%(class_id)s', '%(urlmethod)s', '%(initials)s');" />
+<input type="button" name="EditCif" value="Edit"  onclick="editCif('%(sessionid)s', '%(dep_set_id)s', '%(inst_id)s', '%(class_id)s', '%(urlmethod)s', '%(initials)s');" />
 [<a href="/service/workmanager/ciffile?identifier=%(dep_set_id)s&sessionid=%(sessionid)s&filesource=archive&version=latest">ViewCIF</a>]
 <br />
 [<a href="/service/review_v2/full_report?identifier=%(dep_set_id)s&filesource=archive&annotator=%(initials)s" target = "_blank">Review</a>]
@@ -565,7 +565,9 @@ add_list_tmplt              string    no
 ;<input type="button" value="Add" onclick="editMyList('add', '%(sessionid)s', '%(dep_set_id)s', '%(initials)s');" />
 ;
 #accession_code_tmplt
+# accession_code_tmplt        string    no     "%(abbrv_method)s<br/>%(pdb_id)s / %(bmrb_id)s / %(emdb_id)s"
 accession_code_tmplt        string    no     "%(pdb_id)s / %(bmrb_id)s / %(emdb_id)s"
+
 #dep_entry_id_tmplt
 dep_entry_id_tmplt          string    no
 ;%(dep_set_id)s
@@ -815,6 +817,7 @@ add_list_tmplt            dep_set_id    dep_set_id                         "data
 add_list_tmplt            sessionid     sessionid                           sessionInfo    n
 add_list_tmplt            initials      initials                            userInfo       n
 #accession_code_tmplt
+# accession_code_tmplt      abbrv_method        abbrv_method                             "dataInfo"      n
 accession_code_tmplt      pdb_id        pdb_id                             "dataInfo"      n
 accession_code_tmplt      bmrb_id       bmrb_id                            "dataInfo"      n
 accession_code_tmplt      emdb_id       emdb_id                            "dataInfo"      n
@@ -911,6 +914,7 @@ table_definition_1   column_definition_9
 table_definition_1   column_definition_10
 table_definition_1   column_definition_11
 table_definition_1   column_definition_13
+table_definition_1   column_definition_19
 table_definition_1   column_definition_14
 table_definition_1   column_definition_15
 table_definition_1   column_definition_16
@@ -929,6 +933,7 @@ table_definition_2   column_definition_9
 table_definition_2   column_definition_10
 table_definition_2   column_definition_12
 table_definition_2   column_definition_13
+table_definition_2   column_definition_19
 table_definition_2   column_definition_14
 table_definition_2   column_definition_15
 table_definition_2   column_definition_16
@@ -942,7 +947,6 @@ table_definition_3   column_definition_4
 table_definition_3   column_definition_5
 table_definition_3   column_definition_17
 table_definition_3   column_definition_18
-table_definition_3   column_definition_19
 table_definition_3   column_definition_20
 table_definition_3   column_definition_21
 table_definition_3   column_definition_6
@@ -952,6 +956,7 @@ table_definition_3   column_definition_9
 table_definition_3   column_definition_10
 table_definition_3   column_definition_12
 table_definition_3   column_definition_13
+table_definition_3   column_definition_19
 table_definition_3   column_definition_14
 table_definition_3   column_definition_15
 table_definition_3   column_definition_16
@@ -1054,12 +1059,12 @@ _table_column_definition.data-cell-style
 column_definition_1     Process                workflow           true    ?        ?               default_order   ?
 column_definition_2     "Dep ID"               entry_id           true    ?        ?               dep_set_id      ?
 column_definition_3     DepUI                  depui              ?       false    ?               ?               ?
-column_definition_4     "Exp Method"           method             true    ?        ?               ?               ?
-column_definition_5     "PDB <i>etc.</i> IDs"  pdb_ids            true    ?        ?               ?               ?
+column_definition_4     "Method"               method             true    ?        ?               ?               ?
+column_definition_5     "IDs"                  pdb_ids            true    ?        ?               ?               ?
 column_definition_6     Status                 coor_status        true    ?        statusSorter    ?               ?
 column_definition_7     "Auth Exp"             exp_status         true    false    statusSorter    ?               ?
 column_definition_8     "Auth Coord"           author_status      true    ?        statusSorter    ?               ?
-column_definition_9     "Dep/Rel Dates"        dep_date           true    ?        ?               ?               ?
+column_definition_9     "Dep / Rel"              dep_date           true    ?        ?               ?               ?
 column_definition_10    Ann                    initials           true    ?        ?               ?               ?
 column_definition_11    Remove                 remove_list        ?       ?        ?               ?               ?
 column_definition_12    Add                    add_list           ?       ?        ?               ?               ?
@@ -1069,7 +1074,7 @@ column_definition_15    Author                 author_list        true    ?     
 column_definition_16    Auxiliary_1            auxiliary          ?       false    ?               ?               ?
 column_definition_101   Auxiliary_2            default_order      true    false    defaultSorter   ?               ?
 column_definition_102   Auxiliary_3            dep_set_id         ?       false    ?               ?               ?
-column_definition_17    "Major Iss"            major_issue        true    ?        ?               ?               cellStyle
+column_definition_17    "Issues"               major_issue        true    ?        ?               ?               cellStyle
 column_definition_18    "Val Sent"             validation_date    true    ?        ?               ?               ?
 column_definition_19    "Msg Recv"             received_date      true    ?        ?               ?               ?
 column_definition_20    "Msg Sent"             sent_date          true    ?        ?               ?               ?
@@ -1079,14 +1084,14 @@ column_definition_23    "Dep ID"               dep_entry_id       true    ?     
 column_definition_24    "Exp method"           dep_method         true    ?        ?               ?               ?
 column_definition_25    Title                  dep_title          true    ?        ?               ?               ?
 column_definition_26    Author                 dep_author_list    true    ?        ?               ?               ?
-column_definition_27    "Dep/Rel Dates"        dep_dep_date       true    ?        ?               ?               ?
+column_definition_27    "Dep / Rel"              dep_dep_date       true    ?        ?               ?               ?
 column_definition_28    DepUI                  dep_depui          ?       ?        ?               ?               ?
 column_definition_29    Comm                   dep_commun         ?       ?        ?               ?               ?
 column_definition_30    Email                  user_email         true    ?        ?               ?               ?
 column_definition_31    "Last Name"            user_name          true    ?        ?               ?               ?
-column_definition_32    "Dep/Rel Dates"        user_dep_date      true    ?        ?               ?               ?
+column_definition_32    "Dep / Rel"               user_dep_date      true    ?        ?               ?               ?
 column_definition_33    "Dep ID"               user_dep_id        true    ?        ?               ?               ?
-column_definition_34    "PDB/BMRB/EMDB"        user_pdb_id        true    ?        ?               ?               ?
+column_definition_34    "IDs"                  user_pdb_id        true    ?        ?               ?               ?
 column_definition_35    Role                   user_role          true    ?        ?               ?               ?
 column_definition_36    " &nbsp; "             select             ?       ?        ?               ?               ?
 column_definition_37    Annotator              assign_annotator   ?       ?        ?               ?               ?
@@ -1192,7 +1197,7 @@ order by dep_initial_deposition_date ASC
 ;
 "dep_status_code:REL,OBS,WDRN"
 pending_entry_tmplt        table_1    selection_2    ?    initials         
-;l.dep_set_id = d.dep_set_id and l.annotator_initials = '%(initials)s' and 
+;l.dep_set_id = d.dep_set_id and l.annotator_initials in ('%(initials)s', 'EBI') and 
 ( ( ( l.dep_status_code in ( 'AUTH', 'REFI', 'WAIT' ) and l.pdb_id != '?' ) or 
     ( l.pdb_id = '?' and l.dep_emdb_id != '?' and l.dep_status_code_emdb in ( 'AUTH', 'REFI', 'WAIT' ) ) )
   or 
@@ -1208,7 +1213,7 @@ order by dep_initial_deposition_date ASC
 "dep_status_code:REL,OBS,WDRN"
 # This is continuing a join
 reminder_entry_tmplt       table_1    selection_8    ?    initials
-;l.annotator_initials = '%(initials)s'
+;l.annotator_initials in ('%(initials)s', 'EBI')
 and
 (
  (
