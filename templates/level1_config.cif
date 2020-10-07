@@ -128,20 +128,20 @@ _tab_definition_table.default_display
 _tab_definition_table.default_load
 _tab_definition_table.table_title
 to_do_entry_tmplt          table_1    table_definition_1    option_definition_1    inline    true      ?
-proc_entry_tmplt           table_1    table_definition_2    option_definition_1    inline    true      ?
-author_correction_tmplt    table_1    table_definition_2    option_definition_1    inline    true      ?
-pending_entry_tmplt        table_1    table_definition_2    option_definition_1    inline    true      ?
+proc_entry_tmplt           table_1    table_definition_13    option_definition_1    inline    true      ?
+author_correction_tmplt    table_1    table_definition_13    option_definition_1    inline    true      ?
+pending_entry_tmplt        table_1    table_definition_13    option_definition_1    inline    true      ?
 reminder_entry_tmplt       table_1    table_definition_3    option_definition_1    inline    true      ?
-search_tmplt               table_1    table_definition_2    option_definition_1    none      false     ?
+search_tmplt               table_1    table_definition_13    option_definition_1    none      false     ?
 search_tmplt               table_2    table_definition_5    option_definition_5    none      false     ?
 search_tmplt               table_3    table_definition_4    option_definition_2    none      false     ?
 search_tmplt               table_4    table_definition_10   option_definition_6    none      false     ?
 dep_search_tmplt           table_3    table_definition_4    option_definition_2    none      false     ?
-my_message_tmplt           table_1    table_definition_2    option_definition_1    inline    true      ?
+my_message_tmplt           table_1    table_definition_13    option_definition_1    inline    true      ?
 assign_tmplt               table_1    table_definition_6    option_definition_3    inline    true      ?
-all_message_tmplt          table_1    table_definition_2    option_definition_1    inline    true      ?
-retired_annotator_tmplt    table_1    table_definition_2    option_definition_1    inline    true      ?
-deposit_message_tmplt      table_1    table_definition_4    option_definition_2    inline    true      ?
+all_message_tmplt          table_1    table_definition_13    option_definition_1    inline    true      ?
+retired_annotator_tmplt    table_1    table_definition_13    option_definition_1    inline    true      ?
+deposit_message_tmplt      table_1    table_definition_14    option_definition_2    inline    true      ?
 deposit_entry_tmplt        table_1    table_definition_4    option_definition_2    inline    true      ?
 group_entry_tmplt          table_1    table_definition_10   option_definition_6    inline    true      ?
 unsubmit_group_entry_tmplt table_1    table_definition_11   option_definition_6    inline    true      ?
@@ -1011,6 +1011,39 @@ table_definition_11   column_definition_41
 table_definition_11   column_definition_45
 table_definition_11   column_definition_46
 table_definition_11   column_definition_16
+#table_definition_13
+table_definition_13   column_definition_1
+table_definition_13   column_definition_2
+table_definition_13   column_definition_3
+table_definition_13   column_definition_4
+table_definition_13   column_definition_5
+table_definition_13   column_definition_6
+table_definition_13   column_definition_7
+table_definition_13   column_definition_8
+table_definition_13   column_definition_9
+table_definition_13   column_definition_10
+table_definition_13   column_definition_12
+table_definition_13   column_definition_13
+table_definition_13   column_definition_19
+table_definition_13   column_definition_14
+table_definition_13   column_definition_15
+table_definition_13   column_definition_16
+table_definition_13   column_definition_101
+table_definition_13   column_definition_102
+#table_definition_14
+table_definition_14   column_definition_22
+table_definition_14   column_definition_23
+table_definition_14   column_definition_24
+table_definition_14   column_definition_25
+table_definition_14   column_definition_26
+table_definition_14   column_definition_27
+table_definition_14   column_definition_28
+table_definition_14   column_definition_29
+table_definition_14   column_definition_19
+table_definition_14   column_definition_40
+table_definition_14   column_definition_41
+table_definition_14   column_definition_101
+table_definition_14   column_definition_102
 #
 loop_
 _table_binding_definition.id
@@ -1174,16 +1207,16 @@ _tab_table_sql_binding.additional_sort_function
 _tab_table_sql_binding.variable
 _tab_table_sql_binding.where_condition
 _tab_table_sql_binding.additional_order_condition
-to_do_entry_tmplt          table_1    selection_1    ?    initials         
+to_do_entry_tmplt          table_1    selection_1    ?    initials
 ;l.dep_set_id = d.dep_set_id and d.dep_set_id = a.dep_set_id and a.annotator_initials = '%(initials)s' order by dep_author_list ASC
 ;
 "dep_status_code:REL,OBS,WDRN"
-proc_entry_tmplt           table_1    selection_2    ?    initials         
+proc_entry_tmplt           table_1    selection_2    ?    initials
 ;l.dep_set_id = d.dep_set_id and l.annotator_initials in ('%(initials)s', 'EBI') and ( ( l.dep_status_code = 'PROC' and l.pdb_id != '?' ) or (  l.pdb_id = '?' and 
 l.dep_emdb_id != '?' and l.dep_status_code_emdb = 'PROC' ) ) order by dep_initial_deposition_date ASC
 ;
 "dep_author_release_status_code:REL"
-author_correction_tmplt    table_1    selection_2    ?    initials         
+author_correction_tmplt    table_1    selection_2    ?    initials
 ;l.dep_set_id = d.dep_set_id 
  and 
    ( (l.annotator_initials = 'EBI' and l.dep_locking = 'DEP') or l.annotator_initials = '%(initials)s' ) 
