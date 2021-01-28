@@ -494,7 +494,7 @@ count_tmplt2                string    no
 ;
 #workflow_waiting_status_tmplt
 workflow_waiting_status_tmplt    string    no
-;<a href="%(base_url)swf?identifier=%(dep_set_id)s&instance=%(inst_id)s&classID=%(class_id)s&filesource=wf-instance&method=%(urlmethod)s&annotator=%(initials)s" target="_blank">
+;<a onclick='return open_new_window("%(base_url)swf?identifier=%(dep_set_id)s&instance=%(inst_id)s&classID=%(class_id)s&filesource=wf-instance&method=%(urlmethod)s&annotator=%(initials)s")'>
 <img src="/wfm/images/%(inst_status)s.png" alt="%(inst_status)s" /> %(class_id)s</a>
 ;
 #workflow_close_status_tmplt

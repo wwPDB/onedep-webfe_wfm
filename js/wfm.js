@@ -770,3 +770,9 @@ function send_notification(identifier, sessionid, initial) {
             }
        });
 }
+
+function open_new_window(url) {
+       // Opens window from a script to get around Firefox limits on closing
+       window.open(url); 
+       return false;
+}
