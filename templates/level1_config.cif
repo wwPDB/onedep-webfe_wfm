@@ -6,6 +6,7 @@ _user_template_mapping.template_id
 DEP     deposit_template
 #IP      custom_template_1
 LEAD    leader_template
+PDBC    leader_template
 PDBE    leader_template
 PDBJ    leader_template
 BMRB    leader_template
