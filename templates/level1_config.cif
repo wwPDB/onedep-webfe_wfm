@@ -1290,7 +1290,7 @@ retired_annotator_tmplt    table_1    selection_2    ?    retired_annotator
 l.dep_status_code_emdb in ('REPL', 'AUCO', 'REUP', 'AUXS', 'AUXU') ) ) order by l.annotator_initials DESC, l.dep_status_code DESC
 ;
 ? 
-deposit_message_tmplt      table_1    selection_4    ?    ?    "annotator_initials = 'DEP' and dep_status_code = 'DEP' and dep_notify <> '' order by dep_initial_deposition_date DESC"
+deposit_message_tmplt      table_1    selection_4    ?    ?    "annotator_initials = 'DEP' and dep_status_code = 'DEP' and dep_notify <> '' and dep_notify not like '%N%' order by dep_initial_deposition_date DESC"
 "dep_notify:N"
 deposit_entry_tmplt        table_1    selection_4    ?    ?    "annotator_initials = 'DEP' and dep_status_code = 'DEP' order by dep_initial_deposition_date DESC"    ?
 group_entry_tmplt          table_1    selection_6    submit_group    ?    "b.dep_set_id = g.group_id and b.notify != '' and b.dep_set_id like '%%G_%%' order by b.dep_set_id"   ?
