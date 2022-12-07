@@ -152,13 +152,14 @@ function onchange_function() {
             submit_function();
        } else {
             var input_val = search_label_map[val][1];
+	    var onclick = 'onkeydown = "if (event.keyCode == 13) document.getElementById(\'btnSearch\').click()"'
             if (enum_map.hasOwnProperty(val)) {
-                input_val += '<select id="search_value" name="search_value">';
+                input_val += '<select id="search_value" name="search_value" ' + onclick + '>';
                 for (var i = 0; i < enum_map[val].length; i++) {
                      input_val += '<option value="' + enum_map[val][i][0] + '">' + enum_map[val][i][1] + '</option>';
                 }
                 input_val += '</select>';
-            } else input_val += '<input type="text" id="search_value" name="search_value" size="50" value="" />';
+            } else input_val += '<input type="text" id="search_value" name="search_value" size="50" value="" ' + onclick + '/>';
             $('#input_value').html(input_val);
        }
 }

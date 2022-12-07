@@ -342,9 +342,11 @@ tab_search_tmplt            string    no
                             </select> 
                         </td>
                         <td>&nbsp; &nbsp; &nbsp;</td>
-                        <td id="input_value"> <b>Dep/PDB ID(s):</b> &nbsp; <input type="text" id="search_value" name="search_value" size="50" value="" /></td>
+                        <td id="input_value"> <b>Dep/PDB ID(s):</b> &nbsp; <input type="text" id="search_value" name="search_value" size="50" value=""
+			      onkeydown = "if (event.keyCode == 13) document.getElementById('btnSearch').click()"/>
+			</td>
                         <td>&nbsp; &nbsp; &nbsp;</td>
-                        <td><input type="button" name="submit" value="Submit" onclick="submit_function();" /></td>
+                        <td><input type="button" id="btnSearch" name="submit" value="Submit" onclick="submit_function();" /></td>
                     </form>
                 </tr>
             </table>
