@@ -636,6 +636,19 @@ img.percentImage4 {
 	background-color:#FFCCCC;
 }
 
+.background-orange {
+	background-color:#D55E00;
+}
+.background-medblue {
+	background-color:#56B4E9;
+}
+.background-medpink {
+	background-color:#CC79A7;
+}
+.background-cyangreen {
+	background-color:#009E73;
+}
+
 .cell-font-color-red {
         color:red;
 }
