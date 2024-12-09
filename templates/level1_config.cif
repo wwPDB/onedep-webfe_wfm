@@ -517,6 +517,7 @@ workflow_lock_action_tmplt       string    no
 [<a href="/service/release/new_session/wf?identifier=%(dep_set_id)s&filesource=archive&annotator=%(initials)s&citation_update=no_pubmed" target="_blank">Cit.Update w/o Pubmed</a>]
 </br />
 -->
+[<a href="/service/review_v2/full_report?identifier=%(dep_set_id)s&filesource=archive&annotator=%(initials)s" target = "_blank">Review</a>]
 [<a href="/service/workmanager/summary?identifier=%(dep_set_id)s&sessionid=%(sessionid)s&annotator=%(initials)s" target = "_blank">Summary</a>]
 [<a href="/service/workmanager/filereports?identifier=%(dep_set_id)s&sessionid=%(sessionid)s&annotator=%(initials)s" target = "_blank">ViewAllFiles</a>]
 ;
