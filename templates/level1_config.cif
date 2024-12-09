@@ -571,7 +571,7 @@ add_list_tmplt              string    no
 ;
 #accession_code_tmplt
 # accession_code_tmplt        string    no     "%(abbrv_method)s<br/>%(pdb_id)s / %(bmrb_id)s / %(emdb_id)s"
-accession_code_tmplt        string    no     "%(pdb_id)s / %(bmrb_id)s / %(emdb_id)s"
+accession_code_tmplt        string    no     "%(ext_pdb_id)s / %(bmrb_id)s / %(emdb_id)s"
 
 #dep_entry_id_tmplt
 dep_entry_id_tmplt          string    no
@@ -823,7 +823,7 @@ add_list_tmplt            sessionid     sessionid                           sess
 add_list_tmplt            initials      initials                            userInfo       n
 #accession_code_tmplt
 # accession_code_tmplt      abbrv_method        abbrv_method                             "dataInfo"      n
-accession_code_tmplt      pdb_id        pdb_id                             "dataInfo"      n
+accession_code_tmplt      ext_pdb_id    ext_pdb_id                         "dataInfo"      n
 accession_code_tmplt      bmrb_id       bmrb_id                            "dataInfo"      n
 accession_code_tmplt      emdb_id       emdb_id                            "dataInfo"      n
 #dep_entry_id_tmplt
