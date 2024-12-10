@@ -34,6 +34,9 @@ function refresh_ajax_call(tab_id) {
                  if ('map' in jsonOBJ) {
                       update_count(jsonOBJ.map);
                  }
+                 if ('serverinfotext' in jsonOBJ) {
+                      $('#server_info_table').html(jsonOBJ.serverinfotext);
+                 }
             },
             error: function (data, status, e) {
                  progressEnd();
