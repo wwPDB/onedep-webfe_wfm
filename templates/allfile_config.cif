@@ -15,7 +15,7 @@ allfile_tmplt               string    no    ?
         <center>
             <table border="0" cellspacing=0 cellpadding=0>
                 <tr>
-                    <td> Deposition Summary of All Files : <b> %(identifier)s ( %(pdb_id)s / %(bmrb_id)s / %(emdb_id)s ) </b>  </td>
+                    <td> Deposition Summary of All Files : <b> %(identifier)s ( %(ext_pdb_id)s / %(bmrb_id)s / %(emdb_id)s ) </b>  </td>
                 </tr>
             </table>
             </br>
@@ -59,7 +59,7 @@ snapshot_tmplt              string    no    ?
         <center>
             <table width="100%%" border="0" cellspacing=0 cellpadding=0>
                 <tr>
-                    <td>Deposition Difference of depUI and last snapshot : %(identifier)s ( %(pdb_id)s / %(bmrb_id)s / %(emdb_id)s ) </td>
+                    <td>Deposition Difference of depUI and last snapshot : %(identifier)s ( %(ext_pdb_id)s / %(bmrb_id)s / %(emdb_id)s ) </td>
                 <tr>
             </table>
         </center>
@@ -113,14 +113,14 @@ allfile_tmplt              user_name     user_name                           use
 allfile_tmplt              group_name    group_name                          userInfo       n
 allfile_tmplt              first_name    first_name                          userInfo       n
 allfile_tmplt              last_name     last_name                           userInfo       n
-allfile_tmplt              pdb_id        pdb_id                              dataInfo       n
+allfile_tmplt              ext_pdb_id    ext_pdb_id                          dataInfo       n
 allfile_tmplt              bmrb_id       bmrb_id                             dataInfo       n
 allfile_tmplt              emdb_id       emdb_id                             dataInfo       n
 allfile_tmplt              archive       archive                             dataInfo       n
 allfile_tmplt              deposit       deposit                             dataInfo       n
 allfile_tmplt              wf_instance   wf_instance                         dataInfo       n
 #common_page_header_tmplt
-common_page_header_tmplt   head_title   "WFM-Sum:%(pdb_id)s/%(bmrb_id)s/%(emdb_id)s/%(identifier)s"  constant       n
+common_page_header_tmplt   head_title   "WFM-Sum:%(ext_pdb_id)s/%(bmrb_id)s/%(emdb_id)s/%(identifier)s"  constant       n
 common_page_header_tmplt   script       " "                                  constant       n
 common_page_header_tmplt   onload       " "                                  constant       n
 common_page_header_tmplt   user         "%(user_name)s"                      constant       n
@@ -132,7 +132,7 @@ common_page_header_tmplt   last_name    "%(last_name)s"                      con
 #
 #snapshot_tmplt
 snapshot_tmplt             identifier    identifier                          sessionInfo    n
-snapshot_tmplt             pdb_id        pdb_id                              dataInfo       n
+snapshot_tmplt             ext_pdb_id    ext_pdb_id                          dataInfo       n
 snapshot_tmplt             bmrb_id       bmrb_id                             dataInfo       n
 snapshot_tmplt             emdb_id       emdb_id                             dataInfo       n
 snapshot_tmplt             type          type                                dataInfo       n

@@ -55,7 +55,7 @@ entry_tmplt                 string    no    ?
         <td class="textTd"><img src="/wfm/images/%(inst_status)s.png" alt="%(inst_status)s" /></td>
         <td class="textTd">%(dep_set_id)s</td>
         <td class="textTd">%(dep_exp_method)s</td>
-        <td class="textTd">%(pdb_id)s / %(bmrb_id)s / %(emdb_id)s</td>
+        <td class="textTd">%(ext_pdb_id)s / %(bmrb_id)s / %(emdb_id)s</td>
         <td class="textTd">%(dep_status_code)s</td>
         <td class="textTd">%(dep_status_code_exp)s</td>
         <td class="textTd">%(dep_author_release_status_code)s</td>
@@ -163,7 +163,7 @@ level2_tmplt                user_name                         user_name         
 level2_tmplt                group_name                        group_name                                                              userInfo         n
 level2_tmplt                first_name                        first_name                                                              userInfo         n
 level2_tmplt                last_name                         last_name                                                               userInfo         n
-level2_tmplt                pdb_id                            pdb_id                                                                  dataInfo         n
+level2_tmplt                ext_pdb_id                        ext_pdb_id                                                              dataInfo         n
 level2_tmplt                bmrb_id                           bmrb_id                                                                 dataInfo         n
 level2_tmplt                emdb_id                           emdb_id                                                                 dataInfo         n
 level2_tmplt                level                             2                                                                       constant         n
@@ -183,7 +183,7 @@ level3_tmplt                user_name                         user_name         
 level3_tmplt                group_name                        group_name                                                              userInfo         n
 level3_tmplt                first_name                        first_name                                                              userInfo         n
 level3_tmplt                last_name                         last_name                                                               userInfo         n
-level3_tmplt                pdb_id                            pdb_id                                                                  dataInfo         n
+level3_tmplt                ext_pdb_id                        ext_pdb_id                                                              dataInfo         n
 level3_tmplt                bmrb_id                           bmrb_id                                                                 dataInfo         n
 level3_tmplt                emdb_id                           emdb_id                                                                 dataInfo         n
 level3_tmplt                level                             3                                                                       constant         n
@@ -197,7 +197,7 @@ level3_tmplt                log_file                          log_file          
 level3_tmplt                task_info                         task_info                                                               dataInfo         n
 level3_tmplt                entry_info                        entry_tmplt                                                             page_template    n
 #common_page_header_tmplt
-common_page_header_tmplt    head_title                        "%(pdb_id)s/%(bmrb_id)s/%(emdb_id)s/%(identifier)s:%(level)s"           constant         n
+common_page_header_tmplt    head_title                        "%(ext_pdb_id)s/%(bmrb_id)s/%(emdb_id)s/%(identifier)s:%(level)s"           constant         n
 common_page_header_tmplt    user                              "%(user_name)s"                                                         constant         n
 common_page_header_tmplt    sessionid                         "%(sessionid)s"                                                         constant         n
 common_page_header_tmplt    breadcrumbs                       "%(breadcrumbs)s"                                                       constant         n
@@ -208,7 +208,7 @@ common_page_header_tmplt    last_name                         "%(last_name)s"   
 entry_tmplt                 inst_status                       inst_status                                                             dataInfo         n
 entry_tmplt                 dep_set_id                        dep_set_id                                                              dataInfo         n
 entry_tmplt                 dep_exp_method                    dep_exp_method                                                          dataInfo         n
-entry_tmplt                 pdb_id                            pdb_id                                                                  dataInfo         n
+entry_tmplt                 ext_pdb_id                        ext_pdb_id                                                              dataInfo         n
 entry_tmplt                 bmrb_id                           bmrb_id                                                                 dataInfo         n
 entry_tmplt                 emdb_id                           emdb_id                                                                 dataInfo         n
 entry_tmplt                 dep_status_code                   dep_status_code                                                         dataInfo         n
