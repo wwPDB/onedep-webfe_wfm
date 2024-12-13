@@ -84,7 +84,7 @@ summary_tmplt              group_name    group_name                          use
 summary_tmplt              first_name    first_name                          userInfo       n
 summary_tmplt              last_name     last_name                           userInfo       n
 summary_tmplt              title         title                               dataInfo       n
-summary_tmplt              pdb_id        pdb_id                              dataInfo       n
+summary_tmplt              ext_pdb_id    ext_pdb_id                          dataInfo       n
 summary_tmplt              bmrb_id       bmrb_id                             dataInfo       n
 summary_tmplt              emdb_id       emdb_id                             dataInfo       n
 summary_tmplt              deppw         deppw                               dataInfo       n
@@ -92,7 +92,7 @@ summary_tmplt              contact_authors   contact_table_tmplt             pag
 summary_tmplt              audit_history audit_history_table_tmplt           page_template  n
 summary_tmplt              timestamp     timestamp_table_tmplt               page_template  n
 #common_page_header_tmplt
-common_page_header_tmplt   head_title   "WFM-Sum:%(pdb_id)s/%(bmrb_id)s/%(emdb_id)s/%(identifier)s"  constant       n
+common_page_header_tmplt   head_title   "WFM-Sum:%(ext_pdb_id)s/%(bmrb_id)s/%(emdb_id)s/%(identifier)s"  constant       n
 common_page_header_tmplt   script
 ;<script type='text/javascript' src='/wfm/js/depui.js'></script>
 ;
