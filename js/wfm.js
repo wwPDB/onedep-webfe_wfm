@@ -171,7 +171,7 @@ function valid_entry_ids(input_ids) {
      const splitted = input_ids.split(/[^A-Za-z0-9_-]/);
      const regExps = new Array(
           new RegExp(/[A-Za-z0-9]{4}/), // a PDB-id (promissing one)
-          new RegExp(/[Ee][Mm][Dd]-\d{4,5}/), // EMDB-id
+          new RegExp(/[Ee][Mm][Dd]-\d{4,6}/), // EMDB-id
           new RegExp(/\d{5}/), // BMRB-ids
           new RegExp(/[Gg]_\d{7}/), // group deposition-id
           new RegExp(/([Dd]_){0,1}\d{10}/)); //deposition-id
