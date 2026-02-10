@@ -24,13 +24,9 @@ function refresh_ajax_call(tab_id) {
        if (index == '') return;
 */
        var index = 'all';
-       $.ajax({ type: 'GET', async: false, url: '/service/workmanager/refresh', dataType: 'json',
+       $.ajax({ type: 'GET', async: true, url: '/service/workmanager/refresh', dataType: 'json',
             data: { 'sessionid': session_ID, 'annotator': annotator, 'index': index },
-            beforeSend: function() {
-                 progressStart();
-            },
             success: function(jsonOBJ) {
-                 progressEnd();
                  if ('map' in jsonOBJ) {
                       update_count(jsonOBJ.map);
                  }
@@ -39,7 +35,6 @@ function refresh_ajax_call(tab_id) {
                  }
             },
             error: function (data, status, e) {
-                 progressEnd();
                  alert(e);
             }
        });
