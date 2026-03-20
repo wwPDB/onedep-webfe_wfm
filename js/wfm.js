@@ -24,7 +24,7 @@ function refresh_ajax_call(tab_id) {
        if (index == '') return;
 */
        var index = 'all';
-       $.ajax({ type: 'GET', async: true, url: '/service/workmanager/refresh', dataType: 'json',
+       return $.ajax({ type: 'GET', async: true, url: '/service/workmanager/refresh', dataType: 'json',
             data: { 'sessionid': session_ID, 'annotator': annotator, 'index': index },
             success: function(jsonOBJ) {
                  if ('map' in jsonOBJ) {
@@ -42,8 +42,7 @@ function refresh_ajax_call(tab_id) {
 
 $(document).on('click','.tabselection', function(){
        var id = $(this).attr('id');
-       refresh_ajax_call(id);
-       setTab(id);
+       refresh_ajax_call(id).then(function() { setTab(id); });
 });
 
 function set_count() {
@@ -123,8 +122,7 @@ function setTab(id) {
 }
 
 function refresh_level1_pages(tab_id) {
-       refresh_ajax_call(tab_id);
-       setTab(selected_tab_id);
+       refresh_ajax_call(tab_id).then(function() { setTab(selected_tab_id); });
 }
 
 function editMyList(type, sessionid, depID, initials) {
