@@ -121,8 +121,18 @@ function setTab(id) {
        });
 }
 
-function refresh_level1_pages(tab_id) {
-       refresh_ajax_call(tab_id).then(function() { setTab(selected_tab_id); });
+function refresh_level1_pages(tab_id, btn) {
+       if (btn) {
+            btn.disabled = true;
+            btn.value = 'Loading...';
+       }
+       refresh_ajax_call(tab_id).then(function() {
+            setTab(selected_tab_id);
+            if (btn) {
+                 btn.disabled = false;
+                 btn.value = 'Refresh Pages';
+            }
+       });
 }
 
 function editMyList(type, sessionid, depID, initials) {
