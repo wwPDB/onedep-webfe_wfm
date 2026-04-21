@@ -130,7 +130,7 @@ _tab_definition_table.default_load
 _tab_definition_table.table_title
 to_do_entry_tmplt          table_1    table_definition_1    option_definition_1    inline    true      ?
 proc_entry_tmplt           table_1    table_definition_13    option_definition_1    inline    true      ?
-author_correction_tmplt    table_1    table_definition_13    option_definition_1    inline    true      ?
+author_correction_tmplt    table_1    table_definition_15    option_definition_1    inline    true      ?
 pending_entry_tmplt        table_1    table_definition_13    option_definition_1    inline    true      ?
 reminder_entry_tmplt       table_1    table_definition_3    option_definition_1    inline    true      ?
 search_tmplt               table_1    table_definition_13    option_definition_1    none      false     ?
@@ -1035,6 +1035,27 @@ table_definition_13   column_definition_15
 table_definition_13   column_definition_16
 table_definition_13   column_definition_101
 table_definition_13   column_definition_102
+#table_definition_15
+table_definition_15   column_definition_1
+table_definition_15   column_definition_2
+table_definition_15   column_definition_3
+table_definition_15   column_definition_4
+table_definition_15   column_definition_5
+table_definition_15   column_definition_6
+table_definition_15   column_definition_7
+table_definition_15   column_definition_8
+table_definition_15   column_definition_9
+table_definition_15   column_definition_50
+table_definition_15   column_definition_10
+table_definition_15   column_definition_12
+table_definition_15   column_definition_13
+table_definition_15   column_definition_19
+table_definition_15   column_definition_14
+table_definition_15   column_definition_15
+table_definition_15   column_definition_16
+table_definition_15   column_definition_101
+table_definition_15   column_definition_102
+table_definition_15   column_definition_51
 #table_definition_14
 table_definition_14   column_definition_22
 table_definition_14   column_definition_23
@@ -1145,6 +1166,8 @@ column_definition_46    "E-mail Notification"  group_notification ?       ?     
 column_definition_47    "Group ID"             unsubmitted_group  true    ?        ?               ?               ?
 column_definition_48    'Group Status'         status_code        true    ?        ?               ?               ?
 column_definition_49    'Deposition Date'      deposition_date    true    ?        ?               ?               ?
+column_definition_50    Stage                  processing_stage   true    ?        ?               has_been_auth   ?
+column_definition_51    Auxiliary_4            has_been_auth      true    false    defaultSorter   ?               ?
 #
 loop_
 _table_data_field_binding.id
@@ -1178,6 +1201,8 @@ received_date      last_message_received_date       "dataInfo"
 sent_date          last_message_sent_date           "dataInfo"
 reminder_date      last_reminder_sent_date          "dataInfo"
 dep_workflow       class_id                         "dataInfo"
+processing_stage   processing_stage                 "dataInfo"
+has_been_auth      has_been_auth                    "dataInfo"
 dep_entry_id       dep_entry_id_tmplt                page_template
 dep_method         abbrv_method                     "dataInfo"
 dep_title          dep_title                        "dataInfo"
@@ -1221,7 +1246,7 @@ proc_entry_tmplt           table_1    selection_2    ?    initials
 l.dep_emdb_id != '?' and l.dep_status_code_emdb = 'PROC' ) ) order by dep_initial_deposition_date ASC
 ;
 "dep_author_release_status_code:REL"
-author_correction_tmplt    table_1    selection_2    ?    initials
+author_correction_tmplt    table_1    selection_9    ?    initials
 ;l.dep_set_id = d.dep_set_id 
  and 
    ( (l.annotator_initials = 'EBI' and l.dep_locking = 'DEP') or l.annotator_initials = '%(initials)s' ) 
@@ -1231,7 +1256,7 @@ author_correction_tmplt    table_1    selection_2    ?    initials
    ( l.pdb_id = '?' and l.dep_emdb_id != '?' and l.dep_status_code_emdb in ( 'REPL', 'AUCO', 'REUP', 'AUXS', 'AUXU' ) ) or
    ( l.pdb_id != '?' and l.dep_status_code = 'REL' and l.dep_post_rel_status in ( 'REPL', 'AUCO', 'REUP', 'AUXS', 'AUXU' ) )
  )
-order by dep_initial_deposition_date ASC
+order by has_been_auth ASC, dep_initial_deposition_date ASC
 ;
 "dep_status_code:REL,OBS,WDRN"
 pending_entry_tmplt        table_1    selection_2    ?    initials         
@@ -1341,6 +1366,36 @@ selection_8
 l.dep_status_code, l.dep_status_code_exp, l.dep_author_release_status_code, l.dep_status_code_emdb, l.dep_initial_deposition_date, l.annotator_initials, l.dep_notify, 
 l.dep_locking, l.dep_title, l.dep_author_list, l.dep_post_rel_status, d.dep_author_release_status_code_emdb, d.title_emdb, d.author_list_emdb, r.last_validation_sent_date from dep_last_instance as l inner join deposition as d on l.dep_set_id = d.dep_set_id 
 left join remind_message_track as r on l.dep_set_id=r.dep_set_id where
+;
+selection_9
+;select distinct l.class_id, l.inst_id, l.inst_status, l.dep_set_id, l.deppw, l.dep_exp_method as method, l.pdb_id, l.dep_bmrb_id as bmrb_id, l.dep_emdb_id as emdb_id,
+l.dep_status_code, l.dep_status_code_exp, l.dep_author_release_status_code, l.dep_status_code_emdb, l.dep_initial_deposition_date, l.annotator_initials, l.dep_notify,
+l.dep_locking, l.dep_title, l.dep_author_list, l.dep_post_rel_status, d.dep_author_release_status_code_emdb, d.title_emdb, d.author_list_emdb,
+CASE
+  WHEN EXISTS (
+    SELECT 1
+    FROM da_internal.pdbx_database_status_history AS h
+    WHERE h.entry_id = l.dep_set_id
+      AND (
+        h.status_code_begin = 'AUTH' OR
+        h.status_code_end = 'AUTH'
+      )
+  ) THEN 1
+  ELSE 0
+END AS has_been_auth,
+CASE
+  WHEN EXISTS (
+    SELECT 1
+    FROM da_internal.pdbx_database_status_history AS h
+    WHERE h.entry_id = l.dep_set_id
+      AND (
+        h.status_code_begin = 'AUTH' OR
+        h.status_code_end = 'AUTH'
+      )
+  ) THEN 'Rework'
+  ELSE 'New'
+END AS processing_stage
+from dep_last_instance as l, deposition as d where
 ;
 #
 loop_
