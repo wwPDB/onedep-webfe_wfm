@@ -1028,6 +1028,7 @@ table_definition_13   column_definition_8
 table_definition_13   column_definition_9
 table_definition_13   column_definition_10
 table_definition_13   column_definition_12
+table_definition_13   column_definition_11
 table_definition_13   column_definition_13
 table_definition_13   column_definition_19
 table_definition_13   column_definition_14
@@ -1189,7 +1190,7 @@ author_status      comb_author_release_status_code  "dataInfo"
 dep_date           deposition_release_dates         "dataInfo"
 #dep_date           dep_initial_deposition_date      "dataInfo"
 initials           annotator_initials               "dataInfo"
-remove_list        remove_list_tmplt                 page_template
+remove_list        "_processRemoveList"              function
 add_list           "_processAddList"                 function
 commun             "_processCommunication"           function
 title              dep_title                        "dataInfo"
