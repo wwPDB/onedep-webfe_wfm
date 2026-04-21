@@ -1257,7 +1257,7 @@ author_correction_tmplt    table_1    selection_9    ?    initials
    ( l.pdb_id = '?' and l.dep_emdb_id != '?' and l.dep_status_code_emdb in ( 'REPL', 'AUCO', 'REUP', 'AUXS', 'AUXU' ) ) or
    ( l.pdb_id != '?' and l.dep_status_code = 'REL' and l.dep_post_rel_status in ( 'REPL', 'AUCO', 'REUP', 'AUXS', 'AUXU' ) )
  )
-order by has_been_auth ASC, dep_initial_deposition_date ASC
+order by dep_initial_deposition_date ASC
 ;
 "dep_status_code:REL,OBS,WDRN"
 pending_entry_tmplt        table_1    selection_2    ?    initials         
@@ -1371,32 +1371,7 @@ left join remind_message_track as r on l.dep_set_id=r.dep_set_id where
 selection_9
 ;select distinct l.class_id, l.inst_id, l.inst_status, l.dep_set_id, l.deppw, l.dep_exp_method as method, l.pdb_id, l.dep_bmrb_id as bmrb_id, l.dep_emdb_id as emdb_id,
 l.dep_status_code, l.dep_status_code_exp, l.dep_author_release_status_code, l.dep_status_code_emdb, l.dep_initial_deposition_date, l.annotator_initials, l.dep_notify,
-l.dep_locking, l.dep_title, l.dep_author_list, l.dep_post_rel_status, d.dep_author_release_status_code_emdb, d.title_emdb, d.author_list_emdb,
-CASE
-  WHEN EXISTS (
-    SELECT 1
-    FROM da_internal.pdbx_database_status_history AS h
-    WHERE h.entry_id = l.dep_set_id
-      AND (
-        h.status_code_begin = 'AUTH' OR
-        h.status_code_end = 'AUTH'
-      )
-  ) THEN 1
-  ELSE 0
-END AS has_been_auth,
-CASE
-  WHEN EXISTS (
-    SELECT 1
-    FROM da_internal.pdbx_database_status_history AS h
-    WHERE h.entry_id = l.dep_set_id
-      AND (
-        h.status_code_begin = 'AUTH' OR
-        h.status_code_end = 'AUTH'
-      )
-  ) THEN 'Rework'
-  ELSE 'New'
-END AS processing_stage
-from dep_last_instance as l, deposition as d where
+l.dep_locking, l.dep_title, l.dep_author_list, l.dep_post_rel_status, d.dep_author_release_status_code_emdb, d.title_emdb, d.author_list_emdb from dep_last_instance as l, deposition as d where
 ;
 #
 loop_
