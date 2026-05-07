@@ -713,6 +713,15 @@ function statusSorter(status_a, status_b) {
        return 0;
 }
 
+function replStageSorter(stage_a, stage_b) {
+       var order = { 'New': 0, 'Rework': 1 };
+       var a = (stage_a in order) ? order[stage_a] : 2;
+       var b = (stage_b in order) ? order[stage_b] : 2;
+       if (a < b) return -1;
+       if (a > b) return 1;
+       return 0;
+}
+
 function defaultSorter(a, b) {
        var int_a = parseInt(a);
        var int_b = parseInt(b);
@@ -1035,19 +1044,21 @@ table_definition_13   column_definition_15
 table_definition_13   column_definition_16
 table_definition_13   column_definition_101
 table_definition_13   column_definition_102
-#table_definition_15
+#table_definition_15 (REPL: Status with New icon; hidden Stage; hidden has_been_auth)
 table_definition_15   column_definition_1
 table_definition_15   column_definition_2
 table_definition_15   column_definition_3
 table_definition_15   column_definition_4
 table_definition_15   column_definition_5
-table_definition_15   column_definition_6
+table_definition_15   column_definition_103
+table_definition_15   column_definition_104
+table_definition_15   column_definition_105
 table_definition_15   column_definition_7
 table_definition_15   column_definition_8
 table_definition_15   column_definition_9
-table_definition_15   column_definition_50
 table_definition_15   column_definition_10
 table_definition_15   column_definition_12
+table_definition_15   column_definition_11
 table_definition_15   column_definition_13
 table_definition_15   column_definition_19
 table_definition_15   column_definition_14
@@ -1166,7 +1177,9 @@ column_definition_46    "E-mail Notification"  group_notification ?       ?     
 column_definition_47    "Group ID"             unsubmitted_group  true    ?        ?               ?               ?
 column_definition_48    'Group Status'         status_code        true    ?        ?               ?               ?
 column_definition_49    'Deposition Date'      deposition_date    true    ?        ?               ?               ?
-column_definition_50    Stage                  processing_stage   true    ?        ?               has_been_auth   ?
+column_definition_103   Status                 repl_coor_status   true    ?        statusSorter    repl_status_sort  ?
+column_definition_104   " "                    repl_status_sort   true    false    statusSorter    repl_status_sort  ?
+column_definition_105   Stage                  processing_stage   true    false    replStageSorter   ?               ?
 column_definition_51    Auxiliary_4            has_been_auth      true    false    defaultSorter   ?               ?
 #
 loop_
@@ -1184,6 +1197,9 @@ depui              depui_tmplt                       page_template
 method             abbrv_method                      "dataInfo"
 pdb_ids            accession_code_tmplt              page_template
 coor_status        comb_status_code                 "dataInfo"
+repl_coor_status   "_processReplCoorStatus"          function
+repl_status_sort   comb_status_code                 "dataInfo"
+processing_stage   processing_stage                 "dataInfo"
 exp_status         dep_status_code_exp              "dataInfo"
 author_status      comb_author_release_status_code  "dataInfo"
 dep_date           deposition_release_dates         "dataInfo"
@@ -1201,7 +1217,6 @@ received_date      last_message_received_date       "dataInfo"
 sent_date          last_message_sent_date           "dataInfo"
 reminder_date      last_reminder_sent_date          "dataInfo"
 dep_workflow       class_id                         "dataInfo"
-processing_stage   processing_stage                 "dataInfo"
 has_been_auth      has_been_auth                    "dataInfo"
 dep_entry_id       dep_entry_id_tmplt                page_template
 dep_method         abbrv_method                     "dataInfo"
