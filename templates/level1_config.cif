@@ -1071,6 +1071,7 @@ table_definition_15   column_definition_51
 #table_definition_14
 table_definition_14   column_definition_22
 table_definition_14   column_definition_23
+table_definition_14   column_definition_106
 table_definition_14   column_definition_24
 table_definition_14   column_definition_25
 table_definition_14   column_definition_26
@@ -1081,7 +1082,6 @@ table_definition_14   column_definition_19
 table_definition_14   column_definition_40
 table_definition_14   column_definition_41
 table_definition_14   column_definition_101
-table_definition_14   column_definition_102
 #
 loop_
 _table_binding_definition.id
@@ -1145,6 +1145,7 @@ column_definition_15    Author                 author_list        true    ?     
 column_definition_16    Auxiliary_1            auxiliary          ?       false    ?               ?               ?
 column_definition_101   Auxiliary_2            default_order      true    false    defaultSorter   ?               ?
 column_definition_102   Auxiliary_3            dep_set_id         ?       false    ?               ?               ?
+column_definition_106   Assigned               anno_selection     true    true     ?               ?               ?
 column_definition_17    "Issues"               major_issue        true    ?        ?               ?               cellStyle
 column_definition_18    "Val Sent"             validation_date    true    ?        ?               ?               ?
 column_definition_19    "Msg Recv"             received_date      true    ?        ?               ?               ?
@@ -1208,6 +1209,7 @@ dep_date           deposition_release_dates         "dataInfo"
 initials           annotator_initials               "dataInfo"
 remove_list        "_processRemoveList"              function
 add_list           "_processAddList"                 function
+anno_selection     anno_selection                   "dataInfo"
 commun             "_processCommunication"           function
 title              dep_title                        "dataInfo"
 author_list        dep_author_list                  "dataInfo"
