@@ -1145,7 +1145,7 @@ column_definition_15    Author                 author_list        true    ?     
 column_definition_16    Auxiliary_1            auxiliary          ?       false    ?               ?               ?
 column_definition_101   Auxiliary_2            default_order      true    false    defaultSorter   ?               ?
 column_definition_102   Auxiliary_3            dep_set_id         ?       false    ?               ?               ?
-column_definition_106   Assigned               anno_selection     true    true     ?               ?               ?
+column_definition_106   Assigned               anno_selection     true    false    ?               ?               ?
 column_definition_17    "Issues"               major_issue        true    ?        ?               ?               cellStyle
 column_definition_18    "Val Sent"             validation_date    true    ?        ?               ?               ?
 column_definition_19    "Msg Recv"             received_date      true    ?        ?               ?               ?
