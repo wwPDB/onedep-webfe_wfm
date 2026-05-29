@@ -205,6 +205,30 @@ h2 { font-size: 1.5em; }
 	text-align: center; 
 		
 }
+.groupTaskWF {
+	background-color:#40E0D0;
+	width:auto;
+        height:auto;
+	position:relative; 
+	color:#000000; 
+	text-align: center; 
+}
+.groupTaskBucket {
+	background-color:#DFFF00;
+	width:auto;
+        height:auto;
+	position:relative; 
+	color:#000000; 
+	text-align: center; 
+}
+.groupTaskUI {
+	background-color:#CCCCFF;
+	width:auto;
+        height:auto;
+	position:relative; 
+	color:#000000; 
+	text-align: center; 
+}
 .groupEntry {
 	padding: 8px;
         margin: 10px;

@@ -171,6 +171,7 @@ function onchange_function() {
 }
 
 function valid_entry_ids(input_ids) {
+     const regex = /^\d{10}$/;
      const splitted = input_ids.split(/[^A-Za-z0-9_-]/);
      const regExps = new Array(
           new RegExp(/[A-Za-z0-9]{4}/), // a PDB-id (promissing one)
@@ -182,7 +183,8 @@ function valid_entry_ids(input_ids) {
      const match = splitted
           .filter(x => regExps.some(y => y.test(x)))
           .map(x => {
-               if (x.length === 10) x = `D_${x}`;
+               // if (x.length === 10) x = `D_${x}`;
+               if (regex.test(x)) x = `D_${x}`;
                return x.toUpperCase();
           });
 

@@ -523,7 +523,7 @@ workflow_lock_action_tmplt       string    no
 ;
 #workflow_init_action_tmplt
 workflow_init_action_tmplt       string    no
-;<a href="/service/workmanager/level2?identifier=%(dep_set_id)s&sessionid=%(sessionid)s&annotator=%(initials)s" target = "_blank">%(display_ids)s</a>
+;<a href="/service/workmanager/level2?identifier=%(dep_set_id)s&sessionid=%(sessionid)s&annotator=%(initials)s%(group_info)s" target = "_blank">%(display_ids)s</a>
 <br />
 <input type="button" name="EditCif" value="Edit" onclick="editCif('%(sessionid)s', '%(dep_set_id)s', '%(inst_id)s', '%(class_id)s', '%(urlmethod)s', '%(initials)s');" />
 <input type="button" name="Run" value="Run" onclick="RunAnnotateWF('%(sessionid)s', '%(initials)s', 'init', '%(dep_set_id)s', '%(inst_id)s', '%(class_id)s', 'runWF', '', '%(method)s', '');" />
@@ -543,7 +543,7 @@ workflow_init_action_tmplt       string    no
 ;
 #workflow_other_action_tmplt
 workflow_other_action_tmplt      string    no
-;<a href="/service/workmanager/level2?identifier=%(dep_set_id)s&sessionid=%(sessionid)s&annotator=%(initials)s" target = "_blank">%(display_ids)s</a>
+;<a href="/service/workmanager/level2?identifier=%(dep_set_id)s&sessionid=%(sessionid)s&annotator=%(initials)s%(group_info)s" target = "_blank">%(display_ids)s</a>
 <br />
 <input type="button" name="EditCif" value="Edit"  onclick="editCif('%(sessionid)s', '%(dep_set_id)s', '%(inst_id)s', '%(class_id)s', '%(urlmethod)s', '%(initials)s');" />
 [<a href="/service/workmanager/ciffile?identifier=%(dep_set_id)s&sessionid=%(sessionid)s&filesource=archive&version=latest">ViewCIF</a>]
@@ -607,7 +607,7 @@ assign_select_tmplt         string    no
 ;
 #assign_entry_id_tmplt
 assign_entry_id_tmplt       string    no
-;<a href="/service/workmanager/level2?identifier=%(dep_set_id)s&sessionid=%(sessionid)s&annotator=%(initials)s" target = "_blank">%(display_ids)s</a>
+;<a href="/service/workmanager/level2?identifier=%(dep_set_id)s&sessionid=%(sessionid)s&annotator=%(initials)s%(group_info)s" target = "_blank">%(display_ids)s</a>
 <br />
 [<a href="/service/workmanager/summary?identifier=%(dep_set_id)s&sessionid=%(sessionid)s&annotator=%(initials)s" target = "_blank">Summary</a>]
 <br />
@@ -805,6 +805,7 @@ workflow_init_action_tmplt      urlmethod   urlmethod                      "data
 workflow_init_action_tmplt      method      method                         "dataInfo"      n
 workflow_init_action_tmplt      sessionid   sessionid                       sessionInfo    n
 workflow_init_action_tmplt      initials    initials                        userInfo       n
+workflow_init_action_tmplt      group_info  group_info                     "dataInfo"      n
 #workflow_other_action_tmplt
 workflow_other_action_tmplt     dep_set_id  dep_set_id                     "dataInfo"      n
 workflow_other_action_tmplt     display_ids  display_ids                   "dataInfo"      n
@@ -813,6 +814,7 @@ workflow_other_action_tmplt     class_id    class_id                       "data
 workflow_other_action_tmplt     urlmethod   urlmethod                      "dataInfo"      n
 workflow_other_action_tmplt     sessionid   sessionid                       sessionInfo    n
 workflow_other_action_tmplt     initials    initials                        userInfo       n
+workflow_other_action_tmplt     group_info  group_info                     "dataInfo"      n
 #remove_list_tmplt
 remove_list_tmplt         dep_set_id    dep_set_id                         "dataInfo"      n
 remove_list_tmplt         sessionid     sessionid                           sessionInfo    n
@@ -842,6 +844,7 @@ assign_select_tmplt       dep_set_id    dep_set_id                         "data
 assign_entry_id_tmplt     dep_set_id    dep_set_id                         "dataInfo"      n
 assign_entry_id_tmplt     display_ids   display_ids                        "dataInfo"      n
 assign_entry_id_tmplt     initials      annotator_initials                 "dataInfo"      n
+assign_entry_id_tmplt     group_info    group_info                         "dataInfo"      n
 assign_entry_id_tmplt     urlmethod     urlmethod                          "dataInfo"      n
 assign_entry_id_tmplt     locklabel     locklabel                          "dataInfo"      n
 assign_entry_id_tmplt     sessionid     sessionid                           sessionInfo    n

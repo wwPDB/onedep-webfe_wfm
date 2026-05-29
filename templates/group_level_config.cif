@@ -6,7 +6,7 @@ _page_template.type
 _page_template.repeat
 _page_template.dependence
 _page_template.page
-#group_workflow_tmplt
+#group_workflow_tmplt referenced by depict/DepictGroup.py
 group_workflow_tmplt        string    no    ?  
 ;
 %(page_head)s
@@ -48,7 +48,7 @@ var annotator  = '%(annotator)s';
 </body>
 </html>
 ;
-#group_worktask_tmplt
+#group_worktask_tmplt referenced by depict/DepictGroup.py
 group_worktask_tmplt        string    no    ?  
 ;
 %(page_head)s
@@ -211,19 +211,25 @@ group_worktask_tmplt        string    no    ?
       <div class="col-sm-12"> &nbsp; </div>
    </div>
    <div class="row">
-      <div class="col-sm-3"> <input type="checkbox", name="checked_list" value="header" /> &nbsp; &nbsp; Header </div>
-      <div class="col-sm-3"> <input type="checkbox", name="checked_list" value="title" /> &nbsp; &nbsp; Title </div>
-      <div class="col-sm-3"> <input type="checkbox", name="checked_list" value="keyword" /> &nbsp; &nbsp; Keywords </div>
-      <div class="col-sm-3"> <input type="checkbox", name="checked_list" value="author" /> &nbsp; &nbsp; Authors </div>
+      <div class="col-sm-4"> <input type="checkbox", name="checked_list" value="header" /> &nbsp; &nbsp; Header </div>
+      <div class="col-sm-4"> <input type="checkbox", name="checked_list" value="title" /> &nbsp; &nbsp; Title </div>
+      <div class="col-sm-4"> <input type="checkbox", name="checked_list" value="keyword" /> &nbsp; &nbsp; Keywords </div>
    </div>
    <div class="row">
       <div class="col-sm-12"> &nbsp; </div>
    </div>
    <div class="row">
-      <div class="col-sm-3"> <input type="checkbox", name="checked_list" value="group" /> &nbsp; &nbsp; Group information </div>
-      <div class="col-sm-3"> <input type="checkbox", name="checked_list" value="citation" /> &nbsp; &nbsp; Citation </div>
-      <div class="col-sm-3"> <input type="checkbox", name="checked_list" value="crystallization" /> &nbsp; &nbsp; Crystallization conditions </div>
-      <div class="col-sm-3"> <input type="checkbox", name="checked_list" value="loi" class="loi_update" /> &nbsp; &nbsp; Ligand of interesting </div>
+      <div class="col-sm-4"> <input type="checkbox", name="checked_list" value="author" /> &nbsp; &nbsp; Authors </div>
+      <div class="col-sm-4"> <input type="checkbox", name="checked_list" value="group" /> &nbsp; &nbsp; Group information </div>
+      <div class="col-sm-4"> <input type="checkbox", name="checked_list" value="citation" /> &nbsp; &nbsp; Citation </div>
+   </div>
+   <div class="row">
+      <div class="col-sm-12"> &nbsp; </div>
+   </div>
+   <div class="row">
+      <div class="col-sm-4"> <input type="checkbox", name="checked_list" value="crystallization" /> &nbsp; &nbsp; Crystallization conditions </div>
+      <div class="col-sm-4"> <input type="checkbox", name="checked_list" value="loi" class="loi_update" /> &nbsp; &nbsp; Ligand of interesting </div>
+      <div class="col-sm-4"> <input type="checkbox", name="checked_list" value="startingmodel" /> &nbsp; &nbsp; Starting model category </div>
    </div>
    <div class="row">
       <div class="col-sm-12"> &nbsp; </div>
@@ -295,28 +301,28 @@ var getLigandMapFlag = false;
 </body>
 </html>
 ;
-#common_page_header_tmplt
+#common_page_header_tmplt: referenced by group_workflow_tmplt
 common_page_header_tmplt    file      no    ?    "common_page_no_table_tmplt.html"   
-#group_task_header_tmplt
+#group_task_header_tmplt: referenced by group_worktask_tmplt
 group_task_header_tmplt     file      no    ?    "group_task_page_header_tmplt.html"   
-#module_tmplt
+#module_tmplt: referenced by depict/DepictGroup.py 
 module_tmplt                string    no    ?
 ;<td align="center" width="100px" style="border:hidden">
-    <div class="groupTask init">
+    <div class="%(groupclass)s">
         <input type="radio" name="classID" value="%(classID)s"/> %(name)s
     </div>
 </td>
 ;
-#entry_tmplt
+#entry_tmplt: referenced by depict/DepictGroup.py
 entry_tmplt                 string    no    ?
 ;<td align="center" width="100px" style="border:hidden">
     <div class="groupEntry finished">
         <input type="checkbox" name="entry_id" value="%(dep_set_id)s" checked />
-<a href="/service/workmanager/level2?identifier=%(dep_set_id)s&sessionid=%(sessionid)s&annotator=%(annotator)s" target = "_blank">%(dep_set_id)s</a>
+<a href="/service/workmanager/level2?identifier=%(dep_set_id)s&sessionid=%(sessionid)s&annotator=%(annotator)s&group_id=%(group_id)s" target = "_blank">%(dep_set_id)s</a>
     </div>
 </td>
 ;
-#task_entry_tmplt
+#task_entry_tmplt: referenced by depict/DepictGroup.py
 task_entry_tmplt            string    no    ?
 ;<td align="center" width="100px" style="border:hidden">
     <div class="groupEntry finished">
