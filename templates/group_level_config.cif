@@ -70,7 +70,7 @@ group_worktask_tmplt        string    no    ?
 
     <div id="content">
 <div id="merge-sequence-dialog" class="status-inline displaynone">
-   <legend><input type="button" value="Merge Sequence Annotation" onClick="run_selected_task('sequence');" />
+   <legend><input type="button" value="Merge Sequence Annotation" onClick="run_selected_task(this.value, 'sequence');" />
    <a href="/wfm/templates/help.html#Sequence" target = "group_help"><span class="glyphicon glyphicon-info-sign pull-right" style="font-size:21px;"></span></a></legend>
    <div class="row">
       <div class="col-sm-12">
@@ -109,7 +109,7 @@ group_worktask_tmplt        string    no    ?
    </div>
 </div>
 <div id="status-identifier-dialog" class="status-inline displaynone">
-   <legend><input type="button" value="Update Status" onClick="run_update_status_task();" />
+   <legend><input type="button" value="Update Status" onClick="run_update_status_task(this.value);" />
    <a href="/wfm/templates/help.html#Status" target = "group_help"><span class="glyphicon glyphicon-info-sign pull-right" style="font-size:21px;"></span></a></legend>
    <div class="row">
       <div class="col-sm-4">
@@ -179,7 +179,7 @@ group_worktask_tmplt        string    no    ?
    </div>
 </div>
 <div id="merge-other-dialog" class="status-inline displaynone">
-   <legend><input type="button" value="Merge Other Values" onClick="run_selected_task('other');" />
+   <legend><input type="button" value="Merge Other Values" onClick="run_selected_task(this.value, 'other');" />
    <a href="/wfm/templates/help.html#Other" target = "group_help"><span class="glyphicon glyphicon-info-sign pull-right" style="font-size:21px;"></span></a></legend>
    <div class="row">
       <div class="col-sm-12">
@@ -241,7 +241,7 @@ group_worktask_tmplt        string    no    ?
    </div>
 </div>
 <div id="merge-recover-dialog" class="status-inline displaynone">
-   <legend><input type="button" value="Merge Initial Deposition Date/Revision History" onClick="run_selected_task('recover');" />
+   <legend><input type="button" value="Merge Initial Deposition Date/Revision History" onClick="run_selected_task(this.value, 'recover');" />
    <a href="/wfm/templates/help.html#Initial" target = "group_help"><span class="glyphicon glyphicon-info-sign pull-right" style="font-size:21px;"></span></a></legend>
    <div class="row">
       <div class="col-sm-6"> <input type="checkbox", name="checked_list" value="depdate" /> &nbsp; &nbsp; Initial Deposition Date </div>
@@ -254,21 +254,27 @@ group_worktask_tmplt        string    no    ?
 <table class="workflow" width="100%%" cellspacing="20" border="1">
 <tr>
 <td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Merge Sequence Annotation" onClick="show_selected_panel('merge-sequence-dialog', 'sequence');" /></td>
-<!--
-<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Merge Ligand Assignment" onClick="run_selected_task('ligand');" /></td>
--->
 <td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Status Tasks" onClick="show_selected_panel('status-identifier-dialog', 'status');" /></td>
 <td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Merge Other Values" onClick="show_selected_panel('merge-other-dialog', 'other');" /></td>
-<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Cif Check" onClick="run_selected_task('cifcheck');" /></td>
-<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Misc. Check" onClick="run_selected_task('mischeck');" /></td>
-<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Generate PDB Files" onClick="run_selected_task('pdbfile');" /></td>
-<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Load Database" onClick="run_selected_task('database');" /></td>
-<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Copy Processed Files to Deposition" onClick="run_selected_task('copy_to_deposition');" /></td>
+<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Run Ligand Assignment" onClick="run_selected_task(this.value, 'ligand');" /></td>
+<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Run Standard Annotation" onClick="run_selected_task(this.value, 'annotation');" /></td>
+<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Run Validation" onClick="run_selected_task(this.value, 'validation');" /></td>
 </tr>
-<tr><td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Merge Initial Deposition Date/Revision History"
- onClick="show_selected_panel('merge-recover-dialog', 'recover');" /></td></tr>
+<tr>
+<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Cif Check" onClick="run_selected_task(this.value, 'cifcheck');" /></td>
+<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Misc. Check" onClick="run_selected_task(this.value, 'mischeck');" /></td>
+<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Generate PDB Files" onClick="run_selected_task(this.value, 'pdbfile');" /></td>
+<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Load Database" onClick="run_selected_task(this.value, 'database');" /></td>
+<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Copy Processed Files to Deposition" onClick="run_selected_task(this.value, 'copy_to_deposition');" /></td>
+<td style="text-align:center;border-style:none;padding:8px;margin:10px;"><input type="button" value="Merge Initial Deposition Date/Revision History"
+ onClick="show_selected_panel('merge-recover-dialog', 'recover');" /></td>
+</tr>
 </table>
 <br/><br/>
+<div id="task-status-panel">
+%(task_info)s
+</div>
+<br/>
 <div id="panel-dialog" class="status-inline displaynone"></div>
 <br/><br/>
 <p>
@@ -331,6 +337,38 @@ task_entry_tmplt            string    no    ?
     </div>
 </td>
 ;
+#task_info_tmplt: referenced by depict/DepictGroup.py
+task_info_tmplt             string    no    ?
+;
+<table style="margin-left:auto;margin-right:auto;min-width:1080px;width:95%%;border:1px solid black;border-spacing:20px;">
+<tr>
+<th style="text-align:center;border:1px solid black;padding:8px;">Task Name</th>
+<th style="text-align:center;border:1px solid black;padding:8px;">Status</th>
+<th style="text-align:center;border:1px solid black;padding:8px;">Start Time</th>
+<th style="text-align:center;border:1px solid black;padding:8px;">End Time</th>
+<th style="text-align:center;border:1px solid black;padding:8px;">Display Task Log Message</th>
+<th style="text-align:center;border:1px solid black;padding:8px;">Remove Task Log Message</th>
+</tr>
+%(task_info_row)s
+</table>
+;
+#task_info_row_tmplt: referenced by depict/DepictGroup.py
+task_info_row_tmplt         string    no    ?
+;
+<tr>
+<td style="text-align:center;border:1px solid black;padding:8px;">%(task_id)s</td>
+<td style="text-align:center;border:1px solid black;padding:8px;">%(status)s</td>
+<td style="text-align:center;border:1px solid black;padding:8px;">%(start_time)s</td>
+<td style="text-align:center;border:1px solid black;padding:8px;">%(end_time)s</td>
+<td style="text-align:center;border:1px solid black;padding:8px;">
+<input type="button" value="Display" onClick="display_message('%(sessionid)s', '%(identifier)s', '%(task_key)s');" />
+</td>
+<td style="text-align:center;border:1px solid black;padding:8px;">
+<input type="button" value="Remove" onClick="remove_message('%(sessionid)s', '%(identifier)s', '%(task_key)s');" />
+</td>
+</tr>
+;
+#
 loop_
 _page_template_parameter.page_id
 _page_template_parameter.variable
@@ -361,6 +399,7 @@ group_worktask_tmplt           group_name                     group_name        
 group_worktask_tmplt           first_name                     first_name                                                              userInfo         n
 group_worktask_tmplt           last_name                      last_name                                                               userInfo         n
 group_worktask_tmplt           breadcrumbs                    "Non-Workflow Tasks"                                                    constant         n
+group_worktask_tmplt           task_info                      "self,getDataResult"                                                    function         n
 group_worktask_tmplt           entry_info                     "self,getDataResult"                                                    function         n
 #common_page_header_tmplt
 common_page_header_tmplt       head_title                     "WorkFlow for %(identifier)s"                                           constant         n
@@ -388,4 +427,5 @@ _function_parameter.external_flag
 _function_parameter.parameter_type
 "group_workflow_tmplt,workflow_info"       input_type    workflow_info       str    ?    constant
 "group_workflow_tmplt,entry_info"          input_type    entry_info          str    ?    constant
+"group_worktask_tmplt,task_info"           input_type    task_info           str    ?    constant
 "group_worktask_tmplt,entry_info"          input_type    entry_info          str    ?    constant

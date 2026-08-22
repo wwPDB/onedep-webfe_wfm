@@ -499,21 +499,23 @@ function get_entry_array(formid, selected_only) {
        return entry_array;
 }
 
-function ajax_submit_form(formid, url, option_value) {
+function ajax_submit_form(formid, url, option_value, button_label) {
        $('#' + formid).ajaxSubmit({ /* async: false, */ clearForm: false, url: url, dataType: 'json',
             beforeSubmit: function (arr, $form, options) {
                  progressStart();
                  arr.push({ "name": "sessionid",  "value": session_ID });
                  arr.push({ "name": "annotator",  "value": annotator  });
                  arr.push({ "name": "option", "value": option_value   });
+                 arr.push({ "name": "button_label", "value": button_label });
             },
             success: function (jsonObj) {
                 progressEnd();
                 if (jsonObj.errorflag) {
                      alert(jsonObj.errortext);
                 } else {
-                     if ((option_value == 'cifcheck') || (option_value == 'sequence') || (option_value == 'other') ||
-                         (option_value == 'recover') || (option_value == 'mischeck')) {
+                     if ((option_value == 'annotation') || (option_value == 'cifcheck') || (option_value == 'ligand') || (option_value == 'mischeck') ||
+                         (option_value == 'other') || (option_value == 'pdbfile') || (option_value == 'recover') || (option_value == 'sequence') ||
+                         (option_value == 'validation')) {
                          var myWindow = window.open('', '_blank');
                          myWindow.document.write('<pre>\n' + jsonObj.textcontent + '\n</pre>\n');
                          myWindow.document.close();
@@ -533,6 +535,11 @@ function ajax_submit_form(formid, url, option_value) {
                      if ((option_value == 'status') || (option_value == 'sequence') || (option_value == 'other') || (option_value == 'recover')) {
                           $("#panel-dialog").addClass("displaynone");
                           $("#panel-dialog").hide();
+                     }
+
+                     if ('taskcontent' in jsonObj) {
+                          $("#task-status-panel").html(jsonObj.taskcontent);
+                          $("#task-status-panel").show();
                      }
                 }
             },
@@ -664,7 +671,7 @@ function select_ligand(formid, tagid) {
        }
 }
 
-function run_update_status_task() {
+function run_update_status_task(button_label) {
        var status_tokens = [ 'status_code', 'author_approval_type', 'author_release_status_code', 
                              'date_hold_coordinates', 'pdbx_annotator', 'process_site' ];
        var found_value = false;
@@ -685,7 +692,7 @@ function run_update_status_task() {
             return;
        }
 
-       ajax_submit_form('run_select_worktask', '/service/workmanager/run_group_tasks', 'status');
+       ajax_submit_form('run_select_worktask', '/service/workmanager/run_group_tasks', 'status', button_label);
 }
 
 function run_selected_workflow() {
@@ -704,10 +711,10 @@ function run_selected_workflow() {
        }
        if (found_error) return;
 
-       ajax_submit_form('run_select_workflow', '/service/workmanager/run_group_engine', '');
+       ajax_submit_form('run_select_workflow', '/service/workmanager/run_group_engine', '', '');
 }
 
-function run_selected_task(option) {
+function run_selected_task(button_label, option) {
        var error_msg = '';
 
        var entryArray = get_entry_array('run_select_worktask', true);
@@ -758,7 +765,7 @@ function run_selected_task(option) {
             return;
        }
 
-       ajax_submit_form('run_select_worktask', '/service/workmanager/run_group_tasks', option);
+       ajax_submit_form('run_select_worktask', '/service/workmanager/run_group_tasks', option, button_label);
 }
 
 function send_notification(identifier, sessionid, initial) {
@@ -786,4 +793,54 @@ function open_new_window(url) {
        // Opens window from a script to get around Firefox limits on closing
        window.open(url); 
        return false;
+}
+
+function display_message(sessionid, identifier, task_key) {
+       $.ajax({ type: "GET", url: "/service/workmanager/get_task_message", dataType: "json",
+            data: { "identifier": identifier, "sessionid": sessionid, "task_key": task_key },
+            beforeSend: function() {
+                 progressStart();
+            },
+            success: function (jsonObj) {
+                progressEnd();
+                if (jsonObj.errorflag) {
+                     alert(jsonObj.errortext);
+                } else {
+                     var myWindow = window.open("", "_blank");
+                     myWindow.document.write("<pre>\n" + jsonObj.textcontent + "\n</pre>\n");
+                     myWindow.document.close();
+                     myWindow.focus();
+                }
+            },
+            error: function (data, status, e) {
+                progressEnd();
+                alert(e);
+            }
+       });
+}
+
+function remove_message(sessionid, identifier, task_key) {
+       $.ajax({ type: "GET", url: "/service/workmanager/remove_task_message", dataType: "json",
+            data: { "identifier": identifier, "sessionid": sessionid, "task_key": task_key },
+            beforeSend: function() {
+                 progressStart();
+            },
+            success: function (jsonObj) {
+                progressEnd();
+                if (jsonObj.errorflag) {
+                     alert(jsonObj.errortext);
+                } else {
+                     if (jsonObj.textcontent == "empty") {
+                          $("#task-status-panel").html("")
+                     } else {
+                          $("#task-status-panel").html(jsonObj.textcontent);
+                     }
+                     $("#task-status-panel").show();
+                }
+            },
+            error: function (data, status, e) {
+                progressEnd();
+                alert(e);
+            }
+       });
 }
